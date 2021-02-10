@@ -7,4 +7,3 @@ PRIME was written and developed by Cosmin Safta, Jaideep Ray, Patrick Blonigan, 
 ## Citing:
 
 * C. Safta, K. Sargsyan, J. Ray, "Characterization of Partially Observed Epidemics through Bayesian Inference - Application to COVID-19", Computational Mechanics, doi: 10.1007/s00466-020-01897-z (2020).
-* P. Blonigan, K. Chowdhary, J. Ray, C. Safta, "PRIME - A Software Toolkit for the Characterization of Partially Observed Epidemics in a Bayesian Framework", SAND2020-13331O, (2020).
