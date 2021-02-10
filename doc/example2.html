@@ -1,0 +1,641 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Multi-Wave Model &mdash; PRIME  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Developer Reference Guide" href="modules.html" />
+    <link rel="prev" title="One-Wave Model" href="example1.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> PRIME
+          
+
+          
+            
+            <img src="_static/PRIME_logo_small.jpg" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="intro.html">About</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Model:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="description.html">Model description</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.html">Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bayes_framework.html">Bayesian Framework</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Examples:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="example1.html">One-Wave Model</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Multi-Wave Model</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#two-waves">Two Waves</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#problem-setup">Problem Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#new-case-forecast-results">New Case Forecast Results</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#three-waves">Three Waves</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Problem Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">New Case Forecast Results</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#json-input-files">JSON Input Files</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#two-wave">Two Wave</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#three-wave">Three Wave</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Reference Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">Developer Reference Guide</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">PRIME</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Multi-Wave Model</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/example2.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="multi-wave-model">
+<h1>Multi-Wave Model<a class="headerlink" href="#multi-wave-model" title="Permalink to this headline">¶</a></h1>
+<p>The following examples demonstrate the multi-wave capability of PRIME.</p>
+<div class="section" id="two-waves">
+<h2>Two Waves<a class="headerlink" href="#two-waves" title="Permalink to this headline">¶</a></h2>
+<p>The first example considers daily confirmed case data in the state of New Mexico
+up to August 26th, 2020, shown in <a class="reference internal" href="#casedatanm0826"><span class="std std-numref">Fig. 8</span></a>.</p>
+<div class="figure align-default" id="casedatanm0826">
+<a class="reference internal image-reference" href="_images/NM_case_data_0826.pdf"><img alt="_images/NM_case_data_0826.pdf" src="_images/NM_case_data_0826.pdf" style="width: 75%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 8 </span><span class="caption-text">Daily confirmed cases of COVID-19 in New Mexico up
+to August 26th, 2020. Daily confirmed cases are shown as black
+symbols, and the corresponding 7-day averaged data
+shown with red lines and symbols.</span><a class="headerlink" href="#casedatanm0826" title="Permalink to this image">¶</a></p>
+</div>
+<p>We use the two-wave model to fit this since there are two large peaks in new cases
+in early May and late July 2020.</p>
+<div class="section" id="problem-setup">
+<h3>Problem Setup<a class="headerlink" href="#problem-setup" title="Permalink to this headline">¶</a></h3>
+<p>While the two wave model can be run independently it is highly recommended to make
+use of one-wave model results to help compute prior distributions for the first wave
+in the two-wave model. This is done to i) make use of all available information and
+ii) limit the parameter range for the early wave parameters to enhance the robustness
+of the multi-wave model.</p>
+<p>The priors for the first wave parameters <span class="math notranslate nohighlight">\(t_0\)</span>, <span class="math notranslate nohighlight">\(N_1\)</span>, <span class="math notranslate nohighlight">\(k_1\)</span>,
+<span class="math notranslate nohighlight">\(\theta_1\)</span> can be then be estimated by the mean and variance of the one-wave
+MCMC chain. This gives us an informed guess for part of the parameters, limiting the
+region of parameter space that an MCMC approach needs to explore. A smaller parameter
+range increases the chance that MCMC is able to find find regions of high likelihood
+<span class="math notranslate nohighlight">\(p\left(\boldsymbol{y} | \Theta \right)\)</span>, making the model more robust. The
+second wave prior distributions should be chosen to include values that approximate
+the case data well; these distributions may need to be selected by trial and error,
+although <span class="math notranslate nohighlight">\(\Delta t_2\)</span> can be estimated by visually inspecting raw daily new
+case data.</p>
+<p>This example uses Gaussian prior distributions for <span class="math notranslate nohighlight">\(t_0\)</span> and <span class="math notranslate nohighlight">\(\Delta t_2\)</span>
+and uniform prior distributions for all other model parameters. For Gaussian priors
+the mean and variance are estimated from the one-wave chain. For uniform priors the
+minimum and maximum parameter are set equal to <span class="math notranslate nohighlight">\(\mu_{chain} \pm 3 \sigma_{chain}\)</span>,
+where <span class="math notranslate nohighlight">\(\mu_{chain}\)</span> and <span class="math notranslate nohighlight">\(\sigma_{chain}\)</span> are the mean and standard
+deviation computed from the one-wave chain. Note that positive parameters
+<span class="math notranslate nohighlight">\(N_1,k_1,\theta_1\)</span> are restricted to positive values; that is, the lower bound
+is the maximum of zero and <span class="math notranslate nohighlight">\(\mu_{chain} - 3 \sigma_{chain}\)</span>.</p>
+<p>The json file for a two-wave model can be produced from a one-wave model by running
+the script “prime_compute_prior_from_mcmc.py” in the directory containing the one-wave
+model json script and HDF5 file with MCMC chain data. The arguments for this script in
+this case are the name of json file used to run the one-wave model and the model type
+for the desired json file, in this case “twoWave”. For this example, we use
+the results from example 1 to generate the two-wave json file (included in the
+“JSON Input Files” section at the end of this example).</p>
+<p>It is recommended to experiment with the prior distributions for the 2nd wave
+parameters <span class="math notranslate nohighlight">\(\Delta t_2\)</span>, <span class="math notranslate nohighlight">\(N_2\)</span>, <span class="math notranslate nohighlight">\(k_2\)</span>, and <span class="math notranslate nohighlight">\(\theta_2\)</span>.
+The time between the first and second wave, <span class="math notranslate nohighlight">\(\Delta t_2\)</span>, can be estimated
+by the number of days between the first large increase in cases and the second
+large increase. For this example, we use a wide prior distribution for
+<span class="math notranslate nohighlight">\(\Delta t_2\)</span>, centered on 60 days with a standard deviation of 15 days.</p>
+<p>The two-wave model is also run with the “prime_run.py” script.</p>
+</div>
+<div class="section" id="new-case-forecast-results">
+<h3>New Case Forecast Results<a class="headerlink" href="#new-case-forecast-results" title="Permalink to this headline">¶</a></h3>
+<div class="figure align-default" id="newcasesnm0826">
+<a class="reference internal image-reference" href="_images/NM_newcases_2wave_0826.pdf"><img alt="_images/NM_newcases_2wave_0826.pdf" src="_images/NM_newcases_2wave_0826.pdf" style="width: 75%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 9 </span><span class="caption-text">Two-wave forecast for New Mexico on August 26th, 2020. Symbols and lines are
+the same as in example 1.</span><a class="headerlink" href="#newcasesnm0826" title="Permalink to this image">¶</a></p>
+</div>
+<p>The two-wave forecast results are also computed by running the “prime_compute_epi_inf_curves.py”
+in the same directory as the run. The postprocessing sections of the json script are
+the same for multiple waves. Please refer to example 1 for more details on postprocessing.</p>
+</div>
+</div>
+<div class="section" id="three-waves">
+<h2>Three Waves<a class="headerlink" href="#three-waves" title="Permalink to this headline">¶</a></h2>
+<p>The first example considers daily confirmed case data in the state of New Mexico
+up to November 10th, 2020, shown in <a class="reference internal" href="#casedatanm1110"><span class="std std-numref">Fig. 10</span></a>.</p>
+<div class="figure align-default" id="casedatanm1110">
+<a class="reference internal image-reference" href="_images/NM_case_data_1110.pdf"><img alt="_images/NM_case_data_1110.pdf" src="_images/NM_case_data_1110.pdf" style="width: 75%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 10 </span><span class="caption-text">Daily confirmed cases of COVID-19 in New Mexico up
+to November 10th, 2020. Daily confirmed cases are shown as black
+symbols, and the corresponding 7-day averaged data
+shown with red lines and symbols.</span><a class="headerlink" href="#casedatanm1110" title="Permalink to this image">¶</a></p>
+</div>
+<p>We use the three-wave model to fit this since there are three large peaks in new cases
+in early May, late July 2020, and cases are rising rapidly in November 2020.</p>
+<div class="section" id="id1">
+<h3>Problem Setup<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>Like the two-wave model, the three-wave model can be run independently but it is highly
+recommended to make use of two-wave model results to help compute prior distributions
+for the first and second waves in the three-wave model. The priors for the parameters
+<span class="math notranslate nohighlight">\(t_0\)</span>, <span class="math notranslate nohighlight">\(N_1\)</span>, <span class="math notranslate nohighlight">\(k_1\)</span>, <span class="math notranslate nohighlight">\(\theta_1\)</span>, <span class="math notranslate nohighlight">\(\Delta t_2\)</span>, <span class="math notranslate nohighlight">\(N_2\)</span>,
+<span class="math notranslate nohighlight">\(k_2\)</span>, and <span class="math notranslate nohighlight">\(\theta_2\)</span> are estimated from the two-wave model MCMC chain.</p>
+<p>The json file for a three-wave model can be produced from a two-wave model by running
+the script “prime_compute_prior_from_mcmc.py” in the directory containing the two-wave
+model json script and HDF5 file with MCMC chain data. The arguments for this script in
+this case are the name of json file used to run the two-wave model and the model type
+for the desired json file, in this case “threeWave”. For this example, we use
+the two-wave results from the previous section to generate the three-wave json file
+(included in the “JSON Input Files” section at the end of this example).</p>
+<p>It is recommended to experiment with the prior distributions for the 3rd wave
+parameters <span class="math notranslate nohighlight">\(\Delta t_3\)</span>, <span class="math notranslate nohighlight">\(N_3\)</span>, <span class="math notranslate nohighlight">\(k_3\)</span>, and <span class="math notranslate nohighlight">\(\theta_3\)</span>.
+The time between the first and third wave, <span class="math notranslate nohighlight">\(\Delta t_3\)</span>, can be estimated
+by the number of days between the first large increase in cases and the third
+large increase. For this example, we use a wide prior distribution for
+<span class="math notranslate nohighlight">\(\Delta t_3\)</span>, centered on 180 days with a standard deviation of 15 days.</p>
+<p>The three-wave model is also run with the “prime_run.py” script.</p>
+</div>
+<div class="section" id="id2">
+<h3>New Case Forecast Results<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<div class="figure align-default" id="newcasesnm1110">
+<a class="reference internal image-reference" href="_images/NM_newcases_3wave_1110.pdf"><img alt="_images/NM_newcases_3wave_1110.pdf" src="_images/NM_newcases_3wave_1110.pdf" style="width: 75%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 11 </span><span class="caption-text">Three-wave forecast for New Mexico on November 10th, 2020. Symbols and lines are
+the same as in example 1.</span><a class="headerlink" href="#newcasesnm1110" title="Permalink to this image">¶</a></p>
+</div>
+<p>The three-wave forecast results are also computed by running the “prime_compute_epi_inf_curves.py”
+in the same directory as the run. The postprocessing sections of the json script are
+the same for multiple waves. Please refer to example 1 for more details on postprocessing.</p>
+</div>
+</div>
+<div class="section" id="json-input-files">
+<h2>JSON Input Files<a class="headerlink" href="#json-input-files" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="two-wave">
+<h3>Two Wave<a class="headerlink" href="#two-wave" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;regioninfo&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;regionname&quot;</span><span class="p">:</span> <span class="s2">&quot;NM&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;fchain&quot;</span><span class="p">:</span> <span class="s2">&quot;NM_mcmc.h5&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;day0&quot;</span><span class="p">:</span> <span class="s2">&quot;2020-03-01&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;running_avg_obs&quot;</span><span class="p">:</span> <span class="mi">7</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;mcmcopts&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;model_type&quot;</span><span class="p">:</span> <span class="s2">&quot;twoWave&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;error_model_type&quot;</span><span class="p">:</span> <span class="s2">&quot;addMult&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;logfile&quot;</span><span class="p">:</span> <span class="s2">&quot;logmcmcNM_2wave.txt&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;nsteps&quot;</span><span class="p">:</span> <span class="mi">1000000</span><span class="p">,</span>
+        <span class="nt">&quot;nfinal&quot;</span><span class="p">:</span> <span class="mi">10000000</span><span class="p">,</span>
+        <span class="nt">&quot;useconv&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="nt">&quot;incubation_type&quot;</span><span class="p">:</span> <span class="s2">&quot;uncertain&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;gamma&quot;</span><span class="p">:</span> <span class="mf">0.7</span><span class="p">,</span>
+        <span class="nt">&quot;spllo&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="mf">-2.877357932637136</span><span class="p">,</span>
+            <span class="mf">0.009575447192753876</span><span class="p">,</span>
+            <span class="mf">3.4902877959833143</span><span class="p">,</span>
+            <span class="mf">12.321758685351922</span><span class="p">,</span>
+            <span class="mi">20</span><span class="p">,</span>
+            <span class="mf">0.0002</span><span class="p">,</span>
+            <span class="mf">0.1</span><span class="p">,</span>
+            <span class="mf">0.1</span><span class="p">,</span>
+            <span class="mf">0.0</span><span class="p">,</span>
+            <span class="mi">-20</span>
+        <span class="p">],</span>
+        <span class="nt">&quot;splhi&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="mf">2.969027281659369</span><span class="p">,</span>
+            <span class="mf">0.01839093251179052</span><span class="p">,</span>
+            <span class="mf">5.360610614202396</span><span class="p">,</span>
+            <span class="mf">26.17367878217896</span><span class="p">,</span>
+            <span class="mi">100</span><span class="p">,</span>
+            <span class="mf">0.5</span><span class="p">,</span>
+            <span class="mf">30.0</span><span class="p">,</span>
+            <span class="mf">400.0</span><span class="p">,</span>
+            <span class="mf">10.0</span><span class="p">,</span>
+            <span class="mf">1.0</span>
+        <span class="p">],</span>
+        <span class="nt">&quot;cini&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="mf">0.04583467451111642</span><span class="p">,</span>
+            <span class="mf">0.013983189852272197</span><span class="p">,</span>
+            <span class="mf">4.425449205092855</span><span class="p">,</span>
+            <span class="mf">19.247718733765442</span><span class="p">,</span>
+            <span class="mi">60</span><span class="p">,</span>
+            <span class="mf">0.02</span><span class="p">,</span>
+            <span class="mf">6.0</span><span class="p">,</span>
+            <span class="mf">20.2</span><span class="p">,</span>
+            <span class="mf">3.0</span><span class="p">,</span>
+            <span class="mf">0.1</span>
+        <span class="p">],</span>
+        <span class="nt">&quot;cvini&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="mf">0.9494505576095775</span><span class="p">,</span>
+            <span class="mf">2.158688372504182e-06</span><span class="p">,</span>
+            <span class="mf">0.09716965123197129</span><span class="p">,</span>
+            <span class="mf">5.3298802880244684</span><span class="p">,</span>
+            <span class="mi">225</span><span class="p">,</span>
+            <span class="mf">0.001</span><span class="p">,</span>
+            <span class="mf">0.01</span><span class="p">,</span>
+            <span class="mf">0.01</span><span class="p">,</span>
+            <span class="mf">0.01</span><span class="p">,</span>
+            <span class="mf">0.01</span>
+        <span class="p">]</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;bayesmod&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;prior_types&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;g&quot;</span><span class="p">,</span><span class="s2">&quot;u&quot;</span><span class="p">,</span><span class="s2">&quot;u&quot;</span><span class="p">,</span><span class="s2">&quot;u&quot;</span><span class="p">,</span><span class="s2">&quot;g&quot;</span><span class="p">,</span><span class="s2">&quot;u&quot;</span><span class="p">,</span><span class="s2">&quot;u&quot;</span><span class="p">,</span><span class="s2">&quot;u&quot;</span><span class="p">,</span><span class="s2">&quot;u&quot;</span><span class="p">,</span><span class="s2">&quot;u&quot;</span><span class="p">],</span>
+        <span class="nt">&quot;prior_info&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">[</span><span class="mf">0.04583467451111642</span><span class="p">,</span><span class="mf">0.9743975357160841</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">60</span><span class="p">,</span><span class="mf">15.0</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
+        <span class="p">]</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;incopts&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;incubation_median&quot;</span><span class="p">:</span> <span class="mf">5.1</span><span class="p">,</span>
+        <span class="nt">&quot;incubation_sigma&quot;</span><span class="p">:</span> <span class="mf">0.418</span><span class="p">,</span>
+        <span class="nt">&quot;incubation_025&quot;</span><span class="p">:</span> <span class="mf">2.2</span><span class="p">,</span>
+        <span class="nt">&quot;incubation_975&quot;</span><span class="p">:</span> <span class="mf">11.5</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;ppopts&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;nstart&quot;</span><span class="p">:</span> <span class="mi">100000</span><span class="p">,</span>
+        <span class="nt">&quot;nsamples&quot;</span><span class="p">:</span> <span class="mi">10000</span><span class="p">,</span>
+        <span class="nt">&quot;days_extra&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+        <span class="nt">&quot;runmodel&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="nt">&quot;postpred&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="nt">&quot;quantile_newcases&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.025</span><span class="p">,</span><span class="mf">0.25</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.75</span><span class="p">,</span><span class="mf">0.975</span><span class="p">],</span>
+        <span class="nt">&quot;linetype_newcases&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;b--&quot;</span><span class="p">,</span><span class="s2">&quot;g-&quot;</span><span class="p">,</span><span class="s2">&quot;r-&quot;</span><span class="p">,</span><span class="s2">&quot;g-&quot;</span><span class="p">,</span><span class="s2">&quot;b--&quot;</span><span class="p">],</span>
+        <span class="nt">&quot;linewidth_newcases&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span>
+        <span class="nt">&quot;fillbetw_newcases&quot;</span><span class="p">:</span> <span class="p">[[</span><span class="mf">0.25</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="s2">&quot;g&quot;</span><span class="p">,</span><span class="mf">0.4</span><span class="p">],[</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.75</span><span class="p">,</span><span class="s2">&quot;g&quot;</span><span class="p">,</span><span class="mf">0.4</span><span class="p">]],</span>
+        <span class="nt">&quot;xylim_newcases&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;2020-03-01&quot;</span><span class="p">,</span><span class="s2">&quot;2020-04-15&quot;</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">500</span><span class="p">],</span>
+        <span class="nt">&quot;xylbl_newcases&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Date&quot;</span><span class="p">,</span><span class="mi">16</span><span class="p">,</span><span class="s2">&quot;Reported New Cases on Date&quot;</span><span class="p">,</span><span class="mi">16</span><span class="p">],</span>
+        <span class="nt">&quot;xyticklbl_newcases&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">14</span><span class="p">,</span><span class="mi">14</span><span class="p">],</span>
+        <span class="nt">&quot;newcases&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;ko&quot;</span><span class="p">,</span><span class="mi">6</span><span class="p">],</span>
+        <span class="nt">&quot;figtype&quot;</span><span class="p">:</span> <span class="s2">&quot;pdf&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;fpredout&quot;</span><span class="p">:</span> <span class="s2">&quot;NM_epidemic_curve&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;fout_newcases&quot;</span><span class="p">:</span> <span class="s2">&quot;NM_epidemic_curve&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;infopts&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;inftype&quot;</span><span class="p">:</span> <span class="s2">&quot;gamma&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;ndays&quot;</span><span class="p">:</span> <span class="mi">180</span><span class="p">,</span>
+        <span class="nt">&quot;runmodel&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="nt">&quot;postpred&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="nt">&quot;quantile_inf&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.025</span><span class="p">,</span><span class="mf">0.25</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.75</span><span class="p">,</span><span class="mf">0.975</span><span class="p">],</span>
+        <span class="nt">&quot;linetype_inf&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;b--&quot;</span><span class="p">,</span><span class="s2">&quot;g-&quot;</span><span class="p">,</span><span class="s2">&quot;r-&quot;</span><span class="p">,</span><span class="s2">&quot;g-&quot;</span><span class="p">,</span><span class="s2">&quot;b--&quot;</span><span class="p">],</span>
+        <span class="nt">&quot;linewidth_inf&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span>
+        <span class="nt">&quot;fillbetw_inf&quot;</span><span class="p">:</span> <span class="p">[[</span><span class="mf">0.25</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="s2">&quot;g&quot;</span><span class="p">,</span><span class="mf">0.4</span><span class="p">],[</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.75</span><span class="p">,</span><span class="s2">&quot;g&quot;</span><span class="p">,</span><span class="mf">0.4</span><span class="p">]],</span>
+        <span class="nt">&quot;xylim_inf&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;2020-03-01&quot;</span><span class="p">,</span><span class="s2">&quot;2020-05-01&quot;</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">1000</span><span class="p">],</span>
+        <span class="nt">&quot;xylbl_inf&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Date&quot;</span><span class="p">,</span><span class="mi">16</span><span class="p">,</span><span class="s2">&quot;Infection Rate [ppl/day]&quot;</span><span class="p">,</span><span class="mi">16</span><span class="p">],</span>
+        <span class="nt">&quot;xyticklbl_inf&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">14</span><span class="p">,</span><span class="mi">14</span><span class="p">],</span>
+        <span class="nt">&quot;newcases&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;ko&quot;</span><span class="p">,</span><span class="mi">6</span><span class="p">],</span>
+        <span class="nt">&quot;figtype&quot;</span><span class="p">:</span> <span class="s2">&quot;pdf&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;finfout&quot;</span><span class="p">:</span> <span class="s2">&quot;NM_infection_curve&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;fout_inf&quot;</span><span class="p">:</span> <span class="s2">&quot;NM_infection_curve&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;csvout&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;nskip&quot;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
+        <span class="nt">&quot;finfcurve&quot;</span><span class="p">:</span> <span class="s2">&quot;NM_infection_curve&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;fnewcases&quot;</span><span class="p">:</span> <span class="s2">&quot;NM_epidemic_curve&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;qlist&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.025</span><span class="p">,</span><span class="mf">0.25</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.75</span><span class="p">,</span><span class="mf">0.975</span><span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="three-wave">
+<h3>Three Wave<a class="headerlink" href="#three-wave" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;regioninfo&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;regionname&quot;</span><span class="p">:</span> <span class="s2">&quot;NM&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;fchain&quot;</span><span class="p">:</span> <span class="s2">&quot;NM_mcmc.h5&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;day0&quot;</span><span class="p">:</span> <span class="s2">&quot;2020-03-01&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;running_avg_obs&quot;</span><span class="p">:</span> <span class="mi">7</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;mcmcopts&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;model_type&quot;</span><span class="p">:</span> <span class="s2">&quot;threeWave&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;error_model_type&quot;</span><span class="p">:</span> <span class="s2">&quot;addMult&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;logfile&quot;</span><span class="p">:</span> <span class="s2">&quot;logmcmcNM_3wave.txt&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;method&quot;</span><span class="p">:</span> <span class="s2">&quot;am&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;nsteps&quot;</span><span class="p">:</span> <span class="mi">1000000</span><span class="p">,</span>
+        <span class="nt">&quot;nfinal&quot;</span><span class="p">:</span> <span class="mi">10000000</span><span class="p">,</span>
+        <span class="nt">&quot;useconv&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="nt">&quot;incubation_type&quot;</span><span class="p">:</span> <span class="s2">&quot;uncertain&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;gamma&quot;</span><span class="p">:</span> <span class="mf">0.7</span><span class="p">,</span>
+        <span class="nt">&quot;spllo&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="mf">-1.5198886917920054</span><span class="p">,</span>
+            <span class="mf">0.01343778201509116</span><span class="p">,</span>
+            <span class="mf">3.715378521549199</span><span class="p">,</span>
+            <span class="mf">17.57101548608055</span><span class="p">,</span>
+            <span class="mf">70.81826941872282</span><span class="p">,</span>
+            <span class="mf">0.010771637229469904</span><span class="p">,</span>
+            <span class="mf">0.0</span><span class="p">,</span>
+            <span class="mf">4.976510035388319</span><span class="p">,</span>
+            <span class="mi">140</span><span class="p">,</span>
+            <span class="mf">0.0002</span><span class="p">,</span>
+            <span class="mf">0.1</span><span class="p">,</span>
+            <span class="mf">0.1</span><span class="p">,</span>
+            <span class="mf">0.0</span><span class="p">,</span>
+            <span class="mi">-20</span>
+        <span class="p">],</span>
+        <span class="nt">&quot;splhi&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="mf">1.8197861405425901</span><span class="p">,</span>
+            <span class="mf">0.016193383448404937</span><span class="p">,</span>
+            <span class="mf">4.6929341387263</span><span class="p">,</span>
+            <span class="mf">24.574886774303263</span><span class="p">,</span>
+            <span class="mf">112.57412043153732</span><span class="p">,</span>
+            <span class="mf">0.013487998537736372</span><span class="p">,</span>
+            <span class="mf">11.208390968975433</span><span class="p">,</span>
+            <span class="mf">15.442199070301406</span><span class="p">,</span>
+            <span class="mi">220</span><span class="p">,</span>
+            <span class="mf">0.5</span><span class="p">,</span>
+            <span class="mf">30.0</span><span class="p">,</span>
+            <span class="mf">400.0</span><span class="p">,</span>
+            <span class="mf">10.0</span><span class="p">,</span>
+            <span class="mf">1.0</span>
+        <span class="p">],</span>
+        <span class="nt">&quot;cini&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="mf">0.1499487243752924</span><span class="p">,</span>
+            <span class="mf">0.014815582731748048</span><span class="p">,</span>
+            <span class="mf">4.204156330137749</span><span class="p">,</span>
+            <span class="mf">21.072951130191907</span><span class="p">,</span>
+            <span class="mf">91.69619492513007</span><span class="p">,</span>
+            <span class="mf">0.012129817883603138</span><span class="p">,</span>
+            <span class="mf">5.552822284750233</span><span class="p">,</span>
+            <span class="mf">10.209354552844863</span><span class="p">,</span>
+            <span class="mi">180</span><span class="p">,</span>
+            <span class="mf">0.02</span><span class="p">,</span>
+            <span class="mf">6.0</span><span class="p">,</span>
+            <span class="mf">20.2</span><span class="p">,</span>
+            <span class="mf">3.0</span><span class="p">,</span>
+            <span class="mf">0.1</span>
+        <span class="p">],</span>
+        <span class="nt">&quot;cvini&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="mf">0.30981744404803085</span><span class="p">,</span>
+            <span class="mf">2.1092609053558147e-07</span><span class="p">,</span>
+            <span class="mf">0.02654486068540284</span><span class="p">,</span>
+            <span class="mf">1.3626170283886236</span><span class="p">,</span>
+            <span class="mf">48.43197482789893</span><span class="p">,</span>
+            <span class="mf">2.0496163214019776e-07</span><span class="p">,</span>
+            <span class="mf">3.5539396824431955</span><span class="p">,</span>
+            <span class="mf">3.0425179715416664</span><span class="p">,</span>
+            <span class="mi">225</span><span class="p">,</span>
+            <span class="mf">0.001</span><span class="p">,</span>
+            <span class="mf">0.01</span><span class="p">,</span>
+            <span class="mf">0.01</span><span class="p">,</span>
+            <span class="mf">0.01</span><span class="p">,</span>
+            <span class="mf">0.01</span>
+        <span class="p">]</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;bayesmod&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;prior_types&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;g&quot;</span><span class="p">,</span><span class="s2">&quot;u&quot;</span><span class="p">,</span><span class="s2">&quot;u&quot;</span><span class="p">,</span><span class="s2">&quot;u&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;g&quot;</span><span class="p">,</span><span class="s2">&quot;u&quot;</span><span class="p">,</span><span class="s2">&quot;u&quot;</span><span class="p">,</span><span class="s2">&quot;u&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;g&quot;</span><span class="p">,</span><span class="s2">&quot;u&quot;</span><span class="p">,</span><span class="s2">&quot;u&quot;</span><span class="p">,</span><span class="s2">&quot;u&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;u&quot;</span><span class="p">,</span><span class="s2">&quot;u&quot;</span>
+        <span class="p">],</span>
+        <span class="nt">&quot;prior_info&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">[</span><span class="mf">0.1499487243752924</span><span class="p">,</span><span class="mf">0.5566124720557659</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span>
+            <span class="p">[</span><span class="mf">91.69619492513007</span><span class="p">,</span><span class="mf">6.959308502135749</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">180</span><span class="p">,</span><span class="mf">15.0</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
+        <span class="p">]</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;incopts&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;incubation_median&quot;</span><span class="p">:</span> <span class="mf">5.1</span><span class="p">,</span>
+        <span class="nt">&quot;incubation_sigma&quot;</span><span class="p">:</span> <span class="mf">0.418</span><span class="p">,</span>
+        <span class="nt">&quot;incubation_025&quot;</span><span class="p">:</span> <span class="mf">2.2</span><span class="p">,</span>
+        <span class="nt">&quot;incubation_975&quot;</span><span class="p">:</span> <span class="mf">11.5</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;ppopts&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;nstart&quot;</span><span class="p">:</span> <span class="mi">100000</span><span class="p">,</span>
+        <span class="nt">&quot;nsamples&quot;</span><span class="p">:</span> <span class="mi">10000</span><span class="p">,</span>
+        <span class="nt">&quot;days_extra&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+        <span class="nt">&quot;runmodel&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="nt">&quot;postpred&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="nt">&quot;quantile_newcases&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.025</span><span class="p">,</span><span class="mf">0.25</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.75</span><span class="p">,</span><span class="mf">0.975</span><span class="p">],</span>
+        <span class="nt">&quot;linetype_newcases&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;b--&quot;</span><span class="p">,</span><span class="s2">&quot;g-&quot;</span><span class="p">,</span><span class="s2">&quot;r-&quot;</span><span class="p">,</span><span class="s2">&quot;g-&quot;</span><span class="p">,</span><span class="s2">&quot;b--&quot;</span><span class="p">],</span>
+        <span class="nt">&quot;linewidth_newcases&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span>
+        <span class="nt">&quot;fillbetw_newcases&quot;</span><span class="p">:</span> <span class="p">[[</span><span class="mf">0.25</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="s2">&quot;g&quot;</span><span class="p">,</span><span class="mf">0.4</span><span class="p">],[</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.75</span><span class="p">,</span><span class="s2">&quot;g&quot;</span><span class="p">,</span><span class="mf">0.4</span><span class="p">]],</span>
+        <span class="nt">&quot;xylim_newcases&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;2020-03-01&quot;</span><span class="p">,</span><span class="s2">&quot;2020-04-15&quot;</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">500</span><span class="p">],</span>
+        <span class="nt">&quot;xylbl_newcases&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Date&quot;</span><span class="p">,</span><span class="mi">16</span><span class="p">,</span><span class="s2">&quot;Reported New Cases on Date&quot;</span><span class="p">,</span><span class="mi">16</span><span class="p">],</span>
+        <span class="nt">&quot;xyticklbl_newcases&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">14</span><span class="p">,</span><span class="mi">14</span><span class="p">],</span>
+        <span class="nt">&quot;newcases&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;ko&quot;</span><span class="p">,</span><span class="mi">6</span><span class="p">],</span>
+        <span class="nt">&quot;figtype&quot;</span><span class="p">:</span> <span class="s2">&quot;pdf&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;fpredout&quot;</span><span class="p">:</span> <span class="s2">&quot;NM_epidemic_curve&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;fout_newcases&quot;</span><span class="p">:</span> <span class="s2">&quot;NM_epidemic_curve&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;infopts&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;inftype&quot;</span><span class="p">:</span> <span class="s2">&quot;gamma&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;ndays&quot;</span><span class="p">:</span> <span class="mi">180</span><span class="p">,</span>
+        <span class="nt">&quot;runmodel&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="nt">&quot;postpred&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="nt">&quot;quantile_inf&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.025</span><span class="p">,</span><span class="mf">0.25</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.75</span><span class="p">,</span><span class="mf">0.975</span><span class="p">],</span>
+        <span class="nt">&quot;linetype_inf&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;b--&quot;</span><span class="p">,</span><span class="s2">&quot;g-&quot;</span><span class="p">,</span><span class="s2">&quot;r-&quot;</span><span class="p">,</span><span class="s2">&quot;g-&quot;</span><span class="p">,</span><span class="s2">&quot;b--&quot;</span><span class="p">],</span>
+        <span class="nt">&quot;linewidth_inf&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span>
+        <span class="nt">&quot;fillbetw_inf&quot;</span><span class="p">:</span> <span class="p">[[</span><span class="mf">0.25</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="s2">&quot;g&quot;</span><span class="p">,</span><span class="mf">0.4</span><span class="p">],[</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.75</span><span class="p">,</span><span class="s2">&quot;g&quot;</span><span class="p">,</span><span class="mf">0.4</span><span class="p">]],</span>
+        <span class="nt">&quot;xylim_inf&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;2020-03-01&quot;</span><span class="p">,</span><span class="s2">&quot;2020-05-01&quot;</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">1000</span><span class="p">],</span>
+        <span class="nt">&quot;xylbl_inf&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Date&quot;</span><span class="p">,</span><span class="mi">16</span><span class="p">,</span><span class="s2">&quot;Infection Rate [ppl/day]&quot;</span><span class="p">,</span><span class="mi">16</span><span class="p">],</span>
+        <span class="nt">&quot;xyticklbl_inf&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">14</span><span class="p">,</span><span class="mi">14</span><span class="p">],</span>
+        <span class="nt">&quot;newcases&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;ko&quot;</span><span class="p">,</span><span class="mi">6</span><span class="p">],</span>
+        <span class="nt">&quot;figtype&quot;</span><span class="p">:</span> <span class="s2">&quot;pdf&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;finfout&quot;</span><span class="p">:</span> <span class="s2">&quot;NM_infection_curve&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;fout_inf&quot;</span><span class="p">:</span> <span class="s2">&quot;NM_infection_curve&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;csvout&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;nskip&quot;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
+        <span class="nt">&quot;finfcurve&quot;</span><span class="p">:</span> <span class="s2">&quot;NM_infection_curve&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;fnewcases&quot;</span><span class="p">:</span> <span class="s2">&quot;NM_epidemic_curve&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;qlist&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.025</span><span class="p">,</span><span class="mf">0.25</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.75</span><span class="p">,</span><span class="mf">0.975</span><span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="modules.html" class="btn btn-neutral float-right" title="Developer Reference Guide" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="example1.html" class="btn btn-neutral float-left" title="One-Wave Model" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020 National Technology &amp; Engineering Solutions of Sandia, LLC (NTESS). Under the terms of Contract DE-NA0003525 with NTESS, the U.S. Government retains certain rights in this software.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

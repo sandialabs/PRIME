@@ -1,0 +1,296 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>source_release.corr &mdash; PRIME  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> PRIME
+          
+
+          
+            
+            <img src="../../_static/PRIME_logo_small.jpg" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../intro.html">About</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Model:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../description.html">Model description</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../data.html">Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../bayes_framework.html">Bayesian Framework</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Examples:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../example1.html">One-Wave Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../example2.html">Multi-Wave Model</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html">Developer Reference Guide</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">PRIME</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+        
+      <li>source_release.corr</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for source_release.corr</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">npy</span>
+
+<div class="viewcode-block" id="pcorr"><a class="viewcode-back" href="../../modules.html#source_release.corr.pcorr">[docs]</a><span class="k">def</span> <span class="nf">pcorr</span><span class="p">(</span><span class="n">spl</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Compute Pearson&#39;s correlation coefficient between random vectors</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">       spl - 2D array of samples, first dimensions is the number of samples,</span>
+<span class="sd">            second dimension is the number of random vectors</span>
+
+<span class="sd">    Output:</span>
+<span class="sd">       Returns a 2D array of correlation coefficients between pairs of random vectors;</span>
+<span class="sd">       only entries 0&lt;=j&lt;i&lt;no. of random vectors are populated</span>
+<span class="sd">       </span>
+<span class="sd">    References:</span>
+<span class="sd">       http://en.wikipedia.org/wiki/Pearson_product-moment_correlation_coefficient</span>
+<span class="sd">     &quot;&quot;&quot;</span>
+    <span class="n">nspl</span>  <span class="o">=</span> <span class="n">spl</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">nvars</span> <span class="o">=</span> <span class="n">spl</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">splmn</span>  <span class="o">=</span> <span class="n">npy</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">spl</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">splstd</span> <span class="o">=</span> <span class="n">npy</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">spl</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">corrcoef</span> <span class="o">=</span> <span class="n">npy</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">nvars</span><span class="p">,</span><span class="n">nvars</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">nvars</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span><span class="p">):</span>
+            <span class="n">rxy</span><span class="o">=</span><span class="n">npy</span><span class="o">.</span><span class="n">mean</span><span class="p">((</span><span class="n">spl</span><span class="p">[:,</span><span class="n">i</span><span class="p">]</span><span class="o">-</span><span class="n">splmn</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="o">*</span><span class="p">(</span><span class="n">spl</span><span class="p">[:,</span><span class="n">j</span><span class="p">]</span><span class="o">-</span><span class="n">splmn</span><span class="p">[</span><span class="n">j</span><span class="p">]))</span><span class="o">/</span><span class="p">(</span><span class="n">splstd</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="n">splstd</span><span class="p">[</span><span class="n">j</span><span class="p">]);</span>
+            <span class="n">corrcoef</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">rxy</span>
+    <span class="k">return</span> <span class="n">corrcoef</span></div>
+
+<div class="viewcode-block" id="distcorr"><a class="viewcode-back" href="../../modules.html#source_release.corr.distcorr">[docs]</a><span class="k">def</span> <span class="nf">distcorr</span><span class="p">(</span><span class="n">spl</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Compute distance correlation between random vectors</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">       spl - 2D array of samples, first dimensions is the number of samples,</span>
+<span class="sd">             second dimension is the number of random vectors</span>
+
+<span class="sd">    Output:</span>
+<span class="sd">       Returns a 2D array of distance correlations between pairs of random vectors;</span>
+<span class="sd">       only entries 0&lt;=j&lt;i&lt;no. of random vectors are populated</span>
+<span class="sd">       </span>
+<span class="sd">    References:</span>
+<span class="sd">       http://en.wikipedia.org/wiki/Distance_correlation</span>
+<span class="sd">     &quot;&quot;&quot;</span>
+    <span class="n">nspl</span>  <span class="o">=</span> <span class="n">spl</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">nvars</span> <span class="o">=</span> <span class="n">spl</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">nspl</span><span class="o">&gt;</span><span class="mi">5000</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Warning ! This might be a lengthy calculation: nspl=&#39;</span><span class="p">,</span><span class="n">nspl</span><span class="p">)</span>
+    <span class="n">As</span><span class="o">=</span><span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nvars</span><span class="p">):</span>
+        <span class="n">Amat</span> <span class="o">=</span> <span class="n">npy</span><span class="o">.</span><span class="n">matrix</span><span class="p">(</span><span class="n">npy</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">nspl</span><span class="p">,</span><span class="n">nspl</span><span class="p">)))</span>
+        <span class="k">for</span> <span class="n">i1</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nspl</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">j1</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nspl</span><span class="p">):</span>
+                <span class="n">Amat</span><span class="p">[</span><span class="n">i1</span><span class="p">,</span><span class="n">j1</span><span class="p">]</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">spl</span><span class="p">[</span><span class="n">i1</span><span class="p">,</span><span class="n">i</span><span class="p">]</span><span class="o">-</span><span class="n">spl</span><span class="p">[</span><span class="n">j1</span><span class="p">,</span><span class="n">i</span><span class="p">])</span>
+        <span class="c1"># compute means</span>
+        <span class="n">Alin</span> <span class="o">=</span> <span class="n">npy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">npy</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">Amat</span><span class="p">[</span><span class="n">i1</span><span class="p">,:])</span> <span class="k">for</span> <span class="n">i1</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nspl</span><span class="p">)])</span>
+        <span class="n">Acol</span> <span class="o">=</span> <span class="n">npy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">npy</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">Amat</span><span class="p">[:,</span><span class="n">j1</span><span class="p">])</span> <span class="k">for</span> <span class="n">j1</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nspl</span><span class="p">)])</span>
+        <span class="n">Amn</span> <span class="o">=</span> <span class="n">npy</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">Amat</span><span class="p">)</span>
+        <span class="c1">#print Amat</span>
+        <span class="c1">#for i in range(nspl):</span>
+        <span class="c1">#    print i,Alin[i],Acol[i]</span>
+        <span class="c1"># subtract/add means (linewise, columnwise, overall)</span>
+        <span class="n">Amat</span> <span class="o">=</span> <span class="n">Amat</span> <span class="o">-</span> <span class="n">Alin</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">nspl</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">Amat</span> <span class="o">=</span> <span class="p">(</span><span class="n">Amat</span><span class="o">.</span><span class="n">T</span> <span class="o">-</span> <span class="n">Acol</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">nspl</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">T</span>
+        <span class="n">Amat</span> <span class="o">=</span> <span class="n">Amat</span><span class="o">+</span><span class="n">Amn</span>
+        <span class="c1">#print Amat</span>
+        <span class="n">As</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Amat</span><span class="o">.</span><span class="n">copy</span><span class="p">())</span>
+    <span class="n">dCor</span> <span class="o">=</span> <span class="n">npy</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">nvars</span><span class="p">,</span><span class="n">nvars</span><span class="p">))</span>
+    <span class="n">dVarX</span> <span class="o">=</span> <span class="p">[</span><span class="n">npy</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">npy</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">npy</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="n">As</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">As</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span><span class="o">/</span><span class="p">(</span><span class="n">nspl</span><span class="o">*</span><span class="n">nspl</span><span class="p">))</span>
+       <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nvars</span><span class="p">)]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Variances:&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">dVarX</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">nvars</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span><span class="p">):</span>
+            <span class="n">dCov</span>   <span class="o">=</span> <span class="n">npy</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">npy</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">npy</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="n">As</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">As</span><span class="p">[</span><span class="n">j</span><span class="p">]))</span><span class="o">/</span><span class="p">(</span><span class="n">nspl</span><span class="o">*</span><span class="n">nspl</span><span class="p">))</span>
+            <span class="n">dCor</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">dCov</span><span class="o">/</span><span class="n">npy</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">dVarX</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="n">dVarX</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
+    <span class="n">As</span><span class="o">=</span><span class="p">[]</span>
+    <span class="k">return</span> <span class="n">dCor</span></div>
+
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020 National Technology &amp; Engineering Solutions of Sandia, LLC (NTESS). Under the terms of Contract DE-NA0003525 with NTESS, the U.S. Government retains certain rights in this software.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

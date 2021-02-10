@@ -1,0 +1,11 @@
+Requirements
+============
+
+The following python packages are required for PRIME, in addition to other
+standard packages.
+
+* dateutil
+* h5py
+* matplotlib
+* numpy
+* scipy

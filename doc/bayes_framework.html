@@ -1,0 +1,511 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Bayesian Framework &mdash; PRIME  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="One-Wave Model" href="example1.html" />
+    <link rel="prev" title="Data" href="data.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> PRIME
+          
+
+          
+            
+            <img src="_static/PRIME_logo_small.jpg" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="intro.html">About</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Model:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="description.html">Model description</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.html">Data</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Bayesian Framework</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#likelihood-construction">Likelihood Construction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#deterministic-incubation-model">Deterministic Incubation Model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#stochastic-incubation-model">Stochastic Incubation Model</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#posterior-distribution-sampling">Posterior Distribution Sampling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#posterior-predictive-tests">Posterior Predictive Tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#model-selection">Model Selection</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#aic">AIC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bic">BIC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#crps">CRPS</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Examples:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="example1.html">One-Wave Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example2.html">Multi-Wave Model</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">Developer Reference Guide</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">PRIME</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Bayesian Framework</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/bayes_framework.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="bayesian-framework">
+<h1>Bayesian Framework<a class="headerlink" href="#bayesian-framework" title="Permalink to this headline">¶</a></h1>
+<p>Given data, <span class="math notranslate nohighlight">\({\boldsymbol{y}}\)</span>, in the form of time-series of daily counts and the model
+predictions <span class="math notranslate nohighlight">\({\boldsymbol{n}}\)</span> for the number of new symptomatic counts daily for the same time
+range, we employ a Bayesian framework to calibrate the epidemiological model parameters.
+The discrepancy between the data and the model is written as</p>
+<div class="math notranslate nohighlight">
+\begin{equation}
+\boldsymbol{y} = \boldsymbol{n}(\Theta)+\epsilon
+\label{eq:discrepancy}
+\end{equation}</div><p>Here, <span class="math notranslate nohighlight">\(\Theta\)</span> is a vector of model parameters,
+and <span class="math notranslate nohighlight">\({\epsilon}\)</span> represents the statistical discrepancy between the model and the data.
+The elements of <span class="math notranslate nohighlight">\(\Theta\)</span> depend on the number of epidemic waves being modeled.</p>
+<div class="math notranslate nohighlight">
+\begin{equation}
+\Theta=\Theta^{(1)}\cup\Theta^{(2)}\cup\ldots\cup\Theta^{(K)}\cup\Theta^{(\epsilon)}
+\label{eq:param_vec_def}
+\end{equation}</div><p>where <span class="math notranslate nohighlight">\(\Theta^{(j)}\)</span>  are the parameter for the <em>j</em>-th wave of infections,
+<em>K</em> is the number of waves and <span class="math notranslate nohighlight">\(\Theta^{(\epsilon)}\)</span>
+are parameters for the error model. The parameters for each wave are given by</p>
+<div class="math notranslate nohighlight">
+\begin{equation}
+\Theta^{(j)}=\{\Delta t_j,N_j,k_j,\theta_j\}
+\end{equation}</div><p>For the first epidemic wave <span class="math notranslate nohighlight">\(\Delta t_1=t_0\)</span>.</p>
+<p>The error model encapsulates, in this context, both errors in the observations as well
+as errors due to imperfect modeling choices. The observation errors include variations
+due to testing capabilities as well as errors when tests are interpreted. Values for
+the vector of parameters <span class="math notranslate nohighlight">\(\Theta\)</span> is estimated in the form of a multivariate PDF
+via Bayes theorem</p>
+<div class="math notranslate nohighlight">
+\begin{equation}
+p(\Theta\vert \boldsymbol{y})\propto p(\boldsymbol{y}\vert\Theta) p(\Theta)
+\label{eq:bayes}
+\end{equation}</div><p>where <span class="math notranslate nohighlight">\(p(\Theta\vert\boldsymbol{y})\)</span> is the posterior distribution we are seeking after
+observing the data <span class="math notranslate nohighlight">\({\boldsymbol{y}}\)</span>, <span class="math notranslate nohighlight">\(p(\boldsymbol{y}\vert\Theta)\)</span> is the likelihood of observing
+the data <span class="math notranslate nohighlight">\({\boldsymbol{y}}\)</span> for a particular set of values for the model parameters <span class="math notranslate nohighlight">\(\Theta\)</span>,
+and <span class="math notranslate nohighlight">\(p(\Theta)\)</span> encapsulates any prior information available for the model parameters.
+Bayesian methods are well-suited for dealing with heterogeneous sources of uncertainty,
+in this case from our modeling assumptions, i.e. model and parametric uncertainties,
+as well as the communicated daily counts of COVID-19 new cases, i.e. experimental errors.</p>
+<div class="section" id="likelihood-construction">
+<h2>Likelihood Construction<a class="headerlink" href="#likelihood-construction" title="Permalink to this headline">¶</a></h2>
+<p>The library provides options for  both deterministic and stochastic formulations for
+the incubation model. In the former case the mean and standard deviation of the
+incubation model are fixed at their nominal values and the model prediction
+<span class="math notranslate nohighlight">\(n_i\)</span> for day <span class="math notranslate nohighlight">\(t_i\)</span> is a scalar value that depends on $Theta$ only.
+In the latter case, the incubation model is stochastic with mean and standard deviation
+of its natural logarithm treated as Student’s t and $chi^2$ random variables,
+respectively, as discussed in <a class="reference internal" href="description.html#inc-rate-section"><span class="std std-ref">Incubation Rate Model</span></a> Section. Let us denote the underlying
+independent random variables by <span class="math notranslate nohighlight">\({\boldsymbol \xi}=\{\xi_\mu,\xi_\sigma,\}\)</span>.
+The model prediction <span class="math notranslate nohighlight">\(n_j({\boldsymbol{\xi}})\)</span> for day <em>j</em> is now a random
+variable induced by ${bm xi}$ plugged into <a class="reference internal" href="description.html#single-wave"><span class="std std-ref">Single Wave Model</span></a> or <a class="reference internal" href="description.html#multi-wave"><span class="std std-ref">Multi-Wave Model</span></a>
+and <span class="math notranslate nohighlight">\({\boldsymbol n}({\boldsymbol\xi})\)</span> is a random vector.</p>
+<div class="section" id="deterministic-incubation-model">
+<h3>Deterministic Incubation Model<a class="headerlink" href="#deterministic-incubation-model" title="Permalink to this headline">¶</a></h3>
+<p>PRIME provides options for both Gaussian and negative binomial formulations for
+the statistical discrepancy <span class="math notranslate nohighlight">\(\epsilon\)</span> between <span class="math notranslate nohighlight">\({\boldsymbol n}\)</span> and
+<span class="math notranslate nohighlight">\({\boldsymbol y}\)</span>. In the first approach we assume <span class="math notranslate nohighlight">\(\epsilon\)</span> has a zero-mean
+Multivariate Normal (MVN) distribution. Given the sparsity of data, correlations across
+time are currently neglected and the liklihood <span class="math notranslate nohighlight">\(p({\boldsymbol y}\vert\Theta)\)</span> is computed as</p>
+<div class="math notranslate nohighlight">
+\begin{equation}
+p({\boldsymbol y}\vert\Theta)=\prod_{i=1}^D\pi_{n_i(\Theta)}(y_i)
+=(2\pi)^{-D/2}\prod_{i=1}^D \sigma_i^{-1}
+\exp\left(-\frac{(y_i-n_i)^2}{2\sigma_i^2}\right)
+\label{eq:deticg}
+\end{equation}</div><p>with</p>
+<div class="math notranslate nohighlight">
+\begin{equation}
+\sigma_i=\sigma_a+\sigma_m\, n_i(\Theta)
+\end{equation}</div><p>The additive, <span class="math notranslate nohighlight">\(\sigma_a\)</span>, and multiplicative, <span class="math notranslate nohighlight">\(\sigma_a\)</span>, components
+of the error model <span class="math notranslate nohighlight">\(\Theta^{(\epsilon)}=\{\sigma_a,\sigma_a\}\)</span> will be inferred
+jointly with the model parameters. In practive, PRIME infers the logarithm of
+these parameters to ensure they remain positive.</p>
+<p>The second approach assumes a negative-binomial distribution
+for the discrepancy between data and model predictions. The negative-binomial distribution
+is commonly used in epidemiology to model overly dispersed data, e.g. in case
+where the standard deviation exceeds the mean <a class="reference internal" href="#lloyd2007" id="id1"><span>[Lloyd2007]</span></a>. For this modeling choice,
+the likelihood of observing the data given a choice for the model parameters is given by</p>
+<div class="math notranslate nohighlight">
+\begin{equation}
+p({\boldsymbol y}\vert\Theta)=\prod_{i=1}^D\pi_{n_i(\Theta)}(y_i)
+=\prod_{i=1}^D \binom{y_i+\alpha-1}{\alpha-1}
+\left(\frac{\alpha}{\alpha+n_i(\Theta)}\right)^\alpha
+\left(\frac{n_i(\Theta)}{\alpha+n_i(\Theta)}\right)^{y_i}
+\label{eq:deticnb}
+\end{equation}</div><p>where <span class="math notranslate nohighlight">\(\alpha&gt;0\)</span> is the dispersion parameter, and</p>
+<div class="math notranslate nohighlight">
+\begin{equation}
+\binom{y_i+\alpha-1}{\alpha-1}=\frac{\Gamma(y_i+\alpha)}{\Gamma(\alpha)\Gamma(y_i+1)}
+\end{equation}</div><p>is the binomial coefficient. For simulations employing a negative binomial
+distribution of discrepancies, the logarithm of the dispersion parameter <span class="math notranslate nohighlight">\(\alpha\)</span>
+will be inferred jointly with the other model parameters.</p>
+</div>
+<div class="section" id="stochastic-incubation-model">
+<h3>Stochastic Incubation Model<a class="headerlink" href="#stochastic-incubation-model" title="Permalink to this headline">¶</a></h3>
+<p>For the {it stochastic incubation model} the likelihood reads as</p>
+<div class="math notranslate nohighlight">
+\begin{equation}
+p({\boldsymbol y}\vert\Theta)=\pi_{{\boldsymbol n}(\Theta),{\boldsymbol\xi}}
+({\boldsymbol y})\approx\prod_{i=1}^D\pi_{n_i(\Theta),{\boldsymbol\xi}}(y_i)
+\label{eq:detfullpost}
+\end{equation}</div><p>The second expression in the right-hand side above assumes independence of the
+discrepancies between different days. Unlike the deterministic incubation model, the
+likelihood components for each day <span class="math notranslate nohighlight">\(\pi_{n_i(\Theta),{\boldsymbol\xi}}(y_i)\)</span>
+are not analytically tractable anymore since they now incorporate contributions
+from <span class="math notranslate nohighlight">\({\boldsymbol \xi}\)</span>, i.e. from the variability of the parameters of the incubation model.
+One can evaluate the likelihood via kernel density estimation (KDE) by sampling
+<span class="math notranslate nohighlight">\({\boldsymbol \xi}\)</span> for each sample of <span class="math notranslate nohighlight">\(\Theta\)</span>, and combining these samples
+with samples of the assumed discrepancy <span class="math notranslate nohighlight">\(\epsilon\)</span>, in order to arrive at
+an estimate of <span class="math notranslate nohighlight">\(\pi_{n_i(\Theta),{\boldsymbol\xi}}(y_i)\)</span>. In fact, by sampling a
+<em>single</em> value of <span class="math notranslate nohighlight">\({\boldsymbol \xi}\)</span> for each sample of <span class="math notranslate nohighlight">\(\Theta\)</span>,
+one achieves an unbiased estimate of the likelihood <span class="math notranslate nohighlight">\(\pi_{n_i(\Theta),{\boldsymbol\xi}}(y_i)\)</span>,
+and given the independent-component assumption, it also leads to an unbiased estimate of the
+full likelihood <span class="math notranslate nohighlight">\(\pi_{{\boldsymbol n}(\Theta),{\boldsymbol\xi}}({\boldsymbol y})\)</span>.</p>
+</div>
+</div>
+<div class="section" id="posterior-distribution-sampling">
+<h2>Posterior Distribution Sampling<a class="headerlink" href="#posterior-distribution-sampling" title="Permalink to this headline">¶</a></h2>
+<p>A Markov Chain Monte Carlo (MCMC) algorithm is used to sample from the
+posterior density <span class="math notranslate nohighlight">\(p(\Theta\vert\boldsymbol{y})\)</span>. MCMC is a class of techniques that
+allows sampling from a posterior distribution by constructing a Markov Chain
+that has the posterior as its stationary distribution. In particular, PRIME uses a
+an adaptive Metropolis algorithm <a class="reference internal" href="#haario2001" id="id2"><span>[Haario2001]</span></a>. Given the construction corresponding to the
+stochastic incubation model presented above, we employ the unbiased estimate of the approximate
+likelihood. This is the essence of the pseudo-marginal MCMC algorithm <a class="reference internal" href="#andrieu2009" id="id3"><span>[Andrieu2009]</span></a> guaranteeing
+that the accepted MCMC samples correspond to the posterior distribution.
+At each MCMC step we draw a random sample <span class="math notranslate nohighlight">\(\xi\)</span> from its distribution, and then
+we estimate the likelihood in a way similar to the deterministic incubation model.</p>
+<p><a class="reference internal" href="#my-custom-label"><span class="std std-numref">Fig. 4</span></a> displays 1D and 2D joint marginal
+distributions based on two-wave model results. We use the Raftery-Lewis diagnostic <a class="reference internal" href="#raftery1992" id="id4"><span>[Raftery1992]</span></a>
+to determine the number of MCMC samples required for converged statistics corresponding
+to stationary posterior distributions for <span class="math notranslate nohighlight">\(\Theta\)</span>. The required number of samples
+is of the order <span class="math notranslate nohighlight">\(o(10^5-10^6)\)</span> depending on the geographical region employed in
+the inference. The resulting Effective Sample Size <a class="reference internal" href="#kass1998" id="id5"><span>[Kass1998]</span></a> varies between <em>8,000</em> and
+<em>15,000</em> samples depending on each parameter which is sufficient to estimate joint
+distributions for the model parameters.</p>
+<div class="figure align-default" id="my-custom-label">
+<a class="reference internal image-reference" href="_images/CA_0819_kde.pdf"><img alt="_images/CA_0819_kde.pdf" src="_images/CA_0819_kde.pdf" style="width: 90%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 4 </span><span class="caption-text">1D and 2D joint marginal distributions the components of
+<span class="math notranslate nohighlight">\(\Theta=\{t_0,N_1,k_1,\theta_1,\Delta t_2,N_2,k_2,\theta_2,\log\sigma_a, \log\sigma_m\}\)</span>
+for data from California up to 2020-08-19. Distance correlations for each pair of
+parameters is displayed above each joint marginal distribution.</span><a class="headerlink" href="#my-custom-label" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+<div class="section" id="posterior-predictive-tests">
+<h2>Posterior Predictive Tests<a class="headerlink" href="#posterior-predictive-tests" title="Permalink to this headline">¶</a></h2>
+<p>We will employ Bayesian posterior-predictive distributions <a class="reference internal" href="#lynch2004" id="id6"><span>[Lynch2004]</span></a> to assess the
+predictive skill of the statistical model. The Bayesian posterior-predictive distribution,
+defined below is computed by marginalization of the likelihood over the posterior distribution
+of model parameters <span class="math notranslate nohighlight">\(\Theta\)</span>:</p>
+<div class="math notranslate nohighlight">
+\begin{equation}
+p_{\mathrm{pp}}\left(\boldsymbol{y}^{\mathrm{(pp)}}\vert\boldsymbol{y}\right)=\int_{\boldsymbol{\Theta}}
+p(\boldsymbol{y}^{\mathrm{(pp)}}\vert\Theta)
+p(\Theta\vert\boldsymbol{y}) d\Theta.
+\label{eq:ppd}
+\end{equation}</div><p>The posterior predictive distribution
+<span class="math notranslate nohighlight">\(p_{\mathrm{pp}}\left(\boldsymbol{y}^{\mathrm{(pp)}}\vert\boldsymbol{y}\right)\)</span>
+is estimated through sampling, using the parameter samples readily available
+from the MCMC exploration of the parameter space, i.e. similar to results shown
+in Fig.~ref{fig:mcmc}. Typically we subsample the MCMC chain to about
+10-15K samples that will be used to generate posterior predictive statistics.
+After the model evaluations <span class="math notranslate nohighlight">\(\boldsymbol{y}=\boldsymbol{n}(\Theta)\)</span>
+are completed, we add random noise consistent
+with the likelihood model settings presented in ref{sec:lk}. The resulting
+samples are used to compute summary statistics corresponding to
+<span class="math notranslate nohighlight">\(p_{\mathrm{pp}}\left(\boldsymbol{y}^{\mathrm{(pp)}}\vert\boldsymbol{y}\right)\)</span>.</p>
+<p>The posterior-predictive distribution results can be used in hindcast mode,
+to check how well the model follows the data, and for short-term
+forecasts for the spread dynamics of this disease. In the hindcast
+regime, the infection rate is convolved with the incubation rate model to generate
+statistics for <span class="math notranslate nohighlight">\(\boldsymbol{y}^{\mathrm{(pp)}}\)</span> that will be
+compared against <span class="math notranslate nohighlight">\(\boldsymbol{y}\)</span>, the data used to infer the model parameters.
+The same functional form can be used to generate statistics for
+<span class="math notranslate nohighlight">\(\boldsymbol{y}^{\mathrm{(pp)}}\)</span> beyond the set of dates for which
+data was available. We limit these forecasts to 7–10 days as our infection
+rate model does not count for changes in social dynamics that can significantly
+impact the epidemic over a longer timerange.</p>
+</div>
+<div class="section" id="model-selection">
+<h2>Model Selection<a class="headerlink" href="#model-selection" title="Permalink to this headline">¶</a></h2>
+<p>Quantitative comparisons between models can be made with several metrics defined in the following sections.</p>
+<div class="section" id="aic">
+<h3>AIC<a class="headerlink" href="#aic" title="Permalink to this headline">¶</a></h3>
+<p>The Akaike Information Criteria (AIC) <a class="reference internal" href="#akaike1974" id="id7"><span>[Akaike1974]</span></a> is defined as</p>
+<div class="math notranslate nohighlight">
+ \begin{equation}
+ AIC = 2 m_{\Theta} - 2 \ln (L_{max}),
+ \label{eq:AIC}
+ \end{equation}</div><p>where <span class="math notranslate nohighlight">\(m_{\Theta}\)</span> is the number of parameters in <span class="math notranslate nohighlight">\(\Theta\)</span> and <span class="math notranslate nohighlight">\(L_{max}\)</span>
+is the maximum value of the likelihood <span class="math notranslate nohighlight">\(p(\boldsymbol{y}\vert\Theta)\)</span>. This is
+estimated by the maximum likelihood in the MCMC chain. Given a choice of models, the
+model with the smallest AIC value is considered to be the highest quality model.</p>
+</div>
+<div class="section" id="bic">
+<h3>BIC<a class="headerlink" href="#bic" title="Permalink to this headline">¶</a></h3>
+<p>The Bayesian Information Criteria (BIC) <a class="reference internal" href="#schwarz1978" id="id8"><span>[Schwarz1978]</span></a> is defined as</p>
+<div class="math notranslate nohighlight">
+\begin{equation}
+BIC = m_{\Theta} \ln(d) - 2 \ln (L_{max}),
+\label{eq:BIC}
+\end{equation}</div><p>where <span class="math notranslate nohighlight">\(d\)</span> is the number of observations, equal to the length of the array
+<span class="math notranslate nohighlight">\(\boldsymbol{n}\)</span>. Given a choice of models, the model with the smallest BIC value
+is considered to be the highest quality model.</p>
+</div>
+<div class="section" id="crps">
+<h3>CRPS<a class="headerlink" href="#crps" title="Permalink to this headline">¶</a></h3>
+<p>The Continuous Ranked Probability Score (CRPS) <a class="reference internal" href="#gneiting2007" id="id9"><span>[Gneiting2007]</span></a> measures the difference between the CDF of the provided
+data and that of the forecast/predicted data, i.e., data generated based on the posterior
+predictive distribution. It is computed by summing up marginal distributions for each day that data is available</p>
+<div class="math notranslate nohighlight">
+\begin{equation}
+CRPS = \frac{1}{d} \sum_{j=1}^{d} \int_{-\infty}^{\infty} \left(\mathcal{F}_{pp,j}
+\left(y^{(pp)}_j| \boldsymbol{y} \right) - \mathcal{H}_{y_j}\left(y^{(pp)}_j \right) \right)^2 dy^{(pp)}_j,
+\label{eq:crps}
+\end{equation}</div><p>where <span class="math notranslate nohighlight">\(y^{(pp)}_j \equiv y^{(pp)}(t_j)\)</span> is new daily case predictions on day <span class="math notranslate nohighlight">\(j\)</span>
+obtained via the posterior-predictive distribution, <span class="math notranslate nohighlight">\(y_j \equiv y(t_j)\)</span> is new daily
+case data on day <span class="math notranslate nohighlight">\(j\)</span> and <span class="math notranslate nohighlight">\(\mathcal{F}_{pp,j}\)</span> is the 1-D marginal posterior
+predictive CDF for day <span class="math notranslate nohighlight">\(j\)</span> computed using 1-D marginal posterior predictive distributions</p>
+<div class="math notranslate nohighlight">
+\begin{equation}
+\mathcal{F}_{pp,j}( y^{(pp)}_j | \boldsymbol{n} ) = \int_{-\infty}^{y^{(pp)}_j} p_{pp,j}
+\left(y^{(pp)'}_j | \boldsymbol{n} \right) dy^{(pp)'}_j
+\end{equation}</div><p>where</p>
+<div class="math notranslate nohighlight">
+\begin{equation}
+p_{pp,j} \left(y^{(pp)}_j | \boldsymbol{n} \right) = \int p_{pp}(\boldsymbol{y}^{(pp)} | \boldsymbol{y}) d\boldsymbol{y}^{(pp)}_{\sim j}
+\end{equation}</div><p>is the marginal 1-D posterior predictive density corresponding to day <span class="math notranslate nohighlight">\(j\)</span>, based
+on <span class="math notranslate nohighlight">\(p_{pp}\left( \boldsymbol{y}^{(pp)} | \boldsymbol{y} \right)\)</span>. Here,
+<span class="math notranslate nohighlight">\(d\boldsymbol{y}^{(pp)}_{\sim j} \equiv dy^{(pp)}_1 \cdots dy^{(pp)}_{j-1} dy^{(pp)}_{j+1} \cdots dy^{(pp)}_d\)</span>.
+The CDF of the provided case data <span class="math notranslate nohighlight">\(\boldsymbol{y}\)</span> is approximated as a Heaviside
+function centered at <span class="math notranslate nohighlight">\(y_j\)</span>, <span class="math notranslate nohighlight">\(\mathcal{H}_{y_j}(y^{(pp)}_j) = 1_{y^{(pp)}_j \ge y_j}\)</span>.
+Like AIC and BIC, the model with the smallest value of CRPS is considered to be of higher quality than other models.</p>
+<dl class="citation">
+<dt class="label" id="akaike1974"><span class="brackets"><a class="fn-backref" href="#id7">Akaike1974</a></span></dt>
+<dd><p><a class="reference external" href="https://dx.doi.org/10.1109/TAC.1974.1100705">Akaike, H., A new look at the statistical model identification, Annals of Statistics (2009)</a></p>
+</dd>
+<dt class="label" id="andrieu2009"><span class="brackets"><a class="fn-backref" href="#id3">Andrieu2009</a></span></dt>
+<dd><p><a class="reference external" href="https://dx.doi.org/10.1214/07-AOS574">Andrieu C., Roberts G.O., The pseudo-marginal approach for efficient Monte Carlo computations, Annals of Statistics (2009)</a></p>
+</dd>
+<dt class="label" id="gneiting2007"><span class="brackets"><a class="fn-backref" href="#id9">Gneiting2007</a></span></dt>
+<dd><p><a class="reference external" href="https://sites.stat.washington.edu/raftery/Research/PDF/Gneiting2007jasa.pdf">Gneiting T., Raftery A., Strictly Proper Scoring Rules, Prediction, and Estimation (2007)</a></p>
+</dd>
+<dt class="label" id="haario2001"><span class="brackets"><a class="fn-backref" href="#id2">Haario2001</a></span></dt>
+<dd><p><a class="reference external" href="https://projecteuclid.org/euclid.bj/1080222083">Haario H., Saksman E., Tamminen J., An adaptive Metropolis algorithm, Bernoulli (2001)</a></p>
+</dd>
+<dt class="label" id="kass1998"><span class="brackets"><a class="fn-backref" href="#id5">Kass1998</a></span></dt>
+<dd><p><a class="reference external" href="http://dx.doi.org/10.1080/00031305.1998.10480547">Raftery A.E., Lewis S., Markov Chain Monte Carlo in Practice: A Roundtable Discussion, The American Statistician (1998)</a></p>
+</dd>
+<dt class="label" id="lloyd2007"><span class="brackets"><a class="fn-backref" href="#id1">Lloyd2007</a></span></dt>
+<dd><p><a class="reference external" href="http://dx.doi.org/10.1371/journal.pone.0000180">Lloyd-Smith J.O., Maximum Likelihood Estimation of the Negative Binomial Dispersion Parameter for Highly Overdispersed Data, with Applications to Infectious Diseases, Public Library of Science (2007)</a></p>
+</dd>
+<dt class="label" id="lynch2004"><span class="brackets"><a class="fn-backref" href="#id6">Lynch2004</a></span></dt>
+<dd><p><a class="reference external" href="http://dx.doi.org/10.1177/0049124103257303">Lynch S.M., Western B., Bayesian posterior predictive checks for complex models, Sociological Methods and Research (2004)</a></p>
+</dd>
+<dt class="label" id="raftery1992"><span class="brackets"><a class="fn-backref" href="#id4">Raftery1992</a></span></dt>
+<dd><p><a class="reference external" href="http://people.ee.duke.edu/~lcarin/raftery92how.pdf">Raftery A.E., Lewis S., How Many Iterations in the Gibbs Sampler?, Bayesian Statistics 4 (1992)</a></p>
+</dd>
+<dt class="label" id="schwarz1978"><span class="brackets"><a class="fn-backref" href="#id8">Schwarz1978</a></span></dt>
+<dd><p><a class="reference external" href="http://dx.doi.org/10.1214/aos/1176344136">Schwarz G., Estimating the Dimension of a Model, Bayesian Statistics 4 (1992)</a></p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="example1.html" class="btn btn-neutral float-right" title="One-Wave Model" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="data.html" class="btn btn-neutral float-left" title="Data" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020 National Technology &amp; Engineering Solutions of Sandia, LLC (NTESS). Under the terms of Contract DE-NA0003525 with NTESS, the U.S. Government retains certain rights in this software.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

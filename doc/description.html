@@ -1,0 +1,333 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Model description &mdash; PRIME  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Data" href="data.html" />
+    <link rel="prev" title="About" href="intro.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> PRIME
+          
+
+          
+            
+            <img src="_static/PRIME_logo_small.jpg" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="intro.html">About</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Model:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Model description</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#infection-rate-model">Infection Rate Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#incubation-rate-model">Incubation Rate Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#single-wave-model">Single Wave Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#multi-wave-model">Multi-Wave Model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="data.html">Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bayes_framework.html">Bayesian Framework</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Examples:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="example1.html">One-Wave Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example2.html">Multi-Wave Model</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">Developer Reference Guide</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">PRIME</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Model description</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/description.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="model-description">
+<h1>Model description<a class="headerlink" href="#model-description" title="Permalink to this headline">¶</a></h1>
+<p>PRIME implements an epidemiological model to characterize and forecast the rate at
+which people turn symptomatic from disease over time. For the purpose of this model,
+we assume that once people develop symptoms, they have ready access to medical
+services and can be diagnosed readily. From this perspective, these forecasts
+represent a lower bound on the actual number of people that are infected with
+COVID-19 as the people currently infected, but still incubating, are not accounted
+for. A fraction of the population infected might also exhibit minor or no symptoms
+at all and might not seek medical advice. Therefore, these cases will not be part
+of patient counts released by health officials. The epidemiological model consists
+of two canonical elements: an infection rate model and an incubation rate model.
+One or more infection rate models are then combined through a convolution with the
+incubation rate model to yield the number of cases that turn symptomatic daily.</p>
+<div class="section" id="infection-rate-model">
+<h2>Infection Rate Model<a class="headerlink" href="#infection-rate-model" title="Permalink to this headline">¶</a></h2>
+<p>The infection rate component is modeled as a Gamma distribution</p>
+<div class="math notranslate nohighlight">
+\begin{equation}
+f_\Gamma(t;k_j,\theta_j)=\theta_j^{-k_j}t^{k_j-1}\exp(-t/\theta_j)\big/\Gamma(k_j)
+\end{equation}</div><p>with shape <span class="math notranslate nohighlight">\(k_j\)</span> and scale <span class="math notranslate nohighlight">\(\theta_j\)</span>. The choice of values for the pair (<span class="math notranslate nohighlight">\(k_j\)</span>,|thj|) can
+accomodate both sharp increases in the number of infections, which would correspond
+to strained medical resources, as well as weaker gradients corresponding to a smaller
+pressure on the available medical resources. <a class="reference internal" href="#inf-rate"><span class="std std-numref">Fig. 1</span></a> show example
+infection rate curves for several shape and scale parameter values.</p>
+<div class="figure align-default" id="inf-rate">
+<a class="reference internal image-reference" href="_images/inf_rate.pdf"><img alt="_images/inf_rate.pdf" src="_images/inf_rate.pdf" style="width: 90%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 1 </span><span class="caption-text">Infection rate models with fixed scale parameters <span class="math notranslate nohighlight">\(\theta=10\)</span> (left frame)
+and fixed shape parameter <span class="math notranslate nohighlight">\(k=3\)</span> (right frame).</span><a class="headerlink" href="#inf-rate" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+<div class="section" id="incubation-rate-model">
+<span id="inc-rate-section"></span><h2>Incubation Rate Model<a class="headerlink" href="#incubation-rate-model" title="Permalink to this headline">¶</a></h2>
+<p>PRIME employs a lognormal incubation distribution for COVID-19 <a class="reference internal" href="#lauer2020" id="id1"><span>[Lauer2020]</span></a>.
+The probability density function (PDF), <span class="math notranslate nohighlight">\(f_{LN}\)</span>, and cumulative distribution function (CDF),
+<span class="math notranslate nohighlight">\(F_{LN}\)</span>, of the lognormal distribution are given by</p>
+<div class="math notranslate nohighlight">
+\begin{equation}
+f_{LN}(t;\mu,\sigma)=\frac{1}{t\sigma\sqrt{2}}\exp\left(-\frac{(\log t-\mu)^2}{2\sigma^2}\right),\,
+F_{LN}(t;\mu,\sigma)=\frac{1}{2}\mathrm{erfc}\left(-\frac{\log t-\mu}{\sigma\sqrt{2}}\right)
+\label{eq:inceq}
+\end{equation}</div><p>In this toolkit we model the mean <span class="math notranslate nohighlight">\(\mu\)</span> as Student’s t distribution with <span class="math notranslate nohighlight">\(n=36\)</span> degrees of
+freedom which provided the closest agreement for the 95% confidence interval with the data
+in <a class="reference internal" href="#lauer2020" id="id2"><span>[Lauer2020]</span></a>. Similarly, the standard deviation <span class="math notranslate nohighlight">\(\sigma\)</span> is assumed to have a
+chi-square distribution. The resulting 95% CIs are <span class="math notranslate nohighlight">\([1.48, 1.76]\)</span> and <span class="math notranslate nohighlight">\([0.320, 0.515]\)</span>
+for <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(\sigma\)</span>, respectively. The left frame in <a class="reference internal" href="#inc-rate"><span class="std std-numref">Fig. 2</span></a> shows the family of PDFs
+with <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(\sigma\)</span> drawn from Student’s t and <span class="math notranslate nohighlight">\(\chi^2\)</span> distributions,
+respectively. The nominal incubation PDF is shown in black in
+this frame. The impact of the uncertainty in the incubation model
+parameters is displayed in the right frame of this figure. For example,
+7 days after infection, there is a large variability (60%-90%) in the
+fraction of infected people that completed the incubation phase and started
+displaying symptoms. This variability decreases at later times, e.g. after
+10 days more then 85% of case completed the incubation process.</p>
+<div class="figure align-default" id="inc-rate">
+<a class="reference internal image-reference" href="_images/inc_rate.pdf"><img alt="_images/inc_rate.pdf" src="_images/inc_rate.pdf" style="width: 90%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 2 </span><span class="caption-text">Probability density functions for the incubation model (left frame) and fraction of people for
+which incubation ran its course after 7, 10, and 14 days respectively (right frame)</span><a class="headerlink" href="#inc-rate" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+<div class="section" id="single-wave-model">
+<span id="single-wave"></span><h2>Single Wave Model<a class="headerlink" href="#single-wave-model" title="Permalink to this headline">¶</a></h2>
+<p>With these assumptions the number of people infected <em>and</em> with completed incubation period in the
+time range <span class="math notranslate nohighlight">\([t_{i-1},t_i]\)</span> can be written as a convolution between the infection rate and the
+incubation rate <a class="reference internal" href="#safta2020" id="id3"><span>[Safta2020]</span></a></p>
+<div class="math notranslate nohighlight">
+\begin{equation}
+n_i\approx N(t_i-t_{i-1})\int_{t_0}^{t_i} f_\Gamma(\tau-t_0;k,\theta)
+f_{LN}(t_i-\tau;\mu,\sigma)d\tau
+\label{eq:symptApprox}
+\end{equation}</div><p>Here <span class="math notranslate nohighlight">\(N\)</span> represents the total number of cases over the course of the epidemic, <span class="math notranslate nohighlight">\((t_i-t_{i-1})\)</span>
+is typically equal to 1 day, and the time parameter <span class="math notranslate nohighlight">\(t_0\)</span> represents the start of
+the epidemic. In the expression above the sub-script <em>j</em> was neglected since the model contains one
+wave only.</p>
+</div>
+<div class="section" id="multi-wave-model">
+<span id="multi-wave"></span><h2>Multi-Wave Model<a class="headerlink" href="#multi-wave-model" title="Permalink to this headline">¶</a></h2>
+<p>The multiple wave model is an extension of the single wave model presented above. In the multi-wave model,
+a set of infection curves are superimposed to approximate the evolution of the epidemic that exhibits
+multiple peaks across certain regions. The resulting model is written as</p>
+<div class="math notranslate nohighlight">
+\begin{equation}
+n_i\approx (t_i-t_{i-1}) \int_{t_0}^{t_i} \left( \sum_{j=1}^K N_j f_\Gamma(\tau-t_0-\Delta t_j;k_j,\theta_j) \right)
+f_{LN}(t_i-\tau;\mu,\sigma)d\tau
+\label{eq:symptApproxMultiWave}
+\end{equation}</div><p>Here <span class="math notranslate nohighlight">\(N_j\)</span> represents the total number of cases over the course of the <em>j-th</em> wave, and <span class="math notranslate nohighlight">\(\Delta t_j\)</span> represents
+the time shift for the <em>j-th</em> infection curve with respect to the start of the epidemic <span class="math notranslate nohighlight">\(t_0\)</span>.</p>
+<dl class="citation">
+<dt class="label" id="lauer2020"><span class="brackets">Lauer2020</span><span class="fn-backref">(<a href="#id1">1</a>,<a href="#id2">2</a>)</span></dt>
+<dd><p><a class="reference external" href="https://doi.org/10.7326/M20-0504">Lauer S.A., Grantz K.H., Bi Q., Jones F.K., Zheng Q., Meredith H.R., Azman A.S., Reich N.G., Lessler J., The Incubation Period of Coronavirus Disease 2019 (COVID-19) From Publicly Reported Confirmed Cases: Estimation and Application, Annals of Internal Medicine (2020),</a></p>
+</dd>
+<dt class="label" id="safta2020"><span class="brackets"><a class="fn-backref" href="#id3">Safta2020</a></span></dt>
+<dd><p><a class="reference external" href="https://doi.org/10.1007/s00466-020-01897-z">Safta C., Ray J., and Sargsyan K., Characterization of partially observed epidemics through Bayesian inference: application to COVID-19, Computational Mechanics (2020),</a></p>
+</dd>
+</dl>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="data.html" class="btn btn-neutral float-right" title="Data" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="intro.html" class="btn btn-neutral float-left" title="About" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020 National Technology &amp; Engineering Solutions of Sandia, LLC (NTESS). Under the terms of Contract DE-NA0003525 with NTESS, the U.S. Government retains certain rights in this software.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

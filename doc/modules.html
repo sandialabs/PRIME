@@ -1,0 +1,741 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Developer Reference Guide &mdash; PRIME  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Multi-Wave Model" href="example2.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> PRIME
+          
+
+          
+            
+            <img src="_static/PRIME_logo_small.jpg" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="intro.html">About</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Model:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="description.html">Model description</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.html">Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bayes_framework.html">Bayesian Framework</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Examples:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="example1.html">One-Wave Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example2.html">Multi-Wave Model</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference Guide</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Developer Reference Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#module-source_release.prime_run">Drivers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-source_release.prime_model">Epidemiological Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-source_release.prime_posterior">Bayesian Inference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-source_release.prime_stats">Statistical Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-source_release.prime_utils">General Utilities</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">PRIME</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Developer Reference Guide</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/modules.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="developer-reference-guide">
+<h1>Developer Reference Guide<a class="headerlink" href="#developer-reference-guide" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-source_release.prime_run">
+<span id="drivers"></span><h2>Drivers<a class="headerlink" href="#module-source_release.prime_run" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="source_release.prime_run.main">
+<code class="sig-prename descclassname">source_release.prime_run.</code><code class="sig-name descname">main</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">setupfile</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/source_release/prime_run.html#main"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#source_release.prime_run.main" title="Permalink to this definition">¶</a></dt>
+<dd><p>Driver script to run MCMC for parameter inference for a multi-wave 
+epidemic model. Currently limited to up to three infection curves.</p>
+<p>To run this script:</p>
+<p>python &lt;path-to-this-directory&gt;/prime_run.py &lt;name-of-json-input-file&gt;</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>setupfile: string</strong></dt><dd><p>json format input file with information on observations data, filtering options,
+MCMC options, and postprocessing options. See “setup_template.json” for a detailed
+example</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<span class="target" id="module-source_release.prime_plot_data"></span><dl class="py function">
+<dt id="source_release.prime_plot_data.main">
+<code class="sig-prename descclassname">source_release.prime_plot_data.</code><code class="sig-name descname">main</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">setupfile</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/source_release/prime_plot_data.html#main"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#source_release.prime_plot_data.main" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot raw and filtered data for the region specified in the setupfile.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>setupfile: string</strong></dt><dd><p>json file (.json) including the region name. The “regionname.dat”
+should exist in the path accessible for this script</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<span class="target" id="module-source_release.prime_plotKDE"></span><dl class="py function">
+<dt id="source_release.prime_plotKDE.main">
+<code class="sig-prename descclassname">source_release.prime_plotKDE.</code><code class="sig-name descname">main</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filename</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/source_release/prime_plotKDE.html#main"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#source_release.prime_plotKDE.main" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plots 1D and 2D marginal kernel density estimates based on MCMC samples</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>filename: string</strong></dt><dd><p>json file (.json) including run setup information and 
+postprocessing information for an MCMC run. It should 
+specify the name of the file containing the MCMC chain</p>
+<p>or</p>
+<p>pickle file (.pkl) with a dictionary containing the 
+KDE distributions.This file is generated by running 
+this script with a json file (see above)</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<span class="target" id="module-source_release.prime_compute_info_criteria"></span><dl class="py function">
+<dt id="source_release.prime_compute_info_criteria.main">
+<code class="sig-prename descclassname">source_release.prime_compute_info_criteria.</code><code class="sig-name descname">main</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">setupfile</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/source_release/prime_compute_info_criteria.html#main"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#source_release.prime_compute_info_criteria.main" title="Permalink to this definition">¶</a></dt>
+<dd><p>This script postprocesses data from PRIME to compute statistical information including:
+- AIC: Akaike Information Criterion
+- BIC: Bayesian Information Criterion
+- CPRS: Continuous Rank Probability Score
+Results are saved in “info_criteria.txt”</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>setupfile: string</strong></dt><dd><p>json file (.json) including run setup information and 
+postprocessing information for an MCMC run. It should 
+specify the name of the file containing the MCMC chain</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<span class="target" id="module-source_release.prime_compute_distance_correlation"></span><dl class="py function">
+<dt id="source_release.prime_compute_distance_correlation.main">
+<code class="sig-prename descclassname">source_release.prime_compute_distance_correlation.</code><code class="sig-name descname">main</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">setupfile</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/source_release/prime_compute_distance_correlation.html#main"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#source_release.prime_compute_distance_correlation.main" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes and saves distance correlations based on samples.
+The distance correlation matrix is saved in “distanceCorr.txt”</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>setupfile: string</strong></dt><dd><p>json file (.json) including run setup information and 
+postprocessing information for an MCMC run. It should 
+specify the name of the file containing the MCMC chain</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-source_release.prime_model">
+<span id="epidemiological-model"></span><h2>Epidemiological Model<a class="headerlink" href="#module-source_release.prime_model" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="source_release.prime_model.modelPred">
+<code class="sig-prename descclassname">source_release.prime_model.</code><code class="sig-name descname">modelPred</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">state</span></em>, <em class="sig-param"><span class="n">params</span></em>, <em class="sig-param"><span class="n">is_cdf</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/source_release/prime_model.html#modelPred"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#source_release.prime_model.modelPred" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluates the PRIME model for a set of model parameters; specific model settings 
+(e.g. date range, other control knobs, etc) are specified via the &quot;params&quot; dictionary</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>state: python list or numpy array</strong></dt><dd><p>model parameters</p>
+</dd>
+<dt><strong>params: dictionary</strong></dt><dd><p>detailed settings for the epidemiological model</p>
+</dd>
+<dt><strong>is_cdf: boolean (optional, default False)</strong></dt><dd><p>estimate the epidemiological curve based on the CDF of the incubation
+model (True) or via the formulation that employs the PDF of the
+icubation model (False)</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>Ncases: numpy array</dt><dd><p>daily counts for people turning symptomatic</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<span class="target" id="module-source_release.prime_infection"></span><dl class="py function">
+<dt id="source_release.prime_infection.infection">
+<code class="sig-prename descclassname">source_release.prime_infection.</code><code class="sig-name descname">infection</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">state</span></em>, <em class="sig-param"><span class="n">params</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/source_release/prime_infection.html#infection"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#source_release.prime_infection.infection" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Compute infection curve for multi-wave epidemics</dt><dd><ul class="simple">
+<li><p>this function is currently used by the post-processing script to push-forward
+the posterior into a set of infection curves that are consistent with the 
+observed cases</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>state: python list or numpy array</strong></dt><dd><p>model parameters</p>
+</dd>
+<dt><strong>params: dictionary</strong></dt><dd><p>detailed settings for the epidemiological model</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>dates: numpy array</dt><dd><p>list of dates for which the infection rates were computed</p>
+</dd>
+<dt>infectons: numpy array</dt><dd><p>infection rate values corresponding to the list of dates</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="source_release.prime_infection.infection_rate">
+<code class="sig-prename descclassname">source_release.prime_infection.</code><code class="sig-name descname">infection_rate</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">time</span></em>, <em class="sig-param"><span class="n">qshape</span></em>, <em class="sig-param"><span class="n">qscale</span></em>, <em class="sig-param"><span class="n">inftype</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/source_release/prime_infection.html#infection_rate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#source_release.prime_infection.infection_rate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Infection rate (gamma or log-normal distribution)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>time: float, list, or numpy array</strong></dt><dd><p>instances in time for the evaluation of the infection_rate model</p>
+</dd>
+<dt><strong>qshape: float</strong></dt><dd><p>shape parameter</p>
+</dd>
+<dt><strong>qscale: float</strong></dt><dd><p>scale parameter</p>
+</dd>
+<dt><strong>inftype: string</strong></dt><dd><p>infection rate type (“gamma” for Gamma distribution, otherwise
+the Log-normal distribution)</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>vals: numpy array</dt><dd><p>infection rates corresponding to the time values provided as input parameters</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<span class="target" id="module-source_release.prime_incubation"></span><dl class="py function">
+<dt id="source_release.prime_incubation.incubation_fcn">
+<code class="sig-prename descclassname">source_release.prime_incubation.</code><code class="sig-name descname">incubation_fcn</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">time</span></em>, <em class="sig-param"><span class="n">incubation_median</span></em>, <em class="sig-param"><span class="n">incubation_sigma</span></em>, <em class="sig-param"><span class="n">is_cdf</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/source_release/prime_incubation.html#incubation_fcn"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#source_release.prime_incubation.incubation_fcn" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the incubation rate</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>time: float, list, or numpy array</strong></dt><dd><p>instances in time for the evaluation of the incubation rate model</p>
+</dd>
+<dt><strong>incubation_median: float</strong></dt><dd><p>median of the incubation rate model</p>
+</dd>
+<dt><strong>incubation_sigma: float</strong></dt><dd><p>standard deviation of the incubation rate model</p>
+</dd>
+<dt><strong>is_cdf: boolean (optional, default False)</strong></dt><dd><p>select either the CDF of the incubation rate model (True) or 
+its PDF (False)</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>vals: numpy array</dt><dd><p>incubation rates corresponding to the time values provided as input parameters</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-source_release.prime_posterior">
+<span id="bayesian-inference"></span><h2>Bayesian Inference<a class="headerlink" href="#module-source_release.prime_posterior" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="source_release.prime_posterior.logpost">
+<code class="sig-prename descclassname">source_release.prime_posterior.</code><code class="sig-name descname">logpost</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">state</span></em>, <em class="sig-param"><span class="n">params</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/source_release/prime_posterior.html#logpost"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#source_release.prime_posterior.logpost" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute log-posterior density values; this function assumes 
+the likelihood is a product of independent Gaussian distributions</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>state: python list or numpy array</strong></dt><dd><p>model parameters</p>
+</dd>
+<dt><strong>params: dictionary</strong></dt><dd><p>detailed settings for the epidemiological model</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>llik: float</dt><dd><p>natural logarithm of the likelihood density</p>
+</dd>
+<dt>lpri: float</dt><dd><p>natural logarithm of the prior density</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="source_release.prime_posterior.logpost_negb">
+<code class="sig-prename descclassname">source_release.prime_posterior.</code><code class="sig-name descname">logpost_negb</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">state</span></em>, <em class="sig-param"><span class="n">params</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/source_release/prime_posterior.html#logpost_negb"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#source_release.prime_posterior.logpost_negb" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute log-posterior density values; this function assumes 
+the likelihood is a product of negative-binomial distributions</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>state: python list or numpy array</strong></dt><dd><p>model parameters</p>
+</dd>
+<dt><strong>params: dictionary</strong></dt><dd><p>detailed settings for the epidemiological model</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>llik: float</dt><dd><p>natural logarithm of the likelihood density</p>
+</dd>
+<dt>lpri: float</dt><dd><p>natural logarithm of the prior density</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="source_release.prime_posterior.logpost_poisson">
+<code class="sig-prename descclassname">source_release.prime_posterior.</code><code class="sig-name descname">logpost_poisson</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">state</span></em>, <em class="sig-param"><span class="n">params</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/source_release/prime_posterior.html#logpost_poisson"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#source_release.prime_posterior.logpost_poisson" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute log-posterior density values; this function assumes 
+the likelihood is a product of poisson distributions</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>state: python list or numpy array</strong></dt><dd><p>model parameters</p>
+</dd>
+<dt><strong>params: dictionary</strong></dt><dd><p>detailed settings for the epidemiological model</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>llik: float</dt><dd><p>natural logarithm of the likelihood density</p>
+</dd>
+<dt>lpri: float</dt><dd><p>natural logarithm of the prior density</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<span class="target" id="module-source_release.prime_mcmc"></span><dl class="py function">
+<dt id="source_release.prime_mcmc.ammcmc">
+<code class="sig-prename descclassname">source_release.prime_mcmc.</code><code class="sig-name descname">ammcmc</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">opts</span></em>, <em class="sig-param"><span class="n">cini</span></em>, <em class="sig-param"><span class="n">likTpr</span></em>, <em class="sig-param"><span class="n">lpinfo</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/source_release/prime_mcmc.html#ammcmc"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#source_release.prime_mcmc.ammcmc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adaptive Metropolis Markov Chain Monte Carlo</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>opts</strong><span class="classifier">dictionary of parameters</span></dt><dd><ul class="simple">
+<li><p>nsteps : no. of mcmc steps</p></li>
+<li><p>nburn  : no. of mcmc steps for burn-in (proposal fixed to initial covariance)</p></li>
+<li><p>nadapt : adapt every nadapt steps after nburn</p></li>
+<li><p>nfinal : stop adapting after nfinal steps</p></li>
+<li><p>inicov : initial covariance</p></li>
+<li><p>coveps : small additive factor to ensure covariance matrix is positive definite (only added to diagonal if covariance matrix is singular without it)</p></li>
+<li><p>burnsc : factor to scale up/down proposal if acceptance rate is too high/low</p></li>
+<li><p>gamma  : factor to multiply proposed jump size with in the chain past the burn-in phase (Reduce this factor to get a higher acceptance rate. Defaults to 1.0)</p></li>
+<li><p>spllo  : lower bounds for chain samples</p></li>
+<li><p>splhi  : upper bounds for chain samples</p></li>
+<li><p>rnseed : Optional seed for random number generator (needs to be integer &gt;= 0) If not specified, then random number seed is not fixed and every chain will be different.</p></li>
+<li><p>tmpchn : Optional; if present, will save chain state every ‘ofreq’ to ascii file. Filename is randomly generated if tmpchn is set to ‘tmpchn’, or set to the string passed through this option if not present, chain states are not saved during the MCMC progress</p></li>
+</ul>
+</dd>
+<dt><strong>cini</strong><span class="classifier">starting mcmc state</span></dt><dd></dd>
+<dt><strong>likTpr</strong><span class="classifier">log-posterior function; it takes two input parameters as follows</span></dt><dd><ul class="simple">
+<li><p>first parameter is a 1D array containing the chain state at which the posterior will to be evaluated</p></li>
+<li><p>the second parameter contains settings the user can pass to this function; see below info for ‘lpinfo’</p></li>
+<li><p>this function is expected to return log-Likelihood and log-Prior values (in this order)</p></li>
+</ul>
+</dd>
+<dt><strong>lpinfo</strong><span class="classifier">info to be passed to the log-posterior function</span></dt><dd><p>this object can be of any type (e.g. None, scalar, list, array, dictionary, etc) 
+as long as it is consistent with settings expected inside the ‘likTpr’ function</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>mcmcRes: results dictionary</dt><dd><ul class="simple">
+<li><p>‘chain’ : chain samples (nsteps x chain dimension)</p></li>
+<li><p>‘cmap’ :  MAP estimate</p></li>
+<li><p>‘pmap’ :  MAP log posterior</p></li>
+<li><p>‘accr’ :  overall acceptance rate</p></li>
+<li><p>‘accb’ : fraction of samples inside bounds</p></li>
+<li><p>‘rejAll’ : overall no. of samples rejected</p></li>
+<li><p>rejOut’ : no. of samples rejected due to being outside bounds</p></li>
+<li><p>‘minfo’ : meta_info, acceptance probability, log likelihood, log prior</p></li>
+<li><p>‘final_cov’ : the covariance matrix at the end of the run</p></li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-source_release.prime_stats">
+<span id="statistical-utilities"></span><h2>Statistical Utilities<a class="headerlink" href="#module-source_release.prime_stats" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="source_release.prime_stats.computeAICandBIC">
+<code class="sig-prename descclassname">source_release.prime_stats.</code><code class="sig-name descname">computeAICandBIC</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">run_setup</span></em>, <em class="sig-param"><span class="n">verbose</span><span class="o">=</span><span class="default_value">0</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/source_release/prime_stats.html#computeAICandBIC"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#source_release.prime_stats.computeAICandBIC" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute Akaike Information Criterion (AIC) and Bayesian Information Criterion (BIC)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>run_setup: dictionary with run settings; see the Examples section in the manual</strong></dt><dd></dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>AIC: float</dt><dd></dd>
+<dt>BIC: float</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="source_release.prime_stats.computeCRPS">
+<code class="sig-prename descclassname">source_release.prime_stats.</code><code class="sig-name descname">computeCRPS</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">run_setup</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/source_release/prime_stats.html#computeCRPS"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#source_release.prime_stats.computeCRPS" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute Continuous Rank Predictive Score (CRPS)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>run_setup: dictionary with run settings; see the Examples section in the manual</strong></dt><dd></dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>CRPS: float</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="source_release.prime_stats.distcorr">
+<code class="sig-prename descclassname">source_release.prime_stats.</code><code class="sig-name descname">distcorr</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">spl</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/source_release/prime_stats.html#distcorr"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#source_release.prime_stats.distcorr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute distance correlation between random vectors</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>spl: numpy array [number of samples x number of variables]</strong></dt><dd><p>first dimension is the number of samples,
+second dimension is the number of random vectors</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>Returns a 2D array of distance correlations between pairs of random vectors;</dt><dd><p>only entries 0&lt;=j&lt;i&lt;no. of random vectors are populated</p>
+</dd>
+<dt>References:</dt><dd><p><a class="reference external" href="http://en.wikipedia.org/wiki/Distance_correlation">http://en.wikipedia.org/wiki/Distance_correlation</a></p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="source_release.prime_stats.getKDE">
+<code class="sig-prename descclassname">source_release.prime_stats.</code><code class="sig-name descname">getKDE</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">spl</span></em>, <em class="sig-param"><span class="n">nskip</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">nthin</span><span class="o">=</span><span class="default_value">1</span></em>, <em class="sig-param"><span class="n">npts</span><span class="o">=</span><span class="default_value">100</span></em>, <em class="sig-param"><span class="n">bwfac</span><span class="o">=</span><span class="default_value">1.0</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/source_release/prime_stats.html#getKDE"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#source_release.prime_stats.getKDE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute 1D and 2D marginal PDFs via Kernel Density Estimate</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>spl: numpy array</strong></dt><dd><p>MCMC chain [number of samples x number of parameters]</p>
+</dd>
+<dt><strong>nskip: int</strong></dt><dd><p>number of initial samples to skip when sampling the MCMC chain</p>
+</dd>
+<dt><strong>nthin: int</strong></dt><dd><p>use every ‘nthin’ samples</p>
+</dd>
+<dt><strong>npts: int</strong></dt><dd><p>number of grid points</p>
+</dd>
+<dt><strong>bwfac: double</strong></dt><dd><p>bandwidth factor</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>dict: dictionary with results</dt><dd><p>‘x1D’: list of numpy arrays with grids for the 1D PDFs;
+‘p1D’: list of numpy arrays with 1D PDFs;
+‘x2D’: list of numpy arrays of x-axis grids for the 2D PDFs;
+‘y2D’: list of numpy arrays of y-axis grids for the 2D PDFs;
+‘p2D’: list of numpy arrays containing 2D PDFs</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-source_release.prime_utils">
+<span id="general-utilities"></span><h2>General Utilities<a class="headerlink" href="#module-source_release.prime_utils" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="source_release.prime_utils.compute_error_weight">
+<code class="sig-prename descclassname">source_release.prime_utils.</code><code class="sig-name descname">compute_error_weight</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">error_info</span></em>, <em class="sig-param"><span class="n">days</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/source_release/prime_utils.html#compute_error_weight"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#source_release.prime_utils.compute_error_weight" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute array with specified weighting for the daily cases data. 
+The weights follow either linear of Gaussian expressions with higher
+weights for recent data and lower weights for older data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>error_info: list</strong></dt><dd><p>(error_type,min_wgt,[tau]), error type is either ‘linear’ or ‘gaussian’,
+min_wgt is the minimum weight and tau is the standard deviation 
+of the exponential term if a Gaussian formulation is chosen.</p>
+</dd>
+<dt><strong>days: int</strong></dt><dd><p>lenght of the weights array</p>
+</dd>
+<dt><strong>Returns</strong></dt><dd></dd>
+<dt><strong>——-</strong></dt><dd></dd>
+<dt><strong>error_weight: numpy array</strong></dt><dd><p>array of weights</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="source_release.prime_utils.prediction_filename">
+<code class="sig-prename descclassname">source_release.prime_utils.</code><code class="sig-name descname">prediction_filename</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">run_setup</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/source_release/prime_utils.html#prediction_filename"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#source_release.prime_utils.prediction_filename" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate informative name for hdf5 file with prediction data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>run_setup: dictionary</strong></dt><dd><p>detailed settings for the epidemiological model</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>filename: string</dt><dd><p>file name ending with a .h5 extension</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="source_release.prime_utils.runningAvg">
+<code class="sig-prename descclassname">source_release.prime_utils.</code><code class="sig-name descname">runningAvg</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">f</span></em>, <em class="sig-param"><span class="n">nDays</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/source_release/prime_utils.html#runningAvg"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#source_release.prime_utils.runningAvg" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply nDays running average to the input f</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>f: numpy array</strong></dt><dd><p>array (with daily data for this project) to by filtered</p>
+</dd>
+<dt><strong>nDays: int</strong></dt><dd><p>window width for the running average</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>favg: numpy array</dt><dd><p>filtered data</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="example2.html" class="btn btn-neutral float-left" title="Multi-Wave Model" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020 National Technology &amp; Engineering Solutions of Sandia, LLC (NTESS). Under the terms of Contract DE-NA0003525 with NTESS, the U.S. Government retains certain rights in this software.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

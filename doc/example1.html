@@ -1,0 +1,540 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>One-Wave Model &mdash; PRIME  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Multi-Wave Model" href="example2.html" />
+    <link rel="prev" title="Bayesian Framework" href="bayes_framework.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> PRIME
+          
+
+          
+            
+            <img src="_static/PRIME_logo_small.jpg" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="intro.html">About</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Model:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="description.html">Model description</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.html">Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bayes_framework.html">Bayesian Framework</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Examples:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">One-Wave Model</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#problem-setup">Problem Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#new-case-forecast-results">New Case Forecast Results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#infection-rate-prediction-results">Infection Rate Prediction Results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#json-input-file">JSON Input File</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="example2.html">Multi-Wave Model</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">Developer Reference Guide</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">PRIME</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>One-Wave Model</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/example1.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="one-wave-model">
+<h1>One-Wave Model<a class="headerlink" href="#one-wave-model" title="Permalink to this headline">¶</a></h1>
+<p>The following example demonstrates the one-wave model for daily
+confirmed cases data in the state of New Mexico up to May 13th, 2020,
+shown in <a class="reference internal" href="#casedatanm0513"><span class="std std-numref">Fig. 5</span></a>.</p>
+<div class="figure align-default" id="casedatanm0513">
+<a class="reference internal image-reference" href="_images/NM_case_data_0513.pdf"><img alt="_images/NM_case_data_0513.pdf" src="_images/NM_case_data_0513.pdf" style="width: 75%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 5 </span><span class="caption-text">Daily confirmed cases of COVID-19 in New Mexico up
+to May 13th, 2020. Daily confirmed cases are shown as black
+symbols, and the corresponding 7-day averaged data
+shown with red lines and symbols.</span><a class="headerlink" href="#casedatanm0513" title="Permalink to this image">¶</a></p>
+</div>
+<div class="section" id="problem-setup">
+<h2>Problem Setup<a class="headerlink" href="#problem-setup" title="Permalink to this headline">¶</a></h2>
+<p>All the data needed by PRIME is contained in a single json file.
+The first block of the json file, “regioninfo”, should contain information about the data:</p>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;regionname&quot;</span><span class="p">:</span><span class="s2">&quot;NM&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;fchain&quot;</span><span class="p">:</span><span class="s2">&quot;NM_mcmc.h5&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;day0&quot;</span><span class="p">:</span><span class="s2">&quot;2020-03-01&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;running_avg_obs&quot;</span><span class="p">:</span><span class="mi">7</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The “regionname” provides the name of the file contain daily confirmed case data. In this case,
+it is “NM.dat”. This file should contain two columns with dates and daily confirmed cases, respectively:</p>
+<div class="highlight-RST notranslate"><div class="highlight"><pre><span></span>2020-03-11 4
+2020-03-12 2
+2020-03-13 4
+2020-03-14 3
+2020-03-15 4
+2020-03-16 4
+2020-03-17 2
+2020-03-18 5
+2020-03-19 7
+2020-03-20 8
+2020-03-21 14
+2020-03-22 8
+2020-03-23 18
+2020-03-24 17
+</pre></div>
+</div>
+<p>“fchain” is the name of an HDF5 file containing the MCMC chain along with other useful metadata.
+The “day0” field specifies the day with the index 0; this is important for setting the prior distribution
+for <span class="math notranslate nohighlight">\(t_0\)</span>. The “running_avg_obs” field sets the number of days to compute a running average over, in
+this case 7, as shown in <a class="reference internal" href="#casedatanm0513"><span class="std std-numref">Fig. 5</span></a>.</p>
+<p>The second block of the json file sets options for the model and MCMC:</p>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;model_type&quot;</span><span class="p">:</span> <span class="s2">&quot;oneWave&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;error_model_type&quot;</span><span class="p">:</span> <span class="s2">&quot;addMult&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;logfile&quot;</span><span class="p">:</span><span class="s2">&quot;logmcmcNM.txt&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;nsteps&quot;</span><span class="p">:</span><span class="mi">1000000</span><span class="p">,</span>
+    <span class="nt">&quot;nfinal&quot;</span><span class="p">:</span><span class="mi">10000000</span><span class="p">,</span>
+    <span class="nt">&quot;useconv&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span>
+    <span class="nt">&quot;incubation_type&quot;</span><span class="p">:</span><span class="s2">&quot;uncertain&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;gamma&quot;</span><span class="p">:</span><span class="mf">0.2</span><span class="p">,</span>
+    <span class="nt">&quot;spllo&quot;</span><span class="p">:[</span><span class="mi">-10</span><span class="p">,</span><span class="mf">0.0002</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span><span class="mi">-20</span><span class="p">],</span>
+    <span class="nt">&quot;splhi&quot;</span><span class="p">:[</span><span class="mi">10</span><span class="p">,</span><span class="mf">0.500</span><span class="p">,</span><span class="mf">30.0</span><span class="p">,</span><span class="mf">400.0</span><span class="p">,</span><span class="mf">10.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">],</span>
+    <span class="nt">&quot;cini&quot;</span><span class="p">:[</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.02</span><span class="p">,</span><span class="mf">6.0</span><span class="p">,</span><span class="mf">20.2</span><span class="p">,</span><span class="mf">3.00</span><span class="p">,</span><span class="mf">0.1</span><span class="p">],</span>
+    <span class="nt">&quot;cvini&quot;</span><span class="p">:[</span><span class="mf">0.04</span><span class="p">,</span><span class="mf">0.001</span><span class="p">,</span><span class="mf">0.01</span><span class="p">,</span><span class="mf">0.01</span><span class="p">,</span><span class="mf">0.01</span><span class="p">,</span><span class="mf">0.01</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The first two inputs specify how many waves the model has and the error model.
+In this example, we use a single infection wave (“oneWave”) with the additive and multiplicative error
+models (“addMult”). The number of steps in the MCMC chain is set by “nsteps” and is 1000000 in this case.
+The “useconv” option determines if the integrals over probability distributions should be used (1=on).
+The incubation model is set by “incubation_type”, which is set to “uncertain” in this case to model the
+incubation rate as a random variable instead of a fixed value.</p>
+<p>The lists “spllo” and “splhi” contain minimum and maximum values, respectively, of model parameters that MCMC
+can sample. This overrides the bounds of the prior distributions. The lists “cini” and “cvini” contain
+initial guesses for the mean and variance of each model parameter.</p>
+<p>The prior distributions are specified in the “bayesmod” block:</p>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;prior_types&quot;</span><span class="p">:[</span><span class="s2">&quot;g&quot;</span><span class="p">,</span><span class="s2">&quot;u&quot;</span><span class="p">,</span><span class="s2">&quot;u&quot;</span><span class="p">,</span><span class="s2">&quot;u&quot;</span><span class="p">,</span><span class="s2">&quot;u&quot;</span><span class="p">,</span><span class="s2">&quot;u&quot;</span><span class="p">],</span>
+    <span class="nt">&quot;prior_info&quot;</span><span class="p">:[[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The list “prior_types” contains the type of distribution used for each prior. In this case, we are using a
+Gaussian distribution for the first model parameter, <span class="math notranslate nohighlight">\(t_0\)</span> and uniform distributions for all others.
+The list “prior_info” contains the mean and standard deviation of each distribution. Note that for uniform
+distributions, the entry in this list is ignored; the upper and lower bounds are set using entries in “splhi”
+and “spllo”, respectively.</p>
+<p>For this case, most of the prior distributions were determined by trial and error, with the exception of the
+prior for <span class="math notranslate nohighlight">\(t_0\)</span>, which was set by observing when the increase in cases started and centering the prior
+7-10 days before this to account for incubation time.</p>
+<p>Next, the properties of the incubation model are set in the “incopts” section:</p>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;incubation_median&quot;</span><span class="p">:</span><span class="mf">5.1</span><span class="p">,</span>
+    <span class="nt">&quot;incubation_sigma&quot;</span><span class="p">:</span><span class="mf">0.418</span><span class="p">,</span>
+    <span class="nt">&quot;incubation_025&quot;</span><span class="p">:</span><span class="mf">2.2</span><span class="p">,</span>
+    <span class="nt">&quot;incubation_975&quot;</span><span class="p">:</span><span class="mf">11.5</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>These data are used by PRIME to construct a fixed or uncertain incubation rate model.</p>
+<p>A json file containing these section can be used to run the MCMC and output the chain,
+but other sections are needed for postprocessing. To run PRIME for this case, simply call
+the “prime_run.py” script followed by the name of the json file.</p>
+</div>
+<div class="section" id="new-case-forecast-results">
+<h2>New Case Forecast Results<a class="headerlink" href="#new-case-forecast-results" title="Permalink to this headline">¶</a></h2>
+<div class="figure align-default" id="newcasesnm0513">
+<a class="reference internal image-reference" href="_images/NM_newcases_0513.pdf"><img alt="_images/NM_newcases_0513.pdf" src="_images/NM_newcases_0513.pdf" style="width: 75%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 6 </span><span class="caption-text">One-wave forecast for New Mexico on May 13th, 2020. Data used to calibrate the
+epidemiological model are indicated by filled black circles.
+The shaded color region illustrates either the posterior-predictive distribution
+with darker colors near the median and
+lighter colors near the low and high quantile values. The blue colors correspond
+to the hindcast dates and red colors to forecasts. The inter-quartile range is
+marked with green lines and the 95% confidence interval with dashed lines.
+The plot also shows data collected at a later time, with open circles,
+to check the agreement between the forecast and the observed number of cases
+after the model has been calibrated.</span><a class="headerlink" href="#newcasesnm0513" title="Permalink to this image">¶</a></p>
+</div>
+<p>Forecast results can be computed by running the postprocessor script “prime_compute_epi_inf_curves.py”
+in the same directory as the run. This script requires several additional sections in the
+json file. Firstly, the “ppopts” section contains the information needed to plot the new
+case forecast presented in <a class="reference internal" href="#newcasesnm0513"><span class="std std-numref">Fig. 6</span></a>.</p>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+     <span class="nt">&quot;nstart&quot;</span><span class="p">:</span><span class="mi">100000</span><span class="p">,</span>
+     <span class="nt">&quot;nsamples&quot;</span><span class="p">:</span><span class="mi">1000</span><span class="p">,</span>
+     <span class="nt">&quot;days_extra&quot;</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span>
+     <span class="nt">&quot;runmodel&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span>
+     <span class="nt">&quot;postpred&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span>
+     <span class="nt">&quot;newdata&quot;</span><span class="p">:</span> <span class="s2">&quot;NM_future.dat&quot;</span><span class="p">,</span>
+     <span class="nt">&quot;quantile_newcases&quot;</span><span class="p">:[</span><span class="mf">0.025</span><span class="p">,</span><span class="mf">0.25</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.75</span><span class="p">,</span><span class="mf">0.975</span><span class="p">],</span>
+     <span class="nt">&quot;linetype_newcases&quot;</span><span class="p">:[</span><span class="s2">&quot;b--&quot;</span><span class="p">,</span><span class="s2">&quot;g-&quot;</span><span class="p">,</span><span class="s2">&quot;r-&quot;</span><span class="p">,</span><span class="s2">&quot;g-&quot;</span><span class="p">,</span><span class="s2">&quot;b--&quot;</span><span class="p">],</span>
+     <span class="nt">&quot;linewidth_newcases&quot;</span><span class="p">:[</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span>
+     <span class="nt">&quot;fillbetw_newcases&quot;</span><span class="p">:[[</span><span class="mf">0.25</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="s2">&quot;g&quot;</span><span class="p">,</span><span class="mf">0.4</span><span class="p">],[</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.75</span><span class="p">,</span><span class="s2">&quot;g&quot;</span><span class="p">,</span><span class="mf">0.4</span><span class="p">]],</span>
+     <span class="nt">&quot;xylim_newcases&quot;</span><span class="p">:[</span><span class="s2">&quot;2020-03-01&quot;</span><span class="p">,</span><span class="s2">&quot;2020-04-15&quot;</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">300</span><span class="p">],</span>
+     <span class="nt">&quot;xylbl_newcases&quot;</span><span class="p">:[</span><span class="s2">&quot;Date&quot;</span><span class="p">,</span><span class="mi">16</span><span class="p">,</span><span class="s2">&quot;Reported New Cases on Date&quot;</span><span class="p">,</span><span class="mi">16</span><span class="p">],</span>
+     <span class="nt">&quot;xyticklbl_newcases&quot;</span><span class="p">:[</span><span class="mi">14</span><span class="p">,</span><span class="mi">14</span><span class="p">],</span>
+     <span class="nt">&quot;newcases&quot;</span><span class="p">:[</span><span class="s2">&quot;ko&quot;</span><span class="p">,</span><span class="mi">6</span><span class="p">],</span>
+     <span class="nt">&quot;figtype&quot;</span><span class="p">:</span><span class="s2">&quot;pdf&quot;</span><span class="p">,</span>
+     <span class="nt">&quot;fpredout&quot;</span><span class="p">:</span><span class="s2">&quot;NM_epidemic_curve&quot;</span><span class="p">,</span>
+     <span class="nt">&quot;fout_newcases&quot;</span><span class="p">:</span><span class="s2">&quot;NM_epidemic_curve&quot;</span>
+ <span class="p">}</span>
+</pre></div>
+</div>
+<p>The portion of the MCMC chain used to generate the plot is set by “nstart” and “nsamples”.
+“nstart” sets the starting index for the portion of the chain used for postprocessing.
+“nsamples” sets the number of entries in the chain (after index “nstart”) to be
+sampled uniformly for postprocessing.</p>
+<p>“days_extra” sets how many days out to compute the forecast, in this case 10 days, or until
+May 23rd, 2020.</p>
+<p>“runmodel” determines whether or not to run the model for each chain sample to compute new
+cases or to read the new case data from the HDF5 file whose name is specified by the “fpredout”
+entry in this block. This option should be set to 1 the first time that “prime_compute_epi_inf_curves.py” is
+run, but can be set to 0 for subsequent runs, for example if one wants to regenerate a plot.</p>
+<p>“postpred” is set to 1 to plot the posterior predictive and 0 to plot the push forward PDF.</p>
+<p>“newdata” contains the name of an ascii file with future case data. In this case it contains
+case data from May 14th, 2020 onwards.</p>
+<p>The next 8 entires in the “ppopts” block above correspond to plot settings. Many of them
+concern the quantile curve plots, starting with which quantiles to show (“quantile_newcases”),
+and the corresponding line color/style (“linetype_newcases”), line width
+(“linewidth_newcases”), and the color fill between lines (“fillbetw_newcases”).</p>
+<p>Plot limits, labels, and tick font sizes can be set with “xylim_newcases”, “xylbl_newcases”,
+and “xyticklbl_newcases”, respectively. Finally, “newcases” contains the a list with the
+color/symbol followed by the symbol size for the daily new case data used for the forecast.</p>
+<p>Finally, “figtype” sets the file format for the forecast plot to written to, “fpredout” contrains
+the name of an HDF5 file containing the data shown in the forecast plot, and “fout_newcases” is
+the name of the forecast plot file. The script “prime_compute_epi_inf_curves.py” adds prefixes to indicate
+which error models are used and if the posterior predictive is plotted. This means that the figure
+will be written to “NM_newcases_amN_pp.pdf” for our example.</p>
+</div>
+<div class="section" id="infection-rate-prediction-results">
+<h2>Infection Rate Prediction Results<a class="headerlink" href="#infection-rate-prediction-results" title="Permalink to this headline">¶</a></h2>
+<div class="figure align-default" id="infcurvenm0513">
+<a class="reference internal image-reference" href="_images/NM_infcurve_0513.pdf"><img alt="_images/NM_infcurve_0513.pdf" src="_images/NM_infcurve_0513.pdf" style="width: 75%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 7 </span><span class="caption-text">One-wave infection rate curve forecast for New Mexico on May 13th, 2020. The shaded color
+region illustrates either the posterior-predictive distribution with darker colors near
+the median and lighter colors near the low and high quantile values. The blue colors correspond
+to the hindcast dates and red colors to forecasts. The inter-quartile range is
+marked with green lines and the 95% confidence interval with dashed lines.</span><a class="headerlink" href="#infcurvenm0513" title="Permalink to this image">¶</a></p>
+</div>
+<p>To plot the infection rate curve as presented in <a class="reference internal" href="#infcurvenm0513"><span class="std std-numref">Fig. 7</span></a>, an “infopts” section is
+needed in the json file:</p>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;inftype&quot;</span><span class="p">:</span><span class="s2">&quot;gamma&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;ndays&quot;</span><span class="p">:</span><span class="mi">180</span><span class="p">,</span>
+    <span class="nt">&quot;runmodel&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span>
+    <span class="nt">&quot;postpred&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span>
+    <span class="nt">&quot;quantile_inf&quot;</span><span class="p">:[</span><span class="mf">0.025</span><span class="p">,</span><span class="mf">0.25</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.75</span><span class="p">,</span><span class="mf">0.975</span><span class="p">],</span>
+    <span class="nt">&quot;linetype_inf&quot;</span><span class="p">:[</span><span class="s2">&quot;b--&quot;</span><span class="p">,</span><span class="s2">&quot;g-&quot;</span><span class="p">,</span><span class="s2">&quot;r-&quot;</span><span class="p">,</span><span class="s2">&quot;g-&quot;</span><span class="p">,</span><span class="s2">&quot;b--&quot;</span><span class="p">],</span>
+    <span class="nt">&quot;linewidth_inf&quot;</span><span class="p">:[</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span>
+    <span class="nt">&quot;fillbetw_inf&quot;</span><span class="p">:[[</span><span class="mf">0.25</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="s2">&quot;g&quot;</span><span class="p">,</span><span class="mf">0.4</span><span class="p">],[</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.75</span><span class="p">,</span><span class="s2">&quot;g&quot;</span><span class="p">,</span><span class="mf">0.4</span><span class="p">]],</span>
+    <span class="nt">&quot;xylim_inf&quot;</span><span class="p">:[</span><span class="s2">&quot;2020-03-01&quot;</span><span class="p">,</span><span class="s2">&quot;2020-05-01&quot;</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">1000</span><span class="p">],</span>
+    <span class="nt">&quot;xylbl_inf&quot;</span><span class="p">:[</span><span class="s2">&quot;Date&quot;</span><span class="p">,</span><span class="mi">16</span><span class="p">,</span><span class="s2">&quot;Infection Rate [ppl/day]&quot;</span><span class="p">,</span><span class="mi">16</span><span class="p">],</span>
+    <span class="nt">&quot;xyticklbl_inf&quot;</span><span class="p">:[</span><span class="mi">14</span><span class="p">,</span><span class="mi">14</span><span class="p">],</span>
+    <span class="nt">&quot;newcases&quot;</span><span class="p">:[</span><span class="s2">&quot;ko&quot;</span><span class="p">,</span><span class="mi">6</span><span class="p">],</span>
+    <span class="nt">&quot;figtype&quot;</span><span class="p">:</span><span class="s2">&quot;pdf&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;finfout&quot;</span><span class="p">:</span><span class="s2">&quot;NM_infection_curve&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;fout_inf&quot;</span><span class="p">:</span><span class="s2">&quot;NM_infection_curve&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Here, “inftype” sets the infection rate curve type, in this case it is a gamma distribution.
+“runmodel” and “postpred” are the same as in the “ppopts” section. The other entries correspond
+to the same plot format and file format/name settings in the “ppopts” section.</p>
+<p>Finally, new case and infection rate data can be written out in CSV format if a “csvout” section
+is included in the json file:</p>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;nskip&quot;</span><span class="p">:</span><span class="mi">100</span><span class="p">,</span>
+    <span class="nt">&quot;finfcurve&quot;</span><span class="p">:</span><span class="s2">&quot;NM_infection_curve&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;fnewcases&quot;</span><span class="p">:</span><span class="s2">&quot;NM_epidemic_curve&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;qlist&quot;</span><span class="p">:[</span><span class="mf">0.025</span><span class="p">,</span><span class="mf">0.25</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.75</span><span class="p">,</span><span class="mf">0.975</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Each row of the CSV files contain data corresponding to each date for which case data is availible
+along with the dates for which a forecast is availible. In this case, data from early March to May 23rd,
+2020 is included. The data on each row includes the date, forecast quantile(s), and individual samples
+from the MCMC chain. The new case file also contains the reported daily new cases in the last column for
+all dates in which it is availible. In this case, daily new cases data is included up to May 13th.</p>
+<p>“nskip” sets the sampling frequency for the MCMC chain. In this example, every 100th chain sample is
+included. Recall that the number of chain samples is set to 1000 in the “ppopts” section under “nsamples”.
+This means that the csv files will include 10 samples in this example.</p>
+<p>“finfcurve” and “fnewcases” specify the file names with infection rate and new cases data,
+respectively.</p>
+<p>Finally, “qlist” specifies the quantiles for which to output data.</p>
+</div>
+<div class="section" id="json-input-file">
+<h2>JSON Input File<a class="headerlink" href="#json-input-file" title="Permalink to this headline">¶</a></h2>
+<p>The enitre json file is included below for completeness:</p>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;regioninfo&quot;</span><span class="p">:{</span>
+        <span class="nt">&quot;regionname&quot;</span><span class="p">:</span><span class="s2">&quot;NM&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;fchain&quot;</span><span class="p">:</span><span class="s2">&quot;NM_mcmc.h5&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;day0&quot;</span><span class="p">:</span><span class="s2">&quot;2020-03-01&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;running_avg_obs&quot;</span><span class="p">:</span><span class="mi">7</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;mcmcopts&quot;</span><span class="p">:{</span>
+        <span class="nt">&quot;model_type&quot;</span><span class="p">:</span> <span class="s2">&quot;oneWave&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;error_model_type&quot;</span><span class="p">:</span> <span class="s2">&quot;addMult&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;logfile&quot;</span><span class="p">:</span><span class="s2">&quot;logmcmcNM.txt&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;nsteps&quot;</span><span class="p">:</span><span class="mi">1000000</span><span class="p">,</span>
+        <span class="nt">&quot;nfinal&quot;</span><span class="p">:</span><span class="mi">10000000</span><span class="p">,</span>
+        <span class="nt">&quot;useconv&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span>
+        <span class="nt">&quot;incubation_type&quot;</span><span class="p">:</span><span class="s2">&quot;uncertain&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;gamma&quot;</span><span class="p">:</span><span class="mf">0.2</span><span class="p">,</span>
+        <span class="nt">&quot;spllo&quot;</span><span class="p">:[</span><span class="mi">-10</span><span class="p">,</span><span class="mf">0.0002</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span><span class="mi">-20</span><span class="p">],</span>
+        <span class="nt">&quot;splhi&quot;</span><span class="p">:[</span><span class="mi">10</span><span class="p">,</span><span class="mf">0.500</span><span class="p">,</span><span class="mf">30.0</span><span class="p">,</span><span class="mf">400.0</span><span class="p">,</span><span class="mf">10.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">],</span>
+        <span class="nt">&quot;cini&quot;</span><span class="p">:[</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.02</span><span class="p">,</span><span class="mf">6.0</span><span class="p">,</span><span class="mf">20.2</span><span class="p">,</span><span class="mf">3.00</span><span class="p">,</span><span class="mf">0.1</span><span class="p">],</span>
+        <span class="nt">&quot;cvini&quot;</span><span class="p">:[</span><span class="mf">0.04</span><span class="p">,</span><span class="mf">0.001</span><span class="p">,</span><span class="mf">0.01</span><span class="p">,</span><span class="mf">0.01</span><span class="p">,</span><span class="mf">0.01</span><span class="p">,</span><span class="mf">0.01</span><span class="p">]</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;bayesmod&quot;</span><span class="p">:{</span>
+        <span class="nt">&quot;prior_types&quot;</span><span class="p">:[</span><span class="s2">&quot;g&quot;</span><span class="p">,</span><span class="s2">&quot;u&quot;</span><span class="p">,</span><span class="s2">&quot;u&quot;</span><span class="p">,</span><span class="s2">&quot;u&quot;</span><span class="p">,</span><span class="s2">&quot;u&quot;</span><span class="p">,</span><span class="s2">&quot;u&quot;</span><span class="p">],</span>
+        <span class="nt">&quot;prior_info&quot;</span><span class="p">:[[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]]</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;incopts&quot;</span><span class="p">:{</span>
+        <span class="nt">&quot;incubation_median&quot;</span><span class="p">:</span><span class="mf">5.1</span><span class="p">,</span>
+        <span class="nt">&quot;incubation_sigma&quot;</span><span class="p">:</span><span class="mf">0.418</span><span class="p">,</span>
+        <span class="nt">&quot;incubation_025&quot;</span><span class="p">:</span><span class="mf">2.2</span><span class="p">,</span>
+        <span class="nt">&quot;incubation_975&quot;</span><span class="p">:</span><span class="mf">11.5</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;ppopts&quot;</span><span class="p">:{</span>
+        <span class="nt">&quot;nstart&quot;</span><span class="p">:</span><span class="mi">100000</span><span class="p">,</span>
+        <span class="nt">&quot;nsamples&quot;</span><span class="p">:</span><span class="mi">10000</span><span class="p">,</span>
+        <span class="nt">&quot;days_extra&quot;</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span>
+        <span class="nt">&quot;runmodel&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span>
+        <span class="nt">&quot;postpred&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span>
+        <span class="nt">&quot;newdata&quot;</span><span class="p">:</span> <span class="s2">&quot;NM_future.dat&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;quantile_newcases&quot;</span><span class="p">:[</span><span class="mf">0.025</span><span class="p">,</span><span class="mf">0.25</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.75</span><span class="p">,</span><span class="mf">0.975</span><span class="p">],</span>
+        <span class="nt">&quot;linetype_newcases&quot;</span><span class="p">:[</span><span class="s2">&quot;b--&quot;</span><span class="p">,</span><span class="s2">&quot;g-&quot;</span><span class="p">,</span><span class="s2">&quot;r-&quot;</span><span class="p">,</span><span class="s2">&quot;g-&quot;</span><span class="p">,</span><span class="s2">&quot;b--&quot;</span><span class="p">],</span>
+        <span class="nt">&quot;linewidth_newcases&quot;</span><span class="p">:[</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span>
+        <span class="nt">&quot;fillbetw_newcases&quot;</span><span class="p">:[[</span><span class="mf">0.25</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="s2">&quot;g&quot;</span><span class="p">,</span><span class="mf">0.4</span><span class="p">],[</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.75</span><span class="p">,</span><span class="s2">&quot;g&quot;</span><span class="p">,</span><span class="mf">0.4</span><span class="p">]],</span>
+        <span class="nt">&quot;xylim_newcases&quot;</span><span class="p">:[</span><span class="s2">&quot;2020-03-01&quot;</span><span class="p">,</span><span class="s2">&quot;2020-04-15&quot;</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">300</span><span class="p">],</span>
+        <span class="nt">&quot;xylbl_newcases&quot;</span><span class="p">:[</span><span class="s2">&quot;Date&quot;</span><span class="p">,</span><span class="mi">16</span><span class="p">,</span><span class="s2">&quot;Reported New Cases on Date&quot;</span><span class="p">,</span><span class="mi">16</span><span class="p">],</span>
+        <span class="nt">&quot;xyticklbl_newcases&quot;</span><span class="p">:[</span><span class="mi">14</span><span class="p">,</span><span class="mi">14</span><span class="p">],</span>
+        <span class="nt">&quot;newcases&quot;</span><span class="p">:[</span><span class="s2">&quot;ko&quot;</span><span class="p">,</span><span class="mi">6</span><span class="p">],</span>
+        <span class="nt">&quot;figtype&quot;</span><span class="p">:</span><span class="s2">&quot;pdf&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;fpredout&quot;</span><span class="p">:</span><span class="s2">&quot;NM_epidemic_curve&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;fout_newcases&quot;</span><span class="p">:</span><span class="s2">&quot;NM_epidemic_curve&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;infopts&quot;</span><span class="p">:{</span>
+        <span class="nt">&quot;inftype&quot;</span><span class="p">:</span><span class="s2">&quot;gamma&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;ndays&quot;</span><span class="p">:</span><span class="mi">180</span><span class="p">,</span>
+        <span class="nt">&quot;runmodel&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span>
+        <span class="nt">&quot;postpred&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span>
+        <span class="nt">&quot;quantile_inf&quot;</span><span class="p">:[</span><span class="mf">0.025</span><span class="p">,</span><span class="mf">0.25</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.75</span><span class="p">,</span><span class="mf">0.975</span><span class="p">],</span>
+        <span class="nt">&quot;linetype_inf&quot;</span><span class="p">:[</span><span class="s2">&quot;b--&quot;</span><span class="p">,</span><span class="s2">&quot;g-&quot;</span><span class="p">,</span><span class="s2">&quot;r-&quot;</span><span class="p">,</span><span class="s2">&quot;g-&quot;</span><span class="p">,</span><span class="s2">&quot;b--&quot;</span><span class="p">],</span>
+        <span class="nt">&quot;linewidth_inf&quot;</span><span class="p">:[</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span>
+        <span class="nt">&quot;fillbetw_inf&quot;</span><span class="p">:[[</span><span class="mf">0.25</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="s2">&quot;g&quot;</span><span class="p">,</span><span class="mf">0.4</span><span class="p">],[</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.75</span><span class="p">,</span><span class="s2">&quot;g&quot;</span><span class="p">,</span><span class="mf">0.4</span><span class="p">]],</span>
+        <span class="nt">&quot;xylim_inf&quot;</span><span class="p">:[</span><span class="s2">&quot;2020-03-01&quot;</span><span class="p">,</span><span class="s2">&quot;2020-05-01&quot;</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">1000</span><span class="p">],</span>
+        <span class="nt">&quot;xylbl_inf&quot;</span><span class="p">:[</span><span class="s2">&quot;Date&quot;</span><span class="p">,</span><span class="mi">16</span><span class="p">,</span><span class="s2">&quot;Infection Rate [ppl/day]&quot;</span><span class="p">,</span><span class="mi">16</span><span class="p">],</span>
+        <span class="nt">&quot;xyticklbl_inf&quot;</span><span class="p">:[</span><span class="mi">14</span><span class="p">,</span><span class="mi">14</span><span class="p">],</span>
+        <span class="nt">&quot;newcases&quot;</span><span class="p">:[</span><span class="s2">&quot;ko&quot;</span><span class="p">,</span><span class="mi">6</span><span class="p">],</span>
+        <span class="nt">&quot;figtype&quot;</span><span class="p">:</span><span class="s2">&quot;pdf&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;finfout&quot;</span><span class="p">:</span><span class="s2">&quot;NM_infection_curve&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;fout_inf&quot;</span><span class="p">:</span><span class="s2">&quot;NM_infection_curve&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;csvout&quot;</span><span class="p">:{</span>
+        <span class="nt">&quot;nskip&quot;</span><span class="p">:</span><span class="mi">100</span><span class="p">,</span>
+        <span class="nt">&quot;finfcurve&quot;</span><span class="p">:</span><span class="s2">&quot;NM_infection_curve&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;fnewcases&quot;</span><span class="p">:</span><span class="s2">&quot;NM_epidemic_curve&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;qlist&quot;</span><span class="p">:[</span><span class="mf">0.025</span><span class="p">,</span><span class="mf">0.25</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.75</span><span class="p">,</span><span class="mf">0.975</span><span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="example2.html" class="btn btn-neutral float-right" title="Multi-Wave Model" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="bayes_framework.html" class="btn btn-neutral float-left" title="Bayesian Framework" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020 National Technology &amp; Engineering Solutions of Sandia, LLC (NTESS). Under the terms of Contract DE-NA0003525 with NTESS, the U.S. Government retains certain rights in this software.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
