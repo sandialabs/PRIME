@@ -20,7 +20,7 @@ sys.path.append("../src")
 # -- Project information -----------------------------------------------------
 
 project = 'PRIME'
-copyright = '2020 National Technology & Engineering Solutions of Sandia, LLC (NTESS). Under the terms of Contract DE-NA0003525 with NTESS, the U.S. Government retains certain rights in this software.'
+copyright = '2021 National Technology & Engineering Solutions of Sandia, LLC (NTESS). Under the terms of Contract DE-NA0003525 with NTESS, the U.S. Government retains certain rights in this software.'
 author = 'Patrick Blonigan, Kamaljit Chowdhary, Jaideep Ray, Cosmin Safta'
 
 
