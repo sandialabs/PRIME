@@ -56,7 +56,11 @@ def _infection_multiWave(state,params,n_waves=1):
         dt1_i, N_i, qshape_i, qscale_i = state[4*i:4*i+4]
         ndays_wave = ndays-int(dt1_i)
         infections_wave = N_i * 1e6 * infection_rate(np.arange(1.0*ndays_wave),qshape_i,qscale_i,params['inftype'])
-        infections[int(dt1_i):] = infections[int(dt1_i):]+infections_wave
+        # print(len(infections_wave),int(dt1_i),len(infections[int(dt1_i):]),len(infections))
+        if int(dt1_i)>=0:
+            infections[int(dt1_i):] = infections[int(dt1_i):]+infections_wave
+        else:
+            infections = infections+infections_wave[-int(dt1_i):]            
 
     # convert dates to timestamp 
     dates = np.array([dates[i].timestamp() for i in range(ndays)])

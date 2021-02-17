@@ -199,7 +199,12 @@ def plot_infection_curve(datesmean,infall,qntList,normalize,iendData,run_setup):
     #ax.set_ylim([y0,y1])
     ax.set_ylim([y0,1.1*maxVal])
 
-    ax.set_yscale('log')
+    if "xy_scale" in run_setup["infopts"]:
+        ax.set_xscale(run_setup["infopts"]["xy_scale"][0])
+        ax.set_yscale(run_setup["infopts"]["xy_scale"][1])
+    else:
+        ax.set_yscale("log")
+    
     xlbs=run_setup["infopts"]["xylbl_inf"][0]
     xlbf=run_setup["infopts"]["xylbl_inf"][1]
     ax.set_xlabel(xlbs,fontsize=xlbf)

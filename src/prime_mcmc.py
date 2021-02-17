@@ -30,7 +30,7 @@ def _ucov(spl,splmean,cov,lastup):
 
     return lastup + nspl, splmean, cov
 
-def ammcmc(opts,cini,likTpr,lpinfo):
+def ammcmc(opts,cini,likTpr,lpinfo,progress=True):
     r"""
     
     Adaptive Metropolis Markov Chain Monte Carlo
@@ -157,9 +157,19 @@ def ammcmc(opts,cini,likTpr,lpinfo):
     cmode = spls[0]                    # current MAP parameter Set
     nref  = 0                          # Samples since last proposal rescaling
     # -------------------------------------------------------------------------------
+    # optional progress bar
+    # -------------------------------------------------------------------------------
+    if progress == True:
+        try:
+            from tqdm import tqdm
+            mcmc_iterator = tqdm(range(nsteps-1))
+        except:
+            print("*For a progress bar, please install tqdm.")
+            mcmc_iterator = range(nsteps-1)
+    # -------------------------------------------------------------------------------
     # Main loop
     # -------------------------------------------------------------------------------
-    for k in range(nsteps-1):
+    for k in mcmc_iterator:
         # Deal with covariance matrix
         if k == 0:
             splmean   = spls[0];
