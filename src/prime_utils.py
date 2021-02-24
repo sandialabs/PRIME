@@ -111,10 +111,10 @@ def output_epicurves(pred,daysPred,newcases,nskip,quantile_list,fileout):
         for i in range(ndaysPred):
             outputData = [daysPred[i].date()]
             for qk in quantile_list:
-                outputData = outputData+["%.4e"%(np.quantile(pred,qk,axis=0)[i])]
-            outputData = outputData+["%.4e"%(pred[j,i]) for j in range(0,pred.shape[0],nskip)]
+                outputData = outputData+["%d"%(np.quantile(pred,qk,axis=0)[i])]
+            outputData = outputData+["%d"%(pred[j,i]) for j in range(0,pred.shape[0],nskip)]
             if i < ndaysData:
-                outputData = outputData+[newcases[i]]
+                outputData = outputData+["%d"%(newcases[i])]
             else:
                 outputData = outputData+[-999]
             cso = csv_writer.writerow(outputData)
@@ -132,8 +132,8 @@ def output_infcurves(infc,datesmean,nskip,quantile_list,fileout):
         for i in range(len(datesmean)):
             outputData = [datesmean[i].date()]
             for qk in quantile_list:
-                outputData = outputData+["%.4e"%(np.quantile(infc,qk,axis=0)[i])]
-            outputData = outputData+["%.4e"%(infc[j,i]) for j in range(0,infc.shape[0],nskip)]
+                outputData = outputData+["%d"%(np.quantile(infc,qk,axis=0)[i])]
+            outputData = outputData+["%d"%(infc[j,i]) for j in range(0,infc.shape[0],nskip)]
             cso = csv_writer.writerow(outputData)
         output_file.close()
 
