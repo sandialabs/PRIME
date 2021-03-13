@@ -174,9 +174,9 @@ iendData = np.where(datesPred==datesData[-1])[0][0]+1
 # Plot push-forward/posterior predictive PDF
 plot_post_pred(datesPred,pred,datesData,new_cases,qntList,normalize,iendData,run_setup,nc_new=nc_new)
 
-
 #-------------------------------------------------------
 # infection rate
+
 fh5 = run_setup["infopts"]["finfout"]+".h5"
 if run_setup["infopts"]["runmodel"]:
     modelinfo={"model_type":model_type,
@@ -213,9 +213,7 @@ for i in range(infect.shape[0]):
 
 
 iendData = np.where(datesmean==datesData[-1])[0][0]+1
-
 plot_infection_curve(datesmean,infall,qntList,normalize,iendData,run_setup)
-
 
 #------------------------------------------------------------
 # save csv files

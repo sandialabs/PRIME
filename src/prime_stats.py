@@ -189,7 +189,7 @@ def computeCRPS(run_setup):
     pred   = np.array(file["predictions"])
     file.close()
     
-    # only need predictions for days on which data is availible
+    # only need predictions for days on which data is available
     pred = pred[:,:ndays_data]
 
     #------------------------------------------------------

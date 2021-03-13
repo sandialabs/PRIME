@@ -27,7 +27,7 @@ def infection_rate(time,qshape,qscale,inftype):
     """
     time = np.atleast_1d(time)
     vals = np.zeros_like(time)
-    I = np.where(time>=0)
+    I = np.where(time>0)
     if inftype=="gamma":
         vals[I] = gamma_pdf(time[I],qshape,scale=qscale)
     else:
@@ -66,7 +66,6 @@ def _infection_multiWave(state,params,n_waves=1):
     dates = np.array([dates[i].timestamp() for i in range(ndays)])
 
     return [dates,infections]
-
 
 def infection(state,params):
     """
