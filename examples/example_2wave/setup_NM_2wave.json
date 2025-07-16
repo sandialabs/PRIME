@@ -1,37 +1,34 @@
 {
-    "regioninfo": {
-        "regionname": "NM",
-        "fchain": "NM_mcmc.h5",
-        "day0": "2020-03-01",
-        "running_avg_obs": 7
+    "regioninfo":{
+        "count_data":["NM.dat"],
+        "population_data":[2.113],
+        "region_tag":["NM"],
+        "day0":"2020-03-01",
+        "running_avg_obs":7
     },
     "mcmcopts": {
-        "model_type": "twoWave",
-        "error_model_type": "addMult",
         "logfile": "logmcmcNM.txt",
         "nsteps": 1000000,
         "nfinal": 10000000,
-        "useconv": 1,
-        "incubation_type": "uncertain",
         "gamma": 0.7,
         "spllo": [
             -2.877357932637136,
-            0.009575447192753876,
+            0.00453168347977,
             3.4902877959833143,
             12.321758685351922,
             20,
             0.0002,
             0.1,
             0.1,
-            0.0,
+            -30.0,
             -20
         ],
         "splhi": [
             2.969027281659369,
-            0.01839093251179052,
+            0.008703706820535,
             5.360610614202396,
             26.17367878217896,
-            100,
+            120,
             0.5,
             30.0,
             400.0,
@@ -40,23 +37,23 @@
         ],
         "cini": [
             0.04583467451111642,
-            0.013983189852272197,
+            0.006617695150152,
             4.425449205092855,
             19.247718733765442,
-            60,
-            0.02,
+            80,
+            0.006,
             6.0,
-            20.2,
-            3.0,
-            0.1
+            12,
+            -14,
+            -2
         ],
         "cvini": [
             0.9494505576095775,
             2.158688372504182e-06,
             0.09716965123197129,
-            5.3298802880244684,
-            225,
-            0.001,
+            4,
+            4,
+            1.0e-6,
             0.01,
             0.01,
             0.01,
@@ -73,13 +70,19 @@
             [0.04583467451111642,0.9743975357160841],[0,1],[0,1],[0,1],
             [60,15.0],[0,1],[0,1],[0,1],
             [0,1],[0,1]
-        ]
+        ],
+        "error_model_type": "addMult",
+        "lpf_type":"gaussian"
     },
-    "incopts": {
-        "incubation_median": 5.1,
-        "incubation_sigma": 0.418,
-        "incubation_025": 2.2,
-        "incubation_975": 11.5
+    "modelopts":{
+        "num_waves":2,
+        "useconv":1,
+        "incubation_median":5.1,
+        "incubation_sigma":0.418,
+        "incubation_025":2.2,
+        "incubation_975":11.5,
+        "incubation_model":"lognormal",
+        "incubation_type":"stochastic"
     },
     "ppopts": {
         "nstart": 200000,
