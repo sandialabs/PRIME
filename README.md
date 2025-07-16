@@ -7,3 +7,4 @@ PRIME was written and developed by Cosmin Safta, Jaideep Ray, Patrick Blonigan, 
 ## Citing:
 
 * C. Safta, K. Sargsyan, J. Ray, "Characterization of Partially Observed Epidemics through Bayesian Inference - Application to COVID-19", Computational Mechanics, doi: 10.1007/s00466-020-01897-z (2020).
+* P. Blonigan, J. Ray, C. Safta "Forecasting Multi-Wave Epidemics Through Bayesian Inference", Arch Computat Methods Eng, doi: 10.1007/s11831-021-09603-9 (2021).
