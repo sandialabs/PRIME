@@ -1,3 +1,4 @@
+
 Bayesian Framework
 ==================
 
@@ -20,28 +21,10 @@ The discrepancy between the data and the model is written as
 
 Here, :math:`\Theta` is a vector of model parameters,
 and |eps| represents the statistical discrepancy between the model and the data.
-The elements of :math:`\Theta` depend on the number of epidemic waves being modeled.
-
-.. math::
-   :nowrap:
-
-   \begin{equation}
-   \Theta=\Theta^{(1)}\cup\Theta^{(2)}\cup\ldots\cup\Theta^{(K)}\cup\Theta^{(\epsilon)}
-   \label{eq:param_vec_def}
-   \end{equation}
-
-where :math:`\Theta^{(j)}`  are the parameter for the *j*-th wave of infections,
-*K* is the number of waves and :math:`\Theta^{(\epsilon)}`
-are parameters for the error model. The parameters for each wave are given by
-
-.. math::
-   :nowrap:
-
-   \begin{equation}
-   \Theta^{(j)}=\{\Delta t_j,N_j,k_j,\theta_j\}
-   \end{equation}
-
-For the first epidemic wave :math:`\Delta t_1=t_0`.
+The elements of :math:`\Theta` depend on either the number of epidemic waves being modeled or
+on the number of adjacent regions. In the current version the framework can either
+model multiple epidemic waves for one region or forecast the dynamics of one wave for
+multiple regions
 
 The error model encapsulates, in this context, both errors in the observations as well
 as errors due to imperfect modeling choices. The observation errors include variations
@@ -65,19 +48,65 @@ Bayesian methods are well-suited for dealing with heterogeneous sources of uncer
 in this case from our modeling assumptions, i.e. model and parametric uncertainties,
 as well as the communicated daily counts of COVID-19 new cases, i.e. experimental errors.
 
+Multiple Epidemic Waves
+-----------------------
+
+For the single region/multiple epidemic waves case, :math:`\Theta` can be represented as
+
+.. math::
+   :nowrap:
+
+   \begin{equation}
+   \Theta=\Theta^{(1)}\cup\Theta^{(2)}\cup\ldots\cup\Theta^{(K)}\cup\Theta^{(\epsilon)}
+   \label{eq:param_vec_def}
+   \end{equation}
+
+where :math:`\Theta^{(j)}`  are the parameter for the *j*-th wave of infections,
+*K* is the number of waves and :math:`\Theta^{(\epsilon)}`
+are parameters for the error model. The parameters for each wave are given by
+
+.. math::
+   :nowrap:
+
+   \begin{equation}
+   \Theta^{(j)}=\{\Delta t_j,N_j,k_j,\theta_j\}
+   \end{equation}
+
+For the first epidemic wave :math:`\Delta t_1=t_0`. The error model consists of two componets, i.e.
+:math:`\Theta^{(\epsilon)}=\{\sigma_a,\sigma_m\}`.
+
+
+Multiple Regions
+----------------
+
+For the single region/multiple epidemic waves case, :math:`\Theta` can be similarly represented as
+a concatenated vectors of parameters as above where :math:`\Theta^{(j)}` now represents the set of
+parameters for region *j*. The component :math:`\Theta^{(\epsilon)}` is now given by
+
+.. math::
+   :nowrap:
+
+   \begin{equation}
+   \Theta^{(\epsilon)}=\{\tau_{\Phi}^2,\lambda,\sigma_a,\sigma_m\}
+   \end{equation}
+
+where :math:`\tau_{\Phi}^2` and :math:`\lambda` are components of the correlation model between adjacent 
+regions.
+
+
 Likelihood Construction
 -----------------------
 
 The library provides options for  both deterministic and stochastic formulations for 
 the incubation model. In the former case the mean and standard deviation of the
 incubation model are fixed at their nominal values and the model prediction
-:math:`n_i` for day :math:`t_i` is a scalar value that depends on $\Theta$ only. 
+:math:`n_i` for day :math:`t_i` is a scalar value that depends on :math:`\Theta` only. 
 In the latter case, the incubation model is stochastic with mean and standard deviation
-of its natural logarithm treated as Student's t and $\chi^2$ random variables, 
+of its natural logarithm treated as Student's t and :math:`\chi^2` random variables, 
 respectively, as discussed in :ref:`inc-rate-section` Section. Let us denote the underlying
 independent random variables by :math:`{\boldsymbol \xi}=\{\xi_\mu,\xi_\sigma,\}`.
 The model prediction :math:`n_j({\boldsymbol{\xi}})` for day *j* is now a random 
-variable induced by ${\bm \xi}$ plugged into :ref:`single-wave` or :ref:`multi-wave`
+variable induced by :math:`{\boldsymbol \xi}` plugged into :ref:`single-wave` or :ref:`multi-wave`
 and :math:`{\boldsymbol n}({\boldsymbol\xi})` is a random vector.
 
 Deterministic Incubation Model
@@ -85,9 +114,15 @@ Deterministic Incubation Model
 
 PRIME provides options for both Gaussian and negative binomial formulations for
 the statistical discrepancy :math:`\epsilon` between :math:`{\boldsymbol n}` and 
-:math:`{\boldsymbol y}`. In the first approach we assume :math:`\epsilon` has a zero-mean
+:math:`{\boldsymbol y}`. 
+
+Gaussian distribution
++++++++++++++++++++++
+
+In the first approach we assume :math:`\epsilon` has a zero-mean
 Multivariate Normal (MVN) distribution. Given the sparsity of data, correlations across
-time are currently neglected and the liklihood :math:`p({\boldsymbol y}\vert\Theta)` is computed as
+time are currently neglected. For the single region case the 
+liklihood :math:`p({\boldsymbol y}\vert\Theta)` is computed as
 
 .. math::
    :nowrap:
@@ -113,6 +148,84 @@ The additive, :math:`\sigma_a`, and multiplicative, :math:`\sigma_a`, components
 of the error model :math:`\Theta^{(\epsilon)}=\{\sigma_a,\sigma_a\}` will be inferred 
 jointly with the model parameters. In practive, PRIME infers the logarithm of 
 these parameters to ensure they remain positive. 
+
+
+For the multiple region case we will assume that the discrepancies are independent 
+over the temporal axis and correlated in space, i.e.
+
+.. math::
+   :nowrap:
+
+   \begin{equation}
+   p({\boldsymbol y}\vert\Theta)=\prod_{i=1}^{D}\frac{1}{(2\pi)^{N_r/2}
+   \mathrm{det}(\Sigma_i^{1/2})}\exp\left(-\frac{1}{2}({\boldsymbol y}_i-{\boldsymbol n}_i)
+   \Sigma_i^{-1}({\boldsymbol y}_i-{\boldsymbol n}_i)^T\right)
+   \label{eq:lik}
+   \end{equation}
+
+Here :math:`\Sigma_i` is the block in the large covariance matrix (that spans over :math:`D` days of observations) that corresponds to the predictions for day *i*. Per the BYM model, we will model the discrepancy :math:`({\boldsymbol y}_i-{\boldsymbol n}_i)={\boldsymbol\epsilon}_i` with two components i.e., :math:`{\boldsymbol\epsilon}_i={\boldsymbol\epsilon}_{i,1}+{\boldsymbol\epsilon}_{i,2}`. The first component will be modeled with a pCAR to capture spatial auto-correlation. The second component defined as for the single region model captures random, temporally independent, reporting errors and any model shortcomings. The covariance matrix is given by [Cressie2008]_
+
+.. math::
+   :nowrap:
+
+   \begin{equation}
+   \Sigma_i = P^{-1}+\mathrm{diag}\left(\sigma_a+\sigma_m Y^{(p)}_i\right)^2,
+   \label{eqn:covmat}
+   \end{equation}
+
+where :math:`P` is the precision matrix associated with the Gaussian Markov Random Field (GMRF) model  assumed to account for the spatial correlations between adjacent regions (a proper Conditional Auto-Regressive (pCAR) model [MacNab2022]_). The precision matrix is defined as
+
+.. math::
+   :nowrap:
+
+   \begin{equation}
+   P=\frac{1}{\tau_{\phi}^2}\left(\mathrm{diag}\{g_1,g_2,\ldots,g_{N_r}\}-\lambda_{\phi} W\right)
+   \end{equation}
+
+Here, :math:`g_j` is the number of regions adjacent to region *j*, and *W* is a matrix that encodes the relative topology of the regions considered in the joint inference, with entries defined as
+
+.. math::
+   :nowrap:
+
+   \begin{equation}
+   w_{jj}=0\,\textrm{and}\,
+   w_{jk}=\begin{cases}
+   1 & \textrm{if regions j and k are adjacent,}\\
+   0 & \textrm{otherwise.}
+   \end{cases}
+   \end{equation}
+
+Thus *P* defines a pCAR spatial model with row-standardisation and is a function of the "spatial coefficients" :math:`\{\tau_{\phi}^2, \lambda_{\phi}\}`, which will also have to be estimated from the data. The dimensionality of the inverse problem scales with :math:`N_{R}` and is limited by the scalability of the inversion method. We will use :math:`N_{R}\leq 3` and consider inferences using the following setups:
+
+* two adjacent counties (i.e., :math:`N_{R}=2`), i.e. Bernalillo \& Santa Fe and Bernalillo \& Valencia. For these cases the covariance matrix :math:`P^{-1}` corresponding to the GMRF model is given by
+
+.. math::
+   :nowrap:
+
+   \begin{equation}
+   P^{-1} = \frac{\tau_{\phi}^2}{1-\lambda_{\phi}^2}
+   \begin{bmatrix}
+   1 & \lambda_{\phi}  \\
+   \lambda_{\phi}  & 1 \\
+   \end{bmatrix}
+   \end{equation}
+
+* three counties (i.e., :math:`N_{R}=3`), Bernalillo, Santa Fe, and Valencia, jointly. Bernalillo is adjacent to the other two counties but Santa Fe and Valencia do not share a border. The GMRF covariance matrix :math:`P^{-1}` is given by 
+
+.. math::
+   :nowrap:
+
+   \begin{equation}
+   P^{-1} = \frac{\tau_{\phi}^2}{2\left(1-\lambda_{\phi}^2\right)}
+   \begin{bmatrix}
+   1 & \lambda_{\phi} & \lambda_{\phi} \\
+   \lambda_{\phi} & 2-\lambda_{\phi}^2 & \lambda_{\phi}^2 \\
+   \lambda_{\phi} & \lambda_{\phi}^2 & 2-\lambda_{\phi}^2 \\
+   \end{bmatrix}
+   \end{equation}
+
+Negative-binomial distribution
+++++++++++++++++++++++++++++++
 
 The second approach assumes a negative-binomial distribution
 for the discrepancy between data and model predictions. The negative-binomial distribution 
@@ -172,8 +285,8 @@ one achieves an unbiased estimate of the likelihood :math:`\pi_{n_i(\Theta),{\bo
 and given the independent-component assumption, it also leads to an unbiased estimate of the 
 full likelihood :math:`\pi_{{\boldsymbol n}(\Theta),{\boldsymbol\xi}}({\boldsymbol y})`. 
 
-Posterior Distribution Sampling
--------------------------------
+Posterior Distribution
+----------------------
 
 A Markov Chain Monte Carlo (MCMC) algorithm is used to sample from the
 posterior density :math:`p(\Theta\vert\boldsymbol{y})`. MCMC is a class of techniques that
@@ -206,7 +319,7 @@ distributions for the model parameters.
 
 
 Posterior Predictive Tests
---------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 We will employ Bayesian posterior-predictive distributions [Lynch2004]_ to assess the 
 predictive skill of the statistical model. The Bayesian posterior-predictive distribution, 
@@ -249,12 +362,12 @@ impact the epidemic over a longer timerange.
 
 
 Model Selection
----------------
+~~~~~~~~~~~~~~~
 
 Quantitative comparisons between models can be made with several metrics defined in the following sections.  
 
-AIC
-~~~
+Information Criteria
+++++++++++++++++++++
 
 The Akaike Information Criteria (AIC) [Akaike1974]_ is defined as
 
@@ -271,9 +384,6 @@ is the maximum value of the likelihood :math:`p(\boldsymbol{y}\vert\Theta)`. Thi
 estimated by the maximum likelihood in the MCMC chain. Given a choice of models, the 
 model with the smallest AIC value is considered to be the highest quality model. 
 
-BIC
-~~~
-
 The Bayesian Information Criteria (BIC) [Schwarz1978]_ is defined as
 
 .. math::
@@ -288,8 +398,8 @@ where :math:`d` is the number of observations, equal to the length of the array
 :math:`\boldsymbol{n}`. Given a choice of models, the model with the smallest BIC value 
 is considered to be the highest quality model. 
 
-CRPS
-~~~~
+Continuous Ranked Probability Score
++++++++++++++++++++++++++++++++++++
 
 The Continuous Ranked Probability Score (CRPS) [Gneiting2007]_ measures the difference between the CDF of the provided
 data and that of the forecast/predicted data, i.e., data generated based on the posterior 
@@ -337,6 +447,8 @@ Like AIC and BIC, the model with the smallest value of CRPS is considered to be 
 
 .. [Andrieu2009] `Andrieu C., Roberts G.O., The pseudo-marginal approach for efficient Monte Carlo computations, Annals of Statistics (2009) <https://dx.doi.org/10.1214/07-AOS574>`_
 
+.. [Cressie2008] `Cressie N., Johannesson G., TFixed rank kriging for very large spatial data sets, Journal of the Royal Statistical Society: Series B (Statistical Methodology) (2008) <https://dx.doi.org/10.1111/j.1467-9868.2007.00633.x>`_
+
 .. [Gneiting2007] `Gneiting T., Raftery A., Strictly Proper Scoring Rules, Prediction, and Estimation (2007) <https://sites.stat.washington.edu/raftery/Research/PDF/Gneiting2007jasa.pdf>`_
 
 .. [Haario2001] `Haario H., Saksman E., Tamminen J., An adaptive Metropolis algorithm, Bernoulli (2001) <https://projecteuclid.org/euclid.bj/1080222083>`_
@@ -346,6 +458,8 @@ Like AIC and BIC, the model with the smallest value of CRPS is considered to be 
 .. [Lloyd2007] `Lloyd-Smith J.O., Maximum Likelihood Estimation of the Negative Binomial Dispersion Parameter for Highly Overdispersed Data, with Applications to Infectious Diseases, Public Library of Science (2007) <http://dx.doi.org/10.1371/journal.pone.0000180>`_
 
 .. [Lynch2004] `Lynch S.M., Western B., Bayesian posterior predictive checks for complex models, Sociological Methods and Research (2004) <http://dx.doi.org/10.1177/0049124103257303>`_
+
+.. [MacNab2022] `MacNab Y.C, Bayesian disease mapping: Past, present, and future, Spatial Statistics (2022) <http://dx.doi.org/10.1016/j.spasta.2022.100593>`_
 
 .. [Raftery1992] `Raftery A.E., Lewis S., How Many Iterations in the Gibbs Sampler?, Bayesian Statistics 4 (1992) <http://people.ee.duke.edu/~lcarin/raftery92how.pdf>`_
 

@@ -15,13 +15,14 @@ import sys
 sys.path.insert(0, os.path.abspath('.'))
 # sys.path.append("../")
 sys.path.append("../")
-sys.path.append("../src")
+sys.path.append("../source_release")
 
 # -- Project information -----------------------------------------------------
 
-project = 'PRIME'
-copyright = '2021 National Technology & Engineering Solutions of Sandia, LLC (NTESS). Under the terms of Contract DE-NA0003525 with NTESS, the U.S. Government retains certain rights in this software.'
-author = 'Patrick Blonigan, Kamaljit Chowdhary, Jaideep Ray, Cosmin Safta'
+#project = 'PRIME v2'
+project = 'PRIME - A Software Toolkit for the Characterization of Partially Observed Epidemics in a Bayesian Framework'
+copyright = '2024 National Technology & Engineering Solutions of Sandia, LLC (NTESS). Under the terms of Contract DE-NA0003525 with NTESS, the U.S. Government retains certain rights in this software.'
+author = 'Cosmin Safta, Jaideep Ray, Wyatt Bridgman'
 
 
 # -- General configuration ---------------------------------------------------
@@ -35,7 +36,8 @@ extensions = ['sphinx.ext.autodoc',
     'numpydoc',
     'sphinx.ext.autosummary',
     'sphinx.ext.doctest',
-    'sphinx.ext.inheritance_diagram']
+    'sphinx.ext.inheritance_diagram',
+    'sphinx_multitoc_numbering']
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']

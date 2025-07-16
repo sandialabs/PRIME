@@ -6,7 +6,7 @@ confirmed cases data in the state of New Mexico up to May 13th, 2020,
 shown in :numref:`casedataNM0513`. 
 
 .. figure:: ./figures/NM_case_data_0513.pdf 
-    :width: 75 %
+    :width: 60 %
     :name: casedataNM0513
 
     Daily confirmed cases of COVID-19 in New Mexico up
@@ -125,7 +125,7 @@ New Case Forecast Results
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. figure:: ./figures/NM_newcases_0513.pdf 
-    :width: 75 %
+    :width: 60 %
     :name: newcasesNM0513
 
     One-wave forecast for New Mexico on May 13th, 2020. Data used to calibrate the 
@@ -203,7 +203,7 @@ Infection Rate Prediction Results
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. figure:: ./figures/NM_infcurve_0513.pdf 
-    :width: 75 %
+    :width: 60 %
     :name: infcurveNM0513
 
     One-wave infection rate curve forecast for New Mexico on May 13th, 2020. The shaded color 
@@ -274,77 +274,81 @@ The enitre json file is included below for completeness:
 
 .. code-block:: JSON
 
-   {
-       "regioninfo":{
-           "regionname":"NM",
-           "fchain":"NM_mcmc.h5",
-           "day0":"2020-03-01",
-           "running_avg_obs":7
-       },
-       "mcmcopts":{
-           "model_type": "oneWave",
-           "error_model_type": "addMult",
-           "logfile":"logmcmcNM.txt",
-           "nsteps":1000000,
-           "nfinal":10000000,
-           "useconv":1,
-           "incubation_type":"uncertain",
-           "gamma":0.2,
-           "spllo":[-10,0.0002,0.1, 0.1, 0.0,-20],
-           "splhi":[10,0.500,30.0,400.0,10.0,1.0],
-           "cini":[0,0.02,6.0,20.2,3.00,0.1],
-           "cvini":[0.04,0.001,0.01,0.01,0.01,0.01]
-       },
-       "bayesmod":{
-           "prior_types":["g","u","u","u","u","u"],
-           "prior_info":[[0,1],[0,1],[0,1],[0,1],[0,1],[0,1]]
-       },
-       "incopts":{
-           "incubation_median":5.1,
-           "incubation_sigma":0.418,
-           "incubation_025":2.2,
-           "incubation_975":11.5
-       },
-       "ppopts":{
-           "nstart":100000,
-           "nsamples":10000,
-           "days_extra":10,
-           "runmodel":1,
-           "postpred":1,
-           "newdata": "NM_future.dat",
-           "quantile_newcases":[0.025,0.25,0.5,0.75,0.975],
-           "linetype_newcases":["b--","g-","r-","g-","b--"],
-           "linewidth_newcases":[3,2,3,2,3],
-           "fillbetw_newcases":[[0.25,0.5,"g",0.4],[0.5,0.75,"g",0.4]],
-           "xylim_newcases":["2020-03-01","2020-04-15",0,300],
-           "xylbl_newcases":["Date",16,"Reported New Cases on Date",16],
-           "xyticklbl_newcases":[14,14],
-           "newcases":["ko",6],
-           "figtype":"pdf",
-           "fpredout":"NM_epidemic_curve",
-           "fout_newcases":"NM_epidemic_curve"
-       },
-       "infopts":{
-           "inftype":"gamma",
-           "ndays":180,
-           "runmodel":1,
-           "postpred":1,
-           "quantile_inf":[0.025,0.25,0.5,0.75,0.975],
-           "linetype_inf":["b--","g-","r-","g-","b--"],
-           "linewidth_inf":[3,2,3,2,3],
-           "fillbetw_inf":[[0.25,0.5,"g",0.4],[0.5,0.75,"g",0.4]],
-           "xylim_inf":["2020-03-01","2020-05-01",10,1000],
-           "xylbl_inf":["Date",16,"Infection Rate [ppl/day]",16],
-           "xyticklbl_inf":[14,14],
-           "newcases":["ko",6],
-           "figtype":"pdf",
-           "finfout":"NM_infection_curve",
-           "fout_inf":"NM_infection_curve"
-       },
-       "csvout":{
-           "nskip":100,
-           "finfcurve":"NM_infection_curve",
-           "fnewcases":"NM_epidemic_curve",
-           "qlist":[0.025,0.25,0.5,0.75,0.975]
-       }
-   }
+    {
+        "regioninfo":{
+            "count_data":["NM.dat"],
+            "population_data":[2.113],
+            "region_tag":["NM"],
+            "day0":"2020-03-01",
+            "running_avg_obs":7
+        },
+        "mcmcopts":{
+            "logfile":"logmcmcNM.txt",
+            "nsteps":1000000,
+            "nfinal":10000000,
+            "gamma":0.2,
+            "spllo":[-30, 0.00001,0.1, 0.1, -30.0, -20],
+            "splhi":[ 40, 0.500,50.0,400.0,  10.0, 1.0],
+            "cini":[-4.9, 0.0067,  3.97, 11.74, -13.02, -6.8],
+            "cvini":[1e0, 6e-8, 1e-1, 1e-1, 1e-2, 1e-2]
+        },
+        "bayesmod":{
+            "prior_types":["g","u","u","u","u","u"],
+            "prior_info":[[0,1],[0,1],[0,1],[0,1],[0,1],[0,1]],
+            "error_model_type": "addMult",
+            "lpf_type":"gaussian"
+        },
+        "modelopts":{
+            "num_waves":1,
+            "useconv":1,
+            "incubation_median":5.1,
+            "incubation_sigma":0.418,
+            "incubation_025":2.2,
+            "incubation_975":11.5,
+            "incubation_model":"lognormal",
+            "incubation_type":"stochastic"
+        },
+        "ppopts":{
+            "nstart":500000,
+            "nsamples":5000,
+            "days_extra":10,
+            "runmodel":1,
+            "postpred":1,
+            "newdata": "NM_future.dat",
+            "quantile_newcases":[0.025,0.25,0.5,0.75,0.975],
+            "linetype_newcases":["b--","g-","r-","g-","b--"],
+            "linewidth_newcases":[3,2,3,2,3],
+            "fillbetw_newcases":[[0.25,0.5,"g",0.4],[0.5,0.75,"g",0.4]],
+            "xylim_newcases":["2020-03-01","2020-04-15",0,300],
+            "xylbl_newcases":["Date",16,"Reported New Cases on Date",16],
+            "xyticklbl_newcases":[14,14],
+            "newdata":"NM_future.dat",
+            "newcases":["ko",6],
+            "figtype":"pdf",
+            "fpredout":"NM_epidemic_curve",
+            "fout_newcases":"NM_epidemic_curve"
+        },
+        "infopts":{
+            "inftype":"gamma",
+            "ndays":180,
+            "runmodel":1,
+            "postpred":1,
+            "quantile_inf":[0.025,0.25,0.5,0.75,0.975],
+            "linetype_inf":["b--","g-","r-","g-","b--"],
+            "linewidth_inf":[3,2,3,2,3],
+            "fillbetw_inf":[[0.25,0.5,"g",0.4],[0.5,0.75,"g",0.4]],
+            "xylim_inf":["2020-03-01","2020-05-01",10,1000],
+            "xylbl_inf":["Date",16,"Infection Rate [ppl/day]",16],
+            "xyticklbl_inf":[14,14],
+            "newcases":["ko",6],
+            "figtype":"pdf",
+            "finfout":"NM_infection_curve",
+            "fout_inf":"NM_infection_curve"
+        },
+        "csvout":{
+            "nskip":50,
+            "finfcurve":"NM_infection_curve",
+            "fnewcases":"NM_epidemic_curve",
+            "qlist":[0.025,0.25,0.5,0.75,0.975]
+        }
+    }

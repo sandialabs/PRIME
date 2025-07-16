@@ -4,50 +4,50 @@ Developer Reference Guide
 Drivers
 -------
 
-.. automodule:: src.prime_run
+.. automodule:: source_release.prime_run
     :members:
 
-.. automodule:: src.prime_plot_data
+.. automodule:: source_release.prime_plot_data
     :members:
 
-.. automodule:: src.prime_plotKDE
+.. automodule:: source_release.prime_plotKDE
     :members:
 
-.. automodule:: src.prime_compute_info_criteria
+.. automodule:: source_release.prime_compute_info_criteria
     :members:
 
-.. automodule:: src.prime_compute_distance_correlation
+.. automodule:: source_release.prime_compute_distance_correlation
     :members:
 
 Epidemiological Model 
 ---------------------
 
-.. automodule:: src.prime_model
+.. automodule:: source_release.prime_model
     :members:
 
-.. automodule:: src.prime_infection
+.. automodule:: source_release.prime_infection
     :members:
 
-.. automodule:: src.prime_incubation
+.. automodule:: source_release.prime_incubation
     :members:
 
 Bayesian Inference
 ------------------
 
-.. automodule:: src.prime_posterior
+.. automodule:: source_release.prime_posterior
     :members:
 
-.. automodule:: src.prime_mcmc
+.. automodule:: source_release.prime_mcmc
     :members:
 
 Statistical Utilities
 ---------------------
 
-.. automodule:: src.prime_stats
+.. automodule:: source_release.prime_stats
     :members:
 
 General Utilities
 -----------------
 
-.. automodule:: src.prime_utils
+.. automodule:: source_release.prime_utils
     :members:
