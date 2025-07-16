@@ -1,7 +1,3 @@
-.. PRIME documentation master file, created by
-   sphinx-quickstart on Fri Sep 11 17:07:59 2020.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
 
 Welcome to PRIME's documentation!
 =================================
@@ -13,7 +9,8 @@ Welcome to PRIME's documentation!
    intro
 
 .. toctree::
-   :maxdepth: 2
+   :numbered:
+   :maxdepth: 4
    :caption: Model:
 
    description
@@ -21,13 +18,16 @@ Welcome to PRIME's documentation!
    bayes_framework
 
 .. toctree::
+   :numbered:
    :maxdepth: 2
    :caption: Examples:
 
    example1
    example2
+   example3
 
 .. toctree::
+   :numbered:
    :maxdepth: 1
    :caption: Reference Guide
 

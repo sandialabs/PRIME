@@ -1,186 +1,107 @@
-
-
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="../../">
 <head>
-  <meta charset="utf-8">
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <title>source_release.prime_mcmc &mdash; PRIME  documentation</title>
-  
-
-  
-  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
-
-  
-  
-  
-  
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>source_release.prime_mcmc &mdash; PRIME - A Software Toolkit for the Characterization of Partially Observed Epidemics in a Bayesian Framework  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=fd3f3429" />
 
   
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script src="../../_static/jquery.js"></script>
-        <script src="../../_static/underscore.js"></script>
-        <script src="../../_static/doctools.js"></script>
-        <script src="../../_static/language_data.js"></script>
-        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
-    <script type="text/javascript" src="../../_static/js/theme.js"></script>
-
-    
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" /> 
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-          
 
           
-            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> PRIME
           
-
-          
-            
-            <img src="../../_static/PRIME_logo_small.jpg" class="logo" alt="Logo"/>
-          
+          <a href="../../index.html" class="icon icon-home">
+            PRIME - A Software Toolkit for the Characterization of Partially Observed Epidemics in a Bayesian Framework
+              <img src="../../_static/PRIME_logo_small.jpg" class="logo" alt="Logo"/>
           </a>
-
-          
-            
-            
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
-              <p class="caption"><span class="caption-text">Getting Started:</span></p>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting Started:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../intro.html">About</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Model:</span></p>
+<p class="caption" role="heading"><span class="caption-text">Model:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../description.html">Model description</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../data.html">Data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../bayes_framework.html">Bayesian Framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../description.html">1. Model description</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../data.html">2. Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../bayes_framework.html">3. Bayesian Framework</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Examples:</span></p>
+<p class="caption" role="heading"><span class="caption-text">Examples:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../example1.html">One-Wave Model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../example2.html">Multi-Wave Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../example1.html">4. One-Wave Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../example2.html">5. Multi-Wave Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../example3.html">6. Multi-region Model</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Reference Guide</span></p>
+<p class="caption" role="heading"><span class="caption-text">Reference Guide</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../modules.html">Developer Reference Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html">7. Developer Reference Guide</a></li>
 </ul>
 
-            
-          
         </div>
-        
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../index.html">PRIME</a>
-        
+          <a href="../../index.html">PRIME - A Software Toolkit for the Characterization of Partially Observed Epidemics in a Bayesian Framework</a>
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
-      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
-        
-          <li><a href="../index.html">Module code</a> &raquo;</li>
-        
-      <li>source_release.prime_mcmc</li>
-    
-    
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">source_release.prime_mcmc</li>
       <li class="wy-breadcrumbs-aside">
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
+             
   <h1>Source code for source_release.prime_mcmc</h1><div class="highlight"><pre>
-<span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">npy</span>
+<span></span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">npy</span>
 <span class="kn">import</span> <span class="nn">scipy.stats</span>
 <span class="kn">import</span> <span class="nn">scipy.linalg</span>
 <span class="kn">import</span> <span class="nn">math</span>
 <span class="kn">import</span> <span class="nn">uuid</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
-<span class="k">global</span> <span class="n">Rmat</span><span class="p">,</span><span class="n">invRmat</span>
-
 <span class="c1">#---------------------------------------------------------------------------------------</span>
 <span class="c1">#  Adaptive Metropolis Markov Chain Monte Carlo</span>
 <span class="c1">#---------------------------------------------------------------------------------------</span>
 <span class="k">def</span> <span class="nf">_ucov</span><span class="p">(</span><span class="n">spl</span><span class="p">,</span><span class="n">splmean</span><span class="p">,</span><span class="n">cov</span><span class="p">,</span><span class="n">lastup</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Update proposal covariance</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">spl</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
@@ -199,8 +120,10 @@
 
     <span class="k">return</span> <span class="n">lastup</span> <span class="o">+</span> <span class="n">nspl</span><span class="p">,</span> <span class="n">splmean</span><span class="p">,</span> <span class="n">cov</span>
 
-<div class="viewcode-block" id="ammcmc"><a class="viewcode-back" href="../../modules.html#source_release.prime_mcmc.ammcmc">[docs]</a><span class="k">def</span> <span class="nf">ammcmc</span><span class="p">(</span><span class="n">opts</span><span class="p">,</span><span class="n">cini</span><span class="p">,</span><span class="n">likTpr</span><span class="p">,</span><span class="n">lpinfo</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<div class="viewcode-block" id="ammcmc">
+<a class="viewcode-back" href="../../modules.html#source_release.prime_mcmc.ammcmc">[docs]</a>
+<span class="k">def</span> <span class="nf">ammcmc</span><span class="p">(</span><span class="n">opts</span><span class="p">,</span><span class="n">likTpr</span><span class="p">,</span><span class="n">lpinfo</span><span class="p">,</span><span class="n">progress</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    </span>
 <span class="sd">    Adaptive Metropolis Markov Chain Monte Carlo</span>
 
@@ -234,7 +157,6 @@
 <span class="sd">        this object can be of any type (e.g. None, scalar, list, array, dictionary, etc) </span>
 <span class="sd">        as long as it is consistent with settings expected inside the &#39;likTpr&#39; function</span>
 
-
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
 <span class="sd">    mcmcRes: results dictionary</span>
@@ -261,6 +183,7 @@
     <span class="n">burnsc</span> <span class="o">=</span> <span class="n">opts</span><span class="p">[</span><span class="s1">&#39;burnsc&#39;</span><span class="p">]</span>
     <span class="n">spllo</span>  <span class="o">=</span> <span class="n">opts</span><span class="p">[</span><span class="s1">&#39;spllo&#39;</span> <span class="p">]</span>
     <span class="n">splhi</span>  <span class="o">=</span> <span class="n">opts</span><span class="p">[</span><span class="s1">&#39;splhi&#39;</span> <span class="p">]</span>
+    <span class="n">cini</span>   <span class="o">=</span> <span class="n">opts</span><span class="p">[</span><span class="s1">&#39;inistate&#39;</span><span class="p">]</span>
 
     <span class="k">if</span> <span class="s1">&#39;gamma&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">opts</span><span class="p">:</span>
         <span class="n">gamma</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="c1"># default</span>
@@ -326,9 +249,19 @@
     <span class="n">cmode</span> <span class="o">=</span> <span class="n">spls</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>                    <span class="c1"># current MAP parameter Set</span>
     <span class="n">nref</span>  <span class="o">=</span> <span class="mi">0</span>                          <span class="c1"># Samples since last proposal rescaling</span>
     <span class="c1"># -------------------------------------------------------------------------------</span>
+    <span class="c1"># optional progress bar</span>
+    <span class="c1"># -------------------------------------------------------------------------------</span>
+    <span class="k">if</span> <span class="n">progress</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
+            <span class="n">mcmc_iterator</span> <span class="o">=</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">nsteps</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;*For a progress bar, please install tqdm.&quot;</span><span class="p">)</span>
+            <span class="n">mcmc_iterator</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="n">nsteps</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="c1"># -------------------------------------------------------------------------------</span>
     <span class="c1"># Main loop</span>
     <span class="c1"># -------------------------------------------------------------------------------</span>
-    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nsteps</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">mcmc_iterator</span><span class="p">:</span>
         <span class="c1"># Deal with covariance matrix</span>
         <span class="k">if</span> <span class="n">k</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
             <span class="n">splmean</span>   <span class="o">=</span> <span class="n">spls</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
@@ -423,52 +356,61 @@
     <span class="n">mcmcRes</span><span class="p">[</span><span class="s1">&#39;minfo&#39;</span> <span class="p">]</span> <span class="o">=</span> <span class="n">meta_info</span>                <span class="c1"># acceptance probability, log likelihood, log prior</span>
     <span class="n">mcmcRes</span><span class="p">[</span><span class="s1">&#39;final_cov&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cov</span>                   <span class="c1"># the covariance matrix at the end of the run.</span>
     <span class="k">return</span> <span class="n">mcmcRes</span></div>
+
+
+<div class="viewcode-block" id="save_mcmc_chain">
+<a class="viewcode-back" href="../../modules.html#source_release.prime_mcmc.save_mcmc_chain">[docs]</a>
+<span class="k">def</span> <span class="nf">save_mcmc_chain</span><span class="p">(</span><span class="n">fout</span><span class="p">,</span><span class="n">mcmc_chain</span><span class="p">,</span><span class="n">filetype</span><span class="o">=</span><span class="s2">&quot;h5&quot;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    save mcmc output</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">filetype</span><span class="o">==</span><span class="s2">&quot;h5&quot;</span><span class="p">:</span>
+        <span class="kn">import</span> <span class="nn">h5py</span>
+        <span class="n">f</span> <span class="o">=</span> <span class="n">h5py</span><span class="o">.</span><span class="n">File</span><span class="p">(</span><span class="n">fout</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span>
+        <span class="n">dset</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">create_dataset</span><span class="p">(</span><span class="s2">&quot;chain&quot;</span><span class="p">,</span>     <span class="n">data</span><span class="o">=</span><span class="n">mcmc_chain</span><span class="p">[</span><span class="s1">&#39;chain&#39;</span><span class="p">],</span>     <span class="n">compression</span><span class="o">=</span><span class="s2">&quot;gzip&quot;</span><span class="p">)</span>
+        <span class="n">mdIn</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">create_dataset</span><span class="p">(</span><span class="s2">&quot;mode&quot;</span><span class="p">,</span>      <span class="n">data</span><span class="o">=</span><span class="n">mcmc_chain</span><span class="p">[</span><span class="s1">&#39;cmap&#39;</span><span class="p">],</span>      <span class="n">compression</span><span class="o">=</span><span class="s2">&quot;gzip&quot;</span><span class="p">)</span>
+        <span class="n">mdPs</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">create_dataset</span><span class="p">(</span><span class="s2">&quot;modepost&quot;</span><span class="p">,</span>  <span class="n">data</span><span class="o">=</span><span class="p">[</span><span class="n">mcmc_chain</span><span class="p">[</span><span class="s1">&#39;pmap&#39;</span><span class="p">]],</span>    <span class="n">compression</span><span class="o">=</span><span class="s2">&quot;gzip&quot;</span><span class="p">)</span>
+        <span class="n">minf</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">create_dataset</span><span class="p">(</span><span class="s2">&quot;minfo&quot;</span><span class="p">,</span>     <span class="n">data</span><span class="o">=</span><span class="n">mcmc_chain</span><span class="p">[</span><span class="s1">&#39;minfo&#39;</span><span class="p">],</span>     <span class="n">compression</span><span class="o">=</span><span class="s2">&quot;gzip&quot;</span><span class="p">)</span>
+        <span class="n">accr</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">create_dataset</span><span class="p">(</span><span class="s2">&quot;accr&quot;</span><span class="p">,</span>      <span class="n">data</span><span class="o">=</span><span class="p">[</span><span class="n">mcmc_chain</span><span class="p">[</span><span class="s1">&#39;accr&#39;</span><span class="p">]],</span>    <span class="n">compression</span><span class="o">=</span><span class="s2">&quot;gzip&quot;</span><span class="p">)</span>
+        <span class="n">fcov</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">create_dataset</span><span class="p">(</span><span class="s2">&quot;final_cov&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">mcmc_chain</span><span class="p">[</span><span class="s1">&#39;final_cov&#39;</span><span class="p">],</span> <span class="n">compression</span><span class="o">=</span><span class="s2">&quot;gzip&quot;</span><span class="p">)</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="k">elif</span> <span class="n">filetype</span><span class="o">==</span><span class="s2">&quot;pkl&quot;</span><span class="p">:</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">fout</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span>
+        <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">mcmc_chain</span><span class="p">,</span> <span class="n">output</span><span class="p">)</span>
+        <span class="n">output</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;save_mcmc_chain(): Unknown filetype &quot;</span><span class="p">,</span><span class="n">filetype</span><span class="p">,</span><span class="s2">&quot; -&gt;quit!&quot;</span><span class="p">)</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">()</span></div>
+
+
+
 </pre></div>
 
            </div>
-           
           </div>
           <footer>
-  
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        
-        &copy; Copyright 2020 National Technology &amp; Engineering Solutions of Sandia, LLC (NTESS). Under the terms of Contract DE-NA0003525 with NTESS, the U.S. Government retains certain rights in this software.
-
-    </p>
+    <p>&#169; Copyright 2024 National Technology &amp; Engineering Solutions of Sandia, LLC (NTESS). Under the terms of Contract DE-NA0003525 with NTESS, the U.S. Government retains certain rights in this software..</p>
   </div>
-    
-    
-    
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
-    
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
 
 </footer>
-
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

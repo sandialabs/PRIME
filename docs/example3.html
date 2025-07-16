@@ -1,0 +1,417 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>6. Multi-region Model &mdash; PRIME - A Software Toolkit for the Characterization of Partially Observed Epidemics in a Bayesian Framework  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="7. Developer Reference Guide" href="modules.html" />
+    <link rel="prev" title="5. Multi-Wave Model" href="example2.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            PRIME - A Software Toolkit for the Characterization of Partially Observed Epidemics in a Bayesian Framework
+              <img src="_static/PRIME_logo_small.jpg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting Started:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="intro.html">About</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Model:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="description.html">1. Model description</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.html">2. Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bayes_framework.html">3. Bayesian Framework</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="example1.html">4. One-Wave Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example2.html">5. Multi-Wave Model</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">6. Multi-region Model</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#two-regions-example">6.1. Two Regions Example</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#problem-setup">6.1.1. Problem Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#two-region-inference-results">6.1.2. Two-region Inference Results</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#three-regions-example">6.2. Three Regions Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#json-input-files">6.3. JSON Input Files</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#two-regions">6.3.1. Two Regions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#three-regions">6.3.2. Three Regions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">7. Developer Reference Guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">PRIME - A Software Toolkit for the Characterization of Partially Observed Epidemics in a Bayesian Framework</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active"><span class="section-number">6. </span>Multi-region Model</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/example3.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="multi-region-model">
+<h1><span class="section-number">6. </span>Multi-region Model<a class="headerlink" href="#multi-region-model" title="Link to this heading"></a></h1>
+<p>The following examples demonstrate the multi-region capability of PRIME. We consider
+two- and three-region cases as illustrated in the figure below</p>
+<figure class="align-default" id="countiesnm">
+<a class="reference internal image-reference" href="_images/counties_BSFV.pdf"><img alt="_images/counties_BSFV.pdf" src="_images/counties_BSFV.pdf" style="width: 75%;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 6.1 </span><span class="caption-text">Adjacent counties in New Mexico used to illustrate the multi-region capabilities in PRIME.</span><a class="headerlink" href="#countiesnm" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<section id="two-regions-example">
+<h2><span class="section-number">6.1. </span>Two Regions Example<a class="headerlink" href="#two-regions-example" title="Link to this heading"></a></h2>
+<p>The first example considers daily confirmed case data in the state of New Mexico
+up to September 15 26th, 2020.</p>
+<section id="problem-setup">
+<h3><span class="section-number">6.1.1. </span>Problem Setup<a class="headerlink" href="#problem-setup" title="Link to this heading"></a></h3>
+<p>The setup for running multiple regions is similar with the 1-region model. The snippet below
+provides details on the setup for the Bernalillo and Santa Fe counties of New Mexico
+inferred jointly. The entries for “spllo” (parameters’ low bounds), “splhi” (parameters’ high bounds),
+“cini” (initial guess), “cvini” (diagonal entries for the MCMC proposal covariance) now contain
+10 entries (4 parameters for each region,
+<span class="math notranslate nohighlight">\(\log\sigma_a\)</span>, <span class="math notranslate nohighlight">\(\log\sigma_m\)</span>, <span class="math notranslate nohighlight">\(\log\tau_{\phi}^2\)</span>, <span class="math notranslate nohighlight">\(\lambda\)</span>)</p>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="nt">&quot;regioninfo&quot;</span><span class="p">:{</span>
+<span class="w">    </span><span class="nt">&quot;count_data&quot;</span><span class="p">:[</span><span class="s2">&quot;BERNALILLO.dat&quot;</span><span class="p">,</span><span class="s2">&quot;SANTA_FE.dat&quot;</span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;population_data&quot;</span><span class="p">:[</span><span class="mf">0.670</span><span class="p">,</span><span class="w"> </span><span class="mf">0.145</span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;region_tag&quot;</span><span class="p">:[</span><span class="s2">&quot;BERNALILLO&quot;</span><span class="p">,</span><span class="s2">&quot;SANTA_FE&quot;</span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;day0&quot;</span><span class="p">:</span><span class="s2">&quot;2020-06-10&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;running_avg_obs&quot;</span><span class="p">:</span><span class="mi">7</span>
+<span class="p">},</span>
+<span class="nt">&quot;mcmcopts&quot;</span><span class="p">:{</span>
+<span class="w">    </span><span class="nt">&quot;logfile&quot;</span><span class="p">:</span><span class="s2">&quot;logmcmcNM.txt&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;nsteps&quot;</span><span class="p">:</span><span class="mi">2000000</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;nfinal&quot;</span><span class="p">:</span><span class="mi">10000000</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;gamma&quot;</span><span class="p">:</span><span class="mf">0.2</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;spllo&quot;</span><span class="p">:[</span><span class="mi">-30</span><span class="p">,</span><span class="w"> </span><span class="mf">0.00001</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="w"> </span><span class="mf">0.1</span><span class="p">,</span>
+<span class="w">             </span><span class="mi">-30</span><span class="p">,</span><span class="w"> </span><span class="mf">0.00001</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="w"> </span><span class="mf">0.1</span><span class="p">,</span>
+<span class="w">             </span><span class="mf">-30.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0001</span><span class="p">,</span><span class="w"> </span><span class="mf">-30.0</span><span class="p">,</span><span class="w"> </span><span class="mi">-20</span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;splhi&quot;</span><span class="p">:[</span><span class="w"> </span><span class="mi">40</span><span class="p">,</span><span class="w"> </span><span class="mf">0.500</span><span class="p">,</span><span class="mf">50.0</span><span class="p">,</span><span class="mf">400.0</span><span class="p">,</span>
+<span class="w">              </span><span class="mi">40</span><span class="p">,</span><span class="w"> </span><span class="mf">0.500</span><span class="p">,</span><span class="mf">50.0</span><span class="p">,</span><span class="mf">400.0</span><span class="p">,</span>
+<span class="w">              </span><span class="mf">10.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.99</span><span class="p">,</span><span class="w"> </span><span class="mf">10.0</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;cini&quot;</span><span class="p">:[</span><span class="mf">-4.9</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0067</span><span class="p">,</span><span class="w"> </span><span class="mf">3.97</span><span class="p">,</span><span class="w"> </span><span class="mf">11.74</span><span class="p">,</span>
+<span class="w">            </span><span class="mf">-15.8</span><span class="p">,</span><span class="w"> </span><span class="mf">0.006</span><span class="p">,</span><span class="w"> </span><span class="mf">4.65</span><span class="p">,</span><span class="w"> </span><span class="mf">16.27</span><span class="p">,</span>
+<span class="w">             </span><span class="mf">3.25</span><span class="p">,</span><span class="w"> </span><span class="mf">0.6</span><span class="p">,</span><span class="w"> </span><span class="mf">-13.02</span><span class="p">,</span><span class="w"> </span><span class="mf">-6.8</span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;cvini&quot;</span><span class="p">:[</span><span class="mf">1e0</span><span class="p">,</span><span class="w"> </span><span class="mf">6e-8</span><span class="p">,</span><span class="w"> </span><span class="mf">1e-1</span><span class="p">,</span><span class="w"> </span><span class="mf">1e-1</span><span class="p">,</span>
+<span class="w">             </span><span class="mf">1e0</span><span class="p">,</span><span class="w"> </span><span class="mf">6e-8</span><span class="p">,</span><span class="w"> </span><span class="mf">1e-1</span><span class="p">,</span><span class="w"> </span><span class="mf">1e-1</span><span class="p">,</span>
+<span class="w">             </span><span class="mf">1e-2</span><span class="p">,</span><span class="w"> </span><span class="mf">1e-4</span><span class="p">,</span><span class="w"> </span><span class="mf">1e-2</span><span class="p">,</span><span class="w"> </span><span class="mf">1e-2</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="two-region-inference-results">
+<h3><span class="section-number">6.1.2. </span>Two-region Inference Results<a class="headerlink" href="#two-region-inference-results" title="Link to this heading"></a></h3>
+<p>The posterior predictive results for the case described above are shown in  <a class="reference internal" href="#b2reg"><span class="std std-numref">Fig. 6.2</span></a> for Bernalillo County
+and in <a class="reference internal" href="#sf2reg"><span class="std std-numref">Fig. 6.3</span></a> for the Santa Fe County.</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><figure class="align-default" id="b2reg">
+<a class="reference internal image-reference" href="_images/B_forecast_2reg.pdf"><img alt="_images/B_forecast_2reg.pdf" src="_images/B_forecast_2reg.pdf" style="width: 100%;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 6.2 </span><span class="caption-text">2-region inference: Bernalillo County</span><a class="headerlink" href="#b2reg" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</td>
+<td><figure class="align-default" id="sf2reg">
+<a class="reference internal image-reference" href="_images/SF_forecast_2reg.pdf"><img alt="_images/SF_forecast_2reg.pdf" src="_images/SF_forecast_2reg.pdf" style="width: 100%;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 6.3 </span><span class="caption-text">2-region inference: Santa Fe County</span><a class="headerlink" href="#sf2reg" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="three-regions-example">
+<h2><span class="section-number">6.2. </span>Three Regions Example<a class="headerlink" href="#three-regions-example" title="Link to this heading"></a></h2>
+<p>The setup for the three-region example follows the same pattern as the one for two regions.</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><figure class="align-default" id="b3reg">
+<a class="reference internal image-reference" href="_images/B_forecast_3reg.pdf"><img alt="_images/B_forecast_3reg.pdf" src="_images/B_forecast_3reg.pdf" style="width: 100%;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 6.4 </span><span class="caption-text">3-region inference: Bernalillo County</span><a class="headerlink" href="#b3reg" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</td>
+<td><figure class="align-default" id="sf3reg">
+<a class="reference internal image-reference" href="_images/SF_forecast_3reg.pdf"><img alt="_images/SF_forecast_3reg.pdf" src="_images/SF_forecast_3reg.pdf" style="width: 100%;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 6.5 </span><span class="caption-text">3-region inference: Santa Fe County</span><a class="headerlink" href="#sf3reg" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</td>
+<td><figure class="align-default" id="v3reg">
+<a class="reference internal image-reference" href="_images/V_forecast_3reg.pdf"><img alt="_images/V_forecast_3reg.pdf" src="_images/V_forecast_3reg.pdf" style="width: 100%;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 6.6 </span><span class="caption-text">3-region inference: Valencia County</span><a class="headerlink" href="#v3reg" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="json-input-files">
+<h2><span class="section-number">6.3. </span>JSON Input Files<a class="headerlink" href="#json-input-files" title="Link to this heading"></a></h2>
+<section id="two-regions">
+<h3><span class="section-number">6.3.1. </span>Two Regions<a class="headerlink" href="#two-regions" title="Link to this heading"></a></h3>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;regioninfo&quot;</span><span class="p">:{</span>
+<span class="w">        </span><span class="nt">&quot;count_data&quot;</span><span class="p">:[</span><span class="s2">&quot;BERNALILLO.dat&quot;</span><span class="p">,</span><span class="s2">&quot;SANTA_FE.dat&quot;</span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;population_data&quot;</span><span class="p">:[</span><span class="mf">0.670</span><span class="p">,</span><span class="mf">0.145</span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;region_tag&quot;</span><span class="p">:[</span><span class="s2">&quot;BERNALILLO&quot;</span><span class="p">,</span><span class="s2">&quot;SANTA_FE&quot;</span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;day0&quot;</span><span class="p">:</span><span class="s2">&quot;2020-06-10&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;running_avg_obs&quot;</span><span class="p">:</span><span class="mi">7</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;mcmcopts&quot;</span><span class="p">:{</span>
+<span class="w">        </span><span class="nt">&quot;logfile&quot;</span><span class="p">:</span><span class="s2">&quot;logmcmcNM.txt&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;nsteps&quot;</span><span class="p">:</span><span class="mi">2000000</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;nfinal&quot;</span><span class="p">:</span><span class="mi">10000000</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;gamma&quot;</span><span class="p">:</span><span class="mf">0.2</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;spllo&quot;</span><span class="p">:[</span><span class="mi">-30</span><span class="p">,</span><span class="mf">0.00001</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="mi">-30</span><span class="p">,</span><span class="mf">0.00001</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">-30.0</span><span class="p">,</span><span class="mf">0.0001</span><span class="p">,</span><span class="mf">-30.0</span><span class="p">,</span><span class="mi">-20</span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;splhi&quot;</span><span class="p">:[</span><span class="w"> </span><span class="mi">40</span><span class="p">,</span><span class="mf">0.500</span><span class="p">,</span><span class="mf">50.0</span><span class="p">,</span><span class="mf">400.0</span><span class="p">,</span><span class="mi">40</span><span class="p">,</span><span class="mf">0.500</span><span class="p">,</span><span class="mf">50.0</span><span class="p">,</span><span class="mf">400.0</span><span class="p">,</span><span class="mf">10.0</span><span class="p">,</span><span class="mf">0.99</span><span class="p">,</span><span class="mf">10.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;cini&quot;</span><span class="p">:[</span><span class="mf">-4.9</span><span class="p">,</span><span class="mf">0.0067</span><span class="p">,</span><span class="mf">3.97</span><span class="p">,</span><span class="mf">11.74</span><span class="p">,</span><span class="mf">-15.8</span><span class="p">,</span><span class="mf">0.006</span><span class="p">,</span><span class="mf">4.65</span><span class="p">,</span><span class="mf">16.27</span><span class="p">,</span><span class="mf">3.25</span><span class="p">,</span><span class="mf">0.6</span><span class="p">,</span><span class="mf">-13.02</span><span class="p">,</span><span class="mf">-6.8</span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;cvini&quot;</span><span class="p">:[</span><span class="mf">1e0</span><span class="p">,</span><span class="mf">6e-8</span><span class="p">,</span><span class="mf">1e-1</span><span class="p">,</span><span class="mf">1e-1</span><span class="p">,</span><span class="mf">1e0</span><span class="p">,</span><span class="mf">6e-8</span><span class="p">,</span><span class="mf">1e-1</span><span class="p">,</span><span class="mf">1e-1</span><span class="p">,</span><span class="mf">1e-2</span><span class="p">,</span><span class="mf">1e-4</span><span class="p">,</span><span class="mf">1e-2</span><span class="p">,</span><span class="mf">1e-2</span><span class="p">]</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;bayesmod&quot;</span><span class="p">:{</span>
+<span class="w">        </span><span class="nt">&quot;prior_types&quot;</span><span class="p">:[</span><span class="s2">&quot;g&quot;</span><span class="p">,</span><span class="s2">&quot;u&quot;</span><span class="p">,</span><span class="s2">&quot;u&quot;</span><span class="p">,</span><span class="s2">&quot;u&quot;</span><span class="p">,</span><span class="s2">&quot;g&quot;</span><span class="p">,</span><span class="s2">&quot;u&quot;</span><span class="p">,</span><span class="s2">&quot;u&quot;</span><span class="p">,</span><span class="s2">&quot;u&quot;</span><span class="p">,</span><span class="s2">&quot;lgm&quot;</span><span class="p">,</span><span class="s2">&quot;u&quot;</span><span class="p">,</span><span class="s2">&quot;u&quot;</span><span class="p">,</span><span class="s2">&quot;u&quot;</span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;prior_info&quot;</span><span class="p">:[[</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]],</span>
+<span class="w">        </span><span class="nt">&quot;error_model_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;addMult&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;lpf_type&quot;</span><span class="p">:</span><span class="s2">&quot;gaussian&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;modelopts&quot;</span><span class="p">:{</span>
+<span class="w">        </span><span class="nt">&quot;num_waves&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;useconv&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;incubation_median&quot;</span><span class="p">:</span><span class="mf">5.1</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;incubation_sigma&quot;</span><span class="p">:</span><span class="mf">0.418</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;incubation_025&quot;</span><span class="p">:</span><span class="mf">2.2</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;incubation_975&quot;</span><span class="p">:</span><span class="mf">11.5</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;incubation_model&quot;</span><span class="p">:</span><span class="s2">&quot;lognormal&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;incubation_type&quot;</span><span class="p">:</span><span class="s2">&quot;stochastic&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;ppopts&quot;</span><span class="p">:{</span>
+<span class="w">        </span><span class="nt">&quot;nstart&quot;</span><span class="p">:</span><span class="mi">500000</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;nsamples&quot;</span><span class="p">:</span><span class="mi">5000</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;days_extra&quot;</span><span class="p">:</span><span class="mi">14</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;runmodel&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;postpred&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;quantile_newcases&quot;</span><span class="p">:[</span><span class="mf">0.025</span><span class="p">,</span><span class="mf">0.25</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.75</span><span class="p">,</span><span class="mf">0.975</span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;linetype_newcases&quot;</span><span class="p">:[</span><span class="s2">&quot;b--&quot;</span><span class="p">,</span><span class="s2">&quot;g-&quot;</span><span class="p">,</span><span class="s2">&quot;r-&quot;</span><span class="p">,</span><span class="s2">&quot;g-&quot;</span><span class="p">,</span><span class="s2">&quot;b--&quot;</span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;linewidth_newcases&quot;</span><span class="p">:[</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;fillbetw_newcases&quot;</span><span class="p">:[[</span><span class="mf">0.25</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="s2">&quot;g&quot;</span><span class="p">,</span><span class="mf">0.4</span><span class="p">],[</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.75</span><span class="p">,</span><span class="s2">&quot;g&quot;</span><span class="p">,</span><span class="mf">0.4</span><span class="p">]],</span>
+<span class="w">        </span><span class="nt">&quot;xylim_newcases&quot;</span><span class="p">:[</span><span class="s2">&quot;2020-06-01&quot;</span><span class="p">,</span><span class="s2">&quot;2020-07-15&quot;</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">120</span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;xylbl_newcases&quot;</span><span class="p">:[</span><span class="s2">&quot;Date&quot;</span><span class="p">,</span><span class="mi">16</span><span class="p">,</span><span class="s2">&quot;Reported New Cases on Date&quot;</span><span class="p">,</span><span class="mi">16</span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;xyticklbl_newcases&quot;</span><span class="p">:[</span><span class="mi">14</span><span class="p">,</span><span class="mi">14</span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;newcases&quot;</span><span class="p">:[</span><span class="s2">&quot;ko&quot;</span><span class="p">,</span><span class="mi">6</span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;figtype&quot;</span><span class="p">:</span><span class="s2">&quot;pdf&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;fpredout&quot;</span><span class="p">:</span><span class="s2">&quot;_forecast&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;fout_newcases&quot;</span><span class="p">:</span><span class="s2">&quot;_forecast&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;infopts&quot;</span><span class="p">:{</span>
+<span class="w">        </span><span class="nt">&quot;inftype&quot;</span><span class="p">:</span><span class="s2">&quot;gamma&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;ndays&quot;</span><span class="p">:</span><span class="mi">180</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;runmodel&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;postpred&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;quantile_inf&quot;</span><span class="p">:[</span><span class="mf">0.025</span><span class="p">,</span><span class="mf">0.25</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.75</span><span class="p">,</span><span class="mf">0.975</span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;linetype_inf&quot;</span><span class="p">:[</span><span class="s2">&quot;b--&quot;</span><span class="p">,</span><span class="s2">&quot;g-&quot;</span><span class="p">,</span><span class="s2">&quot;r-&quot;</span><span class="p">,</span><span class="s2">&quot;g-&quot;</span><span class="p">,</span><span class="s2">&quot;b--&quot;</span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;linewidth_inf&quot;</span><span class="p">:[</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;fillbetw_inf&quot;</span><span class="p">:[[</span><span class="mf">0.25</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="s2">&quot;g&quot;</span><span class="p">,</span><span class="mf">0.4</span><span class="p">],[</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.75</span><span class="p">,</span><span class="s2">&quot;g&quot;</span><span class="p">,</span><span class="mf">0.4</span><span class="p">]],</span>
+<span class="w">        </span><span class="nt">&quot;xylim_inf&quot;</span><span class="p">:[</span><span class="s2">&quot;2020-06-01&quot;</span><span class="p">,</span><span class="s2">&quot;2020-05-01&quot;</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">200</span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;xylbl_inf&quot;</span><span class="p">:[</span><span class="s2">&quot;Date&quot;</span><span class="p">,</span><span class="mi">16</span><span class="p">,</span><span class="s2">&quot;Infection Rate [ppl/day]&quot;</span><span class="p">,</span><span class="mi">16</span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;xyticklbl_inf&quot;</span><span class="p">:[</span><span class="mi">14</span><span class="p">,</span><span class="mi">14</span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;newcases&quot;</span><span class="p">:[</span><span class="s2">&quot;ko&quot;</span><span class="p">,</span><span class="mi">6</span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;figtype&quot;</span><span class="p">:</span><span class="s2">&quot;pdf&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;finfout&quot;</span><span class="p">:</span><span class="s2">&quot;_infection&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;fout_inf&quot;</span><span class="p">:</span><span class="s2">&quot;_infection&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;csvout&quot;</span><span class="p">:{</span>
+<span class="w">        </span><span class="nt">&quot;nskip&quot;</span><span class="p">:</span><span class="mi">50</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;finfcurve&quot;</span><span class="p">:</span><span class="s2">&quot;_infection&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;fnewcases&quot;</span><span class="p">:</span><span class="s2">&quot;_forecast&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;qlist&quot;</span><span class="p">:[</span><span class="mf">0.025</span><span class="p">,</span><span class="mf">0.25</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.75</span><span class="p">,</span><span class="mf">0.975</span><span class="p">]</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="three-regions">
+<h3><span class="section-number">6.3.2. </span>Three Regions<a class="headerlink" href="#three-regions" title="Link to this heading"></a></h3>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;regioninfo&quot;</span><span class="p">:{</span>
+<span class="w">        </span><span class="nt">&quot;count_data&quot;</span><span class="p">:[</span><span class="s2">&quot;BERNALILLO.dat&quot;</span><span class="p">,</span><span class="s2">&quot;SANTA_FE.dat&quot;</span><span class="p">,</span><span class="s2">&quot;VALENCIA.dat&quot;</span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;population_data&quot;</span><span class="p">:[</span><span class="mf">0.670</span><span class="p">,</span><span class="mf">0.145</span><span class="p">,</span><span class="mf">0.077</span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;region_tag&quot;</span><span class="p">:[</span><span class="s2">&quot;BERNALILLO&quot;</span><span class="p">,</span><span class="s2">&quot;SANTA_FE&quot;</span><span class="p">,</span><span class="s2">&quot;VALENCIA&quot;</span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;day0&quot;</span><span class="p">:</span><span class="s2">&quot;2020-06-10&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;running_avg_obs&quot;</span><span class="p">:</span><span class="mi">7</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;mcmcopts&quot;</span><span class="p">:{</span>
+<span class="w">        </span><span class="nt">&quot;logfile&quot;</span><span class="p">:</span><span class="s2">&quot;logmcmcNM.txt&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;nsteps&quot;</span><span class="p">:</span><span class="mi">2000000</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;nfinal&quot;</span><span class="p">:</span><span class="mi">10000000</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;gamma&quot;</span><span class="p">:</span><span class="mf">0.2</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;spllo&quot;</span><span class="p">:[</span><span class="mi">-30</span><span class="p">,</span><span class="mf">0.00001</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="mi">-30</span><span class="p">,</span><span class="mf">0.00001</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="mi">-30</span><span class="p">,</span><span class="mf">0.00001</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">-30.0</span><span class="p">,</span><span class="mf">0.0001</span><span class="p">,</span><span class="mf">-30.0</span><span class="p">,</span><span class="mi">-20</span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;splhi&quot;</span><span class="p">:[</span><span class="w"> </span><span class="mi">40</span><span class="p">,</span><span class="mf">0.500</span><span class="p">,</span><span class="mf">50.0</span><span class="p">,</span><span class="mf">400.0</span><span class="p">,</span><span class="mi">40</span><span class="p">,</span><span class="mf">0.500</span><span class="p">,</span><span class="mf">50.0</span><span class="p">,</span><span class="mf">400.0</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mf">0.500</span><span class="p">,</span><span class="mf">30.0</span><span class="p">,</span><span class="mf">400.0</span><span class="p">,</span><span class="mf">10.0</span><span class="p">,</span><span class="mf">0.99</span><span class="p">,</span><span class="mf">10.0</span><span class="p">,</span><span class="mf">2.0</span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;cini&quot;</span><span class="p">:[</span><span class="mf">-4.9</span><span class="p">,</span><span class="mf">0.0067</span><span class="p">,</span><span class="mf">3.97</span><span class="p">,</span><span class="mf">11.74</span><span class="p">,</span><span class="mf">-5.8</span><span class="p">,</span><span class="mf">0.006</span><span class="p">,</span><span class="mf">4.65</span><span class="p">,</span><span class="mf">16.27</span><span class="p">,</span><span class="mf">-5.33</span><span class="p">,</span><span class="mf">0.0066</span><span class="p">,</span><span class="mf">3.92</span><span class="p">,</span><span class="mf">12.26</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">-13.02</span><span class="p">,</span><span class="mf">-6.8</span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;cvini&quot;</span><span class="p">:[</span><span class="mf">1e0</span><span class="p">,</span><span class="mf">6e-8</span><span class="p">,</span><span class="mf">1e-1</span><span class="p">,</span><span class="mf">1e-1</span><span class="p">,</span><span class="mf">1e0</span><span class="p">,</span><span class="mf">6e-8</span><span class="p">,</span><span class="mf">1e-1</span><span class="p">,</span><span class="mf">1e-1</span><span class="p">,</span><span class="mf">1e0</span><span class="p">,</span><span class="mf">3e-8</span><span class="p">,</span><span class="mf">1e-2</span><span class="p">,</span><span class="mf">1e-1</span><span class="p">,</span><span class="mf">1e-2</span><span class="p">,</span><span class="mf">1e-4</span><span class="p">,</span><span class="mf">1e-2</span><span class="p">,</span><span class="mf">1e-2</span><span class="p">]</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;bayesmod&quot;</span><span class="p">:{</span>
+<span class="w">        </span><span class="nt">&quot;prior_types&quot;</span><span class="p">:[</span><span class="s2">&quot;g&quot;</span><span class="p">,</span><span class="s2">&quot;u&quot;</span><span class="p">,</span><span class="s2">&quot;u&quot;</span><span class="p">,</span><span class="s2">&quot;u&quot;</span><span class="p">,</span><span class="s2">&quot;g&quot;</span><span class="p">,</span><span class="s2">&quot;u&quot;</span><span class="p">,</span><span class="s2">&quot;u&quot;</span><span class="p">,</span><span class="s2">&quot;u&quot;</span><span class="p">,</span><span class="s2">&quot;g&quot;</span><span class="p">,</span><span class="s2">&quot;u&quot;</span><span class="p">,</span><span class="s2">&quot;u&quot;</span><span class="p">,</span><span class="s2">&quot;u&quot;</span><span class="p">,</span><span class="s2">&quot;lgm&quot;</span><span class="p">,</span><span class="s2">&quot;u&quot;</span><span class="p">,</span><span class="s2">&quot;u&quot;</span><span class="p">,</span><span class="s2">&quot;u&quot;</span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;prior_info&quot;</span><span class="p">:[[</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]],</span>
+<span class="w">        </span><span class="nt">&quot;error_model_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;addMult&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;lpf_type&quot;</span><span class="p">:</span><span class="s2">&quot;gaussian&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;modelopts&quot;</span><span class="p">:{</span>
+<span class="w">        </span><span class="nt">&quot;num_waves&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;useconv&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;incubation_median&quot;</span><span class="p">:</span><span class="mf">5.1</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;incubation_sigma&quot;</span><span class="p">:</span><span class="mf">0.418</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;incubation_025&quot;</span><span class="p">:</span><span class="mf">2.2</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;incubation_975&quot;</span><span class="p">:</span><span class="mf">11.5</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;incubation_model&quot;</span><span class="p">:</span><span class="s2">&quot;lognormal&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;incubation_type&quot;</span><span class="p">:</span><span class="s2">&quot;stochastic&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;ppopts&quot;</span><span class="p">:{</span>
+<span class="w">        </span><span class="nt">&quot;nstart&quot;</span><span class="p">:</span><span class="mi">500000</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;nsamples&quot;</span><span class="p">:</span><span class="mi">5000</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;days_extra&quot;</span><span class="p">:</span><span class="mi">14</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;runmodel&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;postpred&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;quantile_newcases&quot;</span><span class="p">:[</span><span class="mf">0.025</span><span class="p">,</span><span class="mf">0.25</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.75</span><span class="p">,</span><span class="mf">0.975</span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;linetype_newcases&quot;</span><span class="p">:[</span><span class="s2">&quot;b--&quot;</span><span class="p">,</span><span class="s2">&quot;g-&quot;</span><span class="p">,</span><span class="s2">&quot;r-&quot;</span><span class="p">,</span><span class="s2">&quot;g-&quot;</span><span class="p">,</span><span class="s2">&quot;b--&quot;</span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;linewidth_newcases&quot;</span><span class="p">:[</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;fillbetw_newcases&quot;</span><span class="p">:[[</span><span class="mf">0.25</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="s2">&quot;g&quot;</span><span class="p">,</span><span class="mf">0.4</span><span class="p">],[</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.75</span><span class="p">,</span><span class="s2">&quot;g&quot;</span><span class="p">,</span><span class="mf">0.4</span><span class="p">]],</span>
+<span class="w">        </span><span class="nt">&quot;xylim_newcases&quot;</span><span class="p">:[</span><span class="s2">&quot;2020-06-01&quot;</span><span class="p">,</span><span class="s2">&quot;2020-07-15&quot;</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">120</span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;xylbl_newcases&quot;</span><span class="p">:[</span><span class="s2">&quot;Date&quot;</span><span class="p">,</span><span class="mi">16</span><span class="p">,</span><span class="s2">&quot;Reported New Cases on Date&quot;</span><span class="p">,</span><span class="mi">16</span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;xyticklbl_newcases&quot;</span><span class="p">:[</span><span class="mi">14</span><span class="p">,</span><span class="mi">14</span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;newdata&quot;</span><span class="p">:</span><span class="s2">&quot;plus10.dat&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;newcases&quot;</span><span class="p">:[</span><span class="s2">&quot;ko&quot;</span><span class="p">,</span><span class="mi">6</span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;figtype&quot;</span><span class="p">:</span><span class="s2">&quot;pdf&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;fpredout&quot;</span><span class="p">:</span><span class="s2">&quot;_forecast&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;fout_newcases&quot;</span><span class="p">:</span><span class="s2">&quot;_forecast&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;infopts&quot;</span><span class="p">:{</span>
+<span class="w">        </span><span class="nt">&quot;inftype&quot;</span><span class="p">:</span><span class="s2">&quot;gamma&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;ndays&quot;</span><span class="p">:</span><span class="mi">180</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;runmodel&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;postpred&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;quantile_inf&quot;</span><span class="p">:[</span><span class="mf">0.025</span><span class="p">,</span><span class="mf">0.25</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.75</span><span class="p">,</span><span class="mf">0.975</span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;linetype_inf&quot;</span><span class="p">:[</span><span class="s2">&quot;b--&quot;</span><span class="p">,</span><span class="s2">&quot;g-&quot;</span><span class="p">,</span><span class="s2">&quot;r-&quot;</span><span class="p">,</span><span class="s2">&quot;g-&quot;</span><span class="p">,</span><span class="s2">&quot;b--&quot;</span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;linewidth_inf&quot;</span><span class="p">:[</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;fillbetw_inf&quot;</span><span class="p">:[[</span><span class="mf">0.25</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="s2">&quot;g&quot;</span><span class="p">,</span><span class="mf">0.4</span><span class="p">],[</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.75</span><span class="p">,</span><span class="s2">&quot;g&quot;</span><span class="p">,</span><span class="mf">0.4</span><span class="p">]],</span>
+<span class="w">        </span><span class="nt">&quot;xylim_inf&quot;</span><span class="p">:[</span><span class="s2">&quot;2020-06-01&quot;</span><span class="p">,</span><span class="s2">&quot;2020-05-01&quot;</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">200</span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;xylbl_inf&quot;</span><span class="p">:[</span><span class="s2">&quot;Date&quot;</span><span class="p">,</span><span class="mi">16</span><span class="p">,</span><span class="s2">&quot;Infection Rate [ppl/day]&quot;</span><span class="p">,</span><span class="mi">16</span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;xyticklbl_inf&quot;</span><span class="p">:[</span><span class="mi">14</span><span class="p">,</span><span class="mi">14</span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;newcases&quot;</span><span class="p">:[</span><span class="s2">&quot;ko&quot;</span><span class="p">,</span><span class="mi">6</span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;xy_scale&quot;</span><span class="p">:[</span><span class="s2">&quot;linear&quot;</span><span class="p">,</span><span class="s2">&quot;linear&quot;</span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;figtype&quot;</span><span class="p">:</span><span class="s2">&quot;pdf&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;finfout&quot;</span><span class="p">:</span><span class="s2">&quot;_infection&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;fout_inf&quot;</span><span class="p">:</span><span class="s2">&quot;_infection&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;csvout&quot;</span><span class="p">:{</span>
+<span class="w">        </span><span class="nt">&quot;nskip&quot;</span><span class="p">:</span><span class="mi">50</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;finfcurve&quot;</span><span class="p">:</span><span class="s2">&quot;_infection&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;fnewcases&quot;</span><span class="p">:</span><span class="s2">&quot;_forecast&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;qlist&quot;</span><span class="p">:[</span><span class="mf">0.025</span><span class="p">,</span><span class="mf">0.25</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.75</span><span class="p">,</span><span class="mf">0.975</span><span class="p">]</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="example2.html" class="btn btn-neutral float-left" title="5. Multi-Wave Model" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="modules.html" class="btn btn-neutral float-right" title="7. Developer Reference Guide" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024 National Technology &amp; Engineering Solutions of Sandia, LLC (NTESS). Under the terms of Contract DE-NA0003525 with NTESS, the U.S. Government retains certain rights in this software..</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

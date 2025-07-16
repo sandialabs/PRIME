@@ -1,3 +1,4 @@
+
 Model description
 =================
 
@@ -113,7 +114,7 @@ wave only.
 
 .. _multi-wave:
 
-Multi-Wave Model
+Multi-wave Model
 -----------------
 
 The multiple wave model is an extension of the single wave model presented above. In the multi-wave model, 
@@ -132,6 +133,9 @@ multiple peaks across certain regions. The resulting model is written as
 Here :math:`N_j` represents the total number of cases over the course of the *j-th* wave, and |dtj| represents 
 the time shift for the *j-th* infection curve with respect to the start of the epidemic |t0|.
 
+
 .. [Lauer2020] `Lauer S.A., Grantz K.H., Bi Q., Jones F.K., Zheng Q., Meredith H.R., Azman A.S., Reich N.G., Lessler J., The Incubation Period of Coronavirus Disease 2019 (COVID-19) From Publicly Reported Confirmed Cases: Estimation and Application, Annals of Internal Medicine (2020), <https://doi.org/10.7326/M20-0504>`_
 
 .. [Safta2020] `Safta C., Ray J., and Sargsyan K., Characterization of partially observed epidemics through Bayesian inference: application to COVID-19, Computational Mechanics (2020), <https://doi.org/10.1007/s00466-020-01897-z>`_
+
+

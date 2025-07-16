@@ -1,3 +1,4 @@
+
 About
 =====
 
@@ -11,8 +12,9 @@ regional, state, and country levels. We include examples using publicly availabl
 
 Team
 ----
-PRIME was written and developed by Cosmin Safta, Jaideep Ray, Patrick Blonigan, and Kamaljit Chowdhary. 
-We would like to acknowledge helpful suggestions made by several colleagues:
+PRIME v2 was developed by Cosmin Safta, Jaideep Ray, and Wyatt Bridgman. PRIME v1 was written 
+and developed by Cosmin Safta, Jaideep Ray, Patrick Blonigan, and Kamaljit Chowdhary. 
+We would like to acknowledge helpful suggestions made by several colleagues earlier during the project:
 Erin Acquesta, Thomas Catanach, Bert Debusschere, Sean DeRosa, Pat Finley, Edgar Galvan, 
 Gianluca Geraci, John D. Jakeman, Mohammad Khalil, Khachik Sargsyan, and Teresa Portone.
 
@@ -38,4 +40,4 @@ default python packages.
 
 * dateutil, h5py, matplotlib, numpy, scipy
 
-We have tested PRIME using with python versions 3.6-3.8.
+We have tested PRIME using with python versions 3.6-3.10.

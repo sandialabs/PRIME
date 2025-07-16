@@ -10,7 +10,7 @@ The first example considers daily confirmed case data in the state of New Mexico
 up to August 26th, 2020, shown in :numref:`casedataNM0826`.
 
 .. figure:: ./figures/NM_case_data_0826.pdf 
-    :width: 75 %
+    :width: 60 %
     :name: casedataNM0826
 
     Daily confirmed cases of COVID-19 in New Mexico up
@@ -71,7 +71,7 @@ New Case Forecast Results
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. figure:: ./figures/NM_newcases_2wave_0826.pdf 
-    :width: 75 %
+    :width: 60 %
     :name: newcasesNM0826
 
     Two-wave forecast for New Mexico on August 26th, 2020. Symbols and lines are
@@ -88,7 +88,7 @@ The first example considers daily confirmed case data in the state of New Mexico
 up to November 10th, 2020, shown in :numref:`casedataNM1110`.
 
 .. figure:: ./figures/NM_case_data_1110.pdf 
-    :width: 75 %
+    :width: 60 %
     :name: casedataNM1110
 
     Daily confirmed cases of COVID-19 in New Mexico up
@@ -129,7 +129,7 @@ New Case Forecast Results
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. figure:: ./figures/NM_newcases_3wave_1110.pdf 
-    :width: 75 %
+    :width: 60 %
     :name: newcasesNM1110
 
     Three-wave forecast for New Mexico on November 10th, 2020. Symbols and lines are
@@ -147,274 +147,167 @@ Two Wave
 
 .. code-block:: JSON
 
-   {
-       "regioninfo": {
-           "regionname": "NM",
-           "fchain": "NM_mcmc.h5",
-           "day0": "2020-03-01",
-           "running_avg_obs": 7
-       },
-       "mcmcopts": {
-           "model_type": "twoWave",
-           "error_model_type": "addMult",
-           "logfile": "logmcmcNM_2wave.txt",
-           "nsteps": 1000000,
-           "nfinal": 10000000,
-           "useconv": 1,
-           "incubation_type": "uncertain",
-           "gamma": 0.7,
-           "spllo": [
-               -2.877357932637136,
-               0.009575447192753876,
-               3.4902877959833143,
-               12.321758685351922,
-               20,
-               0.0002,
-               0.1,
-               0.1,
-               0.0,
-               -20
-           ],
-           "splhi": [
-               2.969027281659369,
-               0.01839093251179052,
-               5.360610614202396,
-               26.17367878217896,
-               100,
-               0.5,
-               30.0,
-               400.0,
-               10.0,
-               1.0
-           ],
-           "cini": [
-               0.04583467451111642,
-               0.013983189852272197,
-               4.425449205092855,
-               19.247718733765442,
-               60,
-               0.02,
-               6.0,
-               20.2,
-               3.0,
-               0.1
-           ],
-           "cvini": [
-               0.9494505576095775,
-               2.158688372504182e-06,
-               0.09716965123197129,
-               5.3298802880244684,
-               225,
-               0.001,
-               0.01,
-               0.01,
-               0.01,
-               0.01
-           ]
-       },
-       "bayesmod": {
-           "prior_types": ["g","u","u","u","g","u","u","u","u","u"],
-           "prior_info": [
-               [0.04583467451111642,0.9743975357160841],[0,1],[0,1],[0,1],
-               [60,15.0],[0,1],[0,1],[0,1],
-               [0,1],[0,1]
-           ]
-       },
-       "incopts": {
-           "incubation_median": 5.1,
-           "incubation_sigma": 0.418,
-           "incubation_025": 2.2,
-           "incubation_975": 11.5
-       },
-       "ppopts": {
-           "nstart": 100000,
-           "nsamples": 10000,
-           "days_extra": 10,
-           "runmodel": 1,
-           "postpred": 1,
-           "quantile_newcases": [0.025,0.25,0.5,0.75,0.975],
-           "linetype_newcases": ["b--","g-","r-","g-","b--"],
-           "linewidth_newcases": [3,2,3,2,3],
-           "fillbetw_newcases": [[0.25,0.5,"g",0.4],[0.5,0.75,"g",0.4]],
-           "xylim_newcases": ["2020-03-01","2020-04-15",0,500],
-           "xylbl_newcases": ["Date",16,"Reported New Cases on Date",16],
-           "xyticklbl_newcases": [14,14],
-           "newcases": ["ko",6],
-           "figtype": "pdf",
-           "fpredout": "NM_epidemic_curve",
-           "fout_newcases": "NM_epidemic_curve"
-       },
-       "infopts": {
-           "inftype": "gamma",
-           "ndays": 180,
-           "runmodel": 1,
-           "postpred": 1,
-           "quantile_inf": [0.025,0.25,0.5,0.75,0.975],
-           "linetype_inf": ["b--","g-","r-","g-","b--"],
-           "linewidth_inf": [3,2,3,2,3],
-           "fillbetw_inf": [[0.25,0.5,"g",0.4],[0.5,0.75,"g",0.4]],
-           "xylim_inf": ["2020-03-01","2020-05-01",10,1000],
-           "xylbl_inf": ["Date",16,"Infection Rate [ppl/day]",16],
-           "xyticklbl_inf": [14,14],
-           "newcases": ["ko",6],
-           "figtype": "pdf",
-           "finfout": "NM_infection_curve",
-           "fout_inf": "NM_infection_curve"
-       },
-       "csvout": {
-           "nskip": 100,
-           "finfcurve": "NM_infection_curve",
-           "fnewcases": "NM_epidemic_curve",
-           "qlist": [0.025,0.25,0.5,0.75,0.975]
-       }
-   }
-  
+    {
+        "regioninfo":{
+            "count_data":["NM.dat"],
+            "population_data":[2.113],
+            "region_tag":["NM"],
+            "day0":"2020-03-01",
+            "running_avg_obs":7
+        },
+        "mcmcopts": {
+            "logfile": "logmcmcNM.txt",
+            "nsteps": 1000000,
+            "nfinal": 10000000,
+            "gamma": 0.7,
+            "spllo": [-2.87,0.0045,3.49,12.32,20,0.0002,0.1,0.1,-30.0,-20],
+            "splhi": [2.969,0.0087,5.36,26.17,120,0.5,30.0,400.0,10.0,1.0],
+            "cini": [0.0458,0.0066,4.42,19.24,80,0.006,6.0,12,-14,-2],
+            "cvini": [0.9494,2.1586e-06,0.097,4,4,1.0e-6,0.01,0.01,0.01,0.01]
+        },
+        "bayesmod": {
+            "prior_types": ["g","u","u","u","g","u","u","u","u","u"],
+            "prior_info": [[0.0458,0.974],[0,1],[0,1],[0,1],[60,15.0],[0,1],[0,1],[0,1],[0,1],[0,1]],
+            "error_model_type": "addMult",
+            "lpf_type":"gaussian"
+        },
+        "modelopts":{
+            "num_waves":2,
+            "useconv":1,
+            "incubation_median":5.1,
+            "incubation_sigma":0.418,
+            "incubation_025":2.2,
+            "incubation_975":11.5,
+            "incubation_model":"lognormal",
+            "incubation_type":"stochastic"
+        },
+        "ppopts": {
+            "nstart": 200000,
+            "nsamples": 1000,
+            "days_extra": 10,
+            "runmodel": 1,
+            "postpred": 1,
+            "quantile_newcases": [0.025,0.25,0.5,0.75,0.975],
+            "linetype_newcases": ["b--","g-","r-","g-","b--"],
+            "linewidth_newcases": [3,2,3,2,3],
+            "fillbetw_newcases": [[0.25,0.5,"g",0.4],[0.5,0.75,"g",0.4]],
+            "xylim_newcases": ["2020-03-01","2020-04-15",0,500],
+            "xylbl_newcases": ["Date",16,"Reported New Cases on Date",16],
+            "xyticklbl_newcases": [14,14],
+            "newcases": ["ko",6],
+            "figtype": "pdf",
+            "fpredout": "NM_epidemic_curve",
+            "fout_newcases": "NM_epidemic_curve"
+        },
+        "infopts": {
+            "inftype": "gamma",
+            "ndays": 180,
+            "runmodel": 1,
+            "postpred": 1,
+            "quantile_inf": [0.025,0.25,0.5,0.75,0.975],
+            "linetype_inf": ["b--","g-","r-","g-","b--"],
+            "linewidth_inf": [3,2,3,2,3],
+            "fillbetw_inf": [[0.25,0.5,"g",0.4],[0.5,0.75,"g",0.4]],
+            "xylim_inf": ["2020-03-01","2020-05-01",10,1000],
+            "xylbl_inf": ["Date",16,"Infection Rate [ppl/day]",16],
+            "xyticklbl_inf": [14,14],
+            "newcases": ["ko",6],
+            "figtype": "pdf",
+            "finfout": "NM_infection_curve",
+            "fout_inf": "NM_infection_curve"
+        },
+        "csvout": {
+            "nskip": 100,
+            "finfcurve": "NM_infection_curve",
+            "fnewcases": "NM_epidemic_curve",
+            "qlist": [0.025,0.25,0.5,0.75,0.975]
+        }
+    }
+ 
 Three Wave
 ~~~~~~~~~~
 
 .. code-block:: JSON
 
-   {
-       "regioninfo": {
-           "regionname": "NM",
-           "fchain": "NM_mcmc.h5",
-           "day0": "2020-03-01",
-           "running_avg_obs": 7
-       },
-       "mcmcopts": {
-           "model_type": "threeWave",
-           "error_model_type": "addMult",
-           "logfile": "logmcmcNM_3wave.txt",
-           "method": "am",
-           "nsteps": 1000000,
-           "nfinal": 10000000,
-           "useconv": 1,
-           "incubation_type": "uncertain",
-           "gamma": 0.7,
-           "spllo": [
-               -1.5198886917920054,
-               0.01343778201509116,
-               3.715378521549199,
-               17.57101548608055,
-               70.81826941872282,
-               0.010771637229469904,
-               0.0,
-               4.976510035388319,
-               140,
-               0.0002,
-               0.1,
-               0.1,
-               0.0,
-               -20
-           ],
-           "splhi": [
-               1.8197861405425901,
-               0.016193383448404937,
-               4.6929341387263,
-               24.574886774303263,
-               112.57412043153732,
-               0.013487998537736372,
-               11.208390968975433,
-               15.442199070301406,
-               220,
-               0.5,
-               30.0,
-               400.0,
-               10.0,
-               1.0
-           ],
-           "cini": [
-               0.1499487243752924,
-               0.014815582731748048,
-               4.204156330137749,
-               21.072951130191907,
-               91.69619492513007,
-               0.012129817883603138,
-               5.552822284750233,
-               10.209354552844863,
-               180,
-               0.02,
-               6.0,
-               20.2,
-               3.0,
-               0.1
-           ],
-           "cvini": [
-               0.30981744404803085,
-               2.1092609053558147e-07,
-               0.02654486068540284,
-               1.3626170283886236,
-               48.43197482789893,
-               2.0496163214019776e-07,
-               3.5539396824431955,
-               3.0425179715416664,
-               225,
-               0.001,
-               0.01,
-               0.01,
-               0.01,
-               0.01
-           ]
-       },
-       "bayesmod": {
-           "prior_types": [
-               "g","u","u","u",
-               "g","u","u","u",
-               "g","u","u","u",
-               "u","u"
-           ],
-           "prior_info": [
-               [0.1499487243752924,0.5566124720557659],[0,1],[0,1],[0,1],
-               [91.69619492513007,6.959308502135749],[0,1],[0,1],[0,1],
-               [180,15.0],[0,1],[0,1],[0,1],
-               [0,1],[0,1]
-           ]
-       },
-       "incopts": {
-           "incubation_median": 5.1,
-           "incubation_sigma": 0.418,
-           "incubation_025": 2.2,
-           "incubation_975": 11.5
-       },
-       "ppopts": {
-           "nstart": 100000,
-           "nsamples": 10000,
-           "days_extra": 10,
-           "runmodel": 1,
-           "postpred": 1,
-           "quantile_newcases": [0.025,0.25,0.5,0.75,0.975],
-           "linetype_newcases": ["b--","g-","r-","g-","b--"],
-           "linewidth_newcases": [3,2,3,2,3],
-           "fillbetw_newcases": [[0.25,0.5,"g",0.4],[0.5,0.75,"g",0.4]],
-           "xylim_newcases": ["2020-03-01","2020-04-15",0,500],
-           "xylbl_newcases": ["Date",16,"Reported New Cases on Date",16],
-           "xyticklbl_newcases": [14,14],
-           "newcases": ["ko",6],
-           "figtype": "pdf",
-           "fpredout": "NM_epidemic_curve",
-           "fout_newcases": "NM_epidemic_curve"
-       },
-       "infopts": {
-           "inftype": "gamma",
-           "ndays": 180,
-           "runmodel": 1,
-           "postpred": 1,
-           "quantile_inf": [0.025,0.25,0.5,0.75,0.975],
-           "linetype_inf": ["b--","g-","r-","g-","b--"],
-           "linewidth_inf": [3,2,3,2,3],
-           "fillbetw_inf": [[0.25,0.5,"g",0.4],[0.5,0.75,"g",0.4]],
-           "xylim_inf": ["2020-03-01","2020-05-01",10,1000],
-           "xylbl_inf": ["Date",16,"Infection Rate [ppl/day]",16],
-           "xyticklbl_inf": [14,14],
-           "newcases": ["ko",6],
-           "figtype": "pdf",
-           "finfout": "NM_infection_curve",
-           "fout_inf": "NM_infection_curve"
-       },
-       "csvout": {
-           "nskip": 100,
-           "finfcurve": "NM_infection_curve",
-           "fnewcases": "NM_epidemic_curve",
-           "qlist": [0.025,0.25,0.5,0.75,0.975]
-       }
-   }
+    {
+        "regioninfo":{
+            "count_data":["NM.dat"],
+            "population_data":[2.113],
+            "region_tag":["NM"],
+            "day0":"2020-03-01",
+            "running_avg_obs":7
+        },
+        "mcmcopts": {
+            "logfile": "logmcmcNM.txt",
+            "nsteps": 1000000,
+            "nfinal": 10000000,
+            "gamma": 0.7,
+            "spllo": [-1.5199,0.00636,3.71538,17.571,70.818,0.0051,0.0,4.976,140,0.0002,0.1,0.1,-30.0,-20],
+            "splhi": [1.8198,0.0077,4.6929,24.5749,112.5741,0.00638,11.2084,15.4422,220,0.5,30.0,400.0,10.0,1.0],
+            "cini": [0.1499,0.007,4.204,21.0729,91.69619,0.00574,5.5528,10.2094,180,0.01,6.0,20.2,-10,0.1],
+            "cvini": [0.3098,2.1092e-07,0.0265,1.3626,48.432,2.0496e-07,3.5539,3.0425,225,0.001,0.01,0.01,0.01,0.01]
+        },
+        "bayesmod": {
+            "prior_types": ["g","u","u","u","g","u","u","u","g","u","u","u","u","u"],
+            "prior_info": [
+                [0.1499487243752924,0.5566124720557659],[0,1],[0,1],[0,1],
+                [91.69619492513007,6.959308502135749],[0,1],[0,1],[0,1],
+                [180,15.0],[0,1],[0,1],[0,1],
+                [0,1],[0,1]
+            ],
+            "error_model_type": "addMult",
+            "lpf_type":"gaussian"
+        },
+        "modelopts":{
+            "num_waves":3,
+            "useconv":1,
+            "incubation_median":5.1,
+            "incubation_sigma":0.418,
+            "incubation_025":2.2,
+            "incubation_975":11.5,
+            "incubation_model":"lognormal",
+            "incubation_type":"stochastic"
+        },
+        "ppopts": {
+            "nstart": 100000,
+            "nsamples": 1000,
+            "days_extra": 10,
+            "runmodel": 1,
+            "postpred": 1,
+            "newdata":"NM_1124.dat",
+            "quantile_newcases": [0.025,0.25,0.5,0.75,0.975],
+            "linetype_newcases": ["b--","g-","r-","g-","b--"],
+            "linewidth_newcases": [3,2,3,2,3],
+            "fillbetw_newcases": [[0.25,0.5,"g",0.4],[0.5,0.75,"g",0.4]],
+            "xylim_newcases": ["2020-03-01","2020-04-15",0,1800],
+            "xylbl_newcases": ["Date",16,"Reported New Cases on Date",16],
+            "xyticklbl_newcases": [14,14],
+            "newcases": ["ko",6],
+            "figtype": "pdf",
+            "fpredout": "NM_epidemic_curve",
+            "fout_newcases": "NM_epidemic_curve"
+        },
+        "infopts": {
+            "inftype": "gamma",
+            "ndays": 270,
+            "runmodel": 1,
+            "postpred": 1,
+            "quantile_inf": [0.025,0.25,0.5,0.75,0.975],
+            "linetype_inf": ["b--","g-","r-","g-","b--"],
+            "linewidth_inf": [3,2,3,2,3],
+            "fillbetw_inf": [[0.25,0.5,"g",0.4],[0.5,0.75,"g",0.4]],
+            "xylim_inf": ["2020-03-01","2020-05-01",10,1000],
+            "xylbl_inf": ["Date",16,"Infection Rate [ppl/day]",16],
+            "xyticklbl_inf": [14,14],
+            "newcases": ["ko",6],
+            "figtype": "pdf",
+            "finfout": "NM_infection_curve",
+            "fout_inf": "NM_infection_curve"
+        },
+        "csvout": {
+            "nskip": 100,
+            "finfcurve": "NM_infection_curve",
+            "fnewcases": "NM_epidemic_curve",
+            "qlist": [0.025,0.25,0.5,0.75,0.975]
+        }
+    }
